@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Currículo Profissional</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="pdf-generator.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Gerador de Currículo Profissional</h1>
+    <div class="layout">
+      <div class="form-section">
+        <div class="form-group">
+          <label for="name">Nome completo</label>
+          <input type="text" id="name" oninput="updateResume()" placeholder="Seu nome completo">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Endereço</label>
+          <input type="text" id="address" oninput="updateResume()" placeholder="Seu endereço">
+        </div>
+
+        <div class="form-group">
+          <label for="city">Cidade, Estado, CEP</label>
+          <input type="text" id="city" oninput="updateResume()" placeholder="Cidade, Estado, CEP">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefone</label>
+          <input type="text" id="phone" oninput="updateResume()" placeholder="Seu telefone">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" oninput="updateResume()" placeholder="Seu email">
+        </div>
+
+        <div class="form-group">
+          <label for="objective">Objetivo</label>
+          <textarea id="objective" oninput="updateResume()" placeholder="Vaga pretendida ou área de atuação"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="education">Formação Acadêmica</label>
+          <textarea id="education" oninput="updateResume()" placeholder="•"></textarea>
+          <button class="bullet-btn" onclick="insertBullet('education')">+</button>
+        </div>
+
+        <div class="form-group">
+          <label for="experience">Experiência</label>
+          <textarea id="experience" oninput="updateResume()" placeholder="•"></textarea>
+          <button class="bullet-btn" onclick="insertBullet('experience')">+</button>
+        </div>
+
+        <div class="form-group">
+          <label for="languages">Idiomas</label>
+          <textarea id="languages" oninput="updateResume()" placeholder="Idiomas que você fala"></textarea>
+          <button class="bullet-btn" onclick="insertBullet('languages')">+</button>
+        </div>
+
+        <div class="form-group">
+          <label for="awards">Prêmios e Reconhecimentos</label>
+          <textarea id="awards" oninput="updateResume()" placeholder="Prêmios recebidos"></textarea>
+          <button class="bullet-btn" onclick="insertBullet('awards')">+</button>
+        </div>
+
+        <div class="form-group">
+          <label for="style">Escolha o estilo (opcional):</label>
+          <select id="style" onchange="updateResume()">
+            <option value="classic">Clássico</option>
+            <option value="modern">Moderno</option>
+            <option value="elegant">Elegante</option>
+          </select>
+        </div>
+
+        <button onclick="generatePDF()">Baixar Currículo em PDF</button>
+        
+      </div>
+
+      <div class="resume-section">
+        <div id="resumePreview"></div>
+      </div>
+    </div>
+    <footer>
+      <p>Version 1.0.0 | Developed by CodeDesk</p>
+    </footer>
+  </div>
+  </div>
+</body>
+</html>
