@@ -57,6 +57,15 @@ function sectionHTML(title, content, color) {
 }
 
 function generatePDF() {
+  // Enviar evento para o dataLayer do GTM
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'download_pdf',
+    'category': 'PDF',
+    'action': 'Download',
+    'label': 'Curriculum_Download'
+  });
+  // Gerar o PDF usando jsPDF
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
