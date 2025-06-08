@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Páginas principais -->
+  <!-- Página inicial -->
   <url>
     <loc>https://geradorcurriculo.xyz/</loc>
     <lastmod>2025-06-08</lastmod>
     <priority>1.0</priority>
   </url>
 
+  <!-- Páginas institucionais -->
   <url>
     <loc>https://geradorcurriculo.xyz/about.html</loc>
     <lastmod>2025-06-08</lastmod>
