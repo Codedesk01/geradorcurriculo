@@ -38,17 +38,4 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- Recursos importantes -->
-  <url>
-    <loc>https://geradorcurriculo.xyz/pdf-generator.js</loc>
-    <lastmod>2025-06-08</lastmod>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://geradorcurriculo.xyz/style.css</loc>
-    <lastmod>2025-06-08</lastmod>
-    <priority>0.3</priority>
-  </url>
-
 </urlset>
