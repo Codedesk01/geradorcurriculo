@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerador de Currículo Profissional</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Gerador de Currículo Grátis - Crie Seu Currículo Online</title>
+  <meta name="description" content="Crie currículos profissionais grátis para jovem aprendiz, primeiro emprego e mais. Baixe em PDF sem cadastro em minutos!">
+  <meta name="keywords" content="gerador de currículo, currículo grátis, criar currículo online, currículo jovem aprendiz, primeiro emprego">
+  <meta name="author" content="CodeDesk">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.geradorcurriculo.com.br">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="pdf-generator.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css">
   <meta name="google-adsense-account" content="ca-pub-8530320176723847">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17173526751"></script>
@@ -29,154 +31,212 @@
     })(window,document,'script','dataLayer','GTM-PKZHK9G6');
   </script>
   <!-- End Google Tag Manager -->
+
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKZHK9G6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="container">
-    <header>
-      <!-- NAVBAR GLOBAL MELHORADA -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold text-white" href="index.html">
-      <i class="bi bi-file-earmark-text-fill me-1"></i> Currículo Grátis
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link text-white" href="index.html"><i class="bi bi-house-door me-1"></i> Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="about.html"><i class="bi bi-info-circle me-1"></i> Sobre</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="blog.html"><i class="bi bi-journal-text me-1"></i> Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="contact.html"><i class="bi bi-envelope me-1"></i> Contato</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="privacy.html"><i class="bi bi-shield-lock me-1"></i> Privacidade</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="terms.html"><i class="bi bi-file-earmark-lock2 me-1"></i> Termos</a>
-        </li>
-      </ul>
-      <a onclick="generatePDF()" class="btn btn-primary ms-3">
-        <i class="bi bi-download"></i> Criar Currículo
-      </a>
-    </div>
-  </div>
-</nav>
-
-
-    <h1>Gerador de Currículo Profissional</h1>
-
-    <!-- Editorial Content for AdSense -->
-    <section class="intro bg-white p-4 rounded shadow-sm mb-4">
-  <h2 class="h4 mb-3 text-primary">
-    <i class="bi bi-lightning-charge-fill"></i> Crie seu currículo profissional em minutos
-  </h2>
-  <p>
-    Bem-vindo ao <strong>Currículo Grátis</strong>, a forma mais rápida e descomplicada de gerar seu currículo em PDF. Ideal para:
-  </p>
-  <ul class="list-unstyled ps-3">
-    <li><i class="bi bi-check-circle text-success"></i> Quem busca o primeiro emprego</li>
-    <li><i class="bi bi-check-circle text-success"></i> Atualização rápida do currículo</li>
-    <li><i class="bi bi-check-circle text-success"></i> Entrevistas de última hora</li>
-  </ul>
-  <p class="mt-3">
-    Não exige cadastro, login ou pagamento. Basta preencher e baixar! Para dicas de carreira, visite nosso <a href="blog.html">blog</a>.
-  </p>
-</section>
-
-
-    <div class="layout">
-      <div class="form-section">
-        <div class="form-group">
-          <label for="name">Nome completo</label>
-          <input type="text" id="name" oninput="updateResume()" placeholder="Seu nome completo">
-        </div>
-
-        <div class="form-group">
-          <label for="address">Endereço</label>
-          <input type="text" id="address" oninput="updateResume()" placeholder="Seu endereço">
-        </div>
-
-        <div class="form-group">
-          <label for="city">Cidade, Estado, CEP</label>
-          <input type="text" id="city" oninput="updateResume()" placeholder="Cidade, Estado, CEP">
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Telefone</label>
-          <input type="text" id="phone" oninput="updateResume()" placeholder="Seu telefone">
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" oninput="updateResume()" placeholder="Seu email">
-        </div>
-
-        <div class="form-group">
-          <label for="objective">Objetivo</label>
-          <textarea id="objective" oninput="updateResume()" placeholder="Vaga pretendida ou área de atuação"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="education">Formação Acadêmica</label>
-          <textarea id="education" oninput="updateResume()" placeholder="•"></textarea>
-          <button class="bullet-btn" onclick="insertBullet('education')">+</button>
-        </div>
-
-        <div class="form-group">
-          <label for="experience">Experiência</label>
-          <textarea id="experience" oninput="updateResume()" placeholder="•"></textarea>
-          <button class="bullet-btn" onclick="insertBullet('experience')">+</button>
-        </div>
-
-        <div class="form-group">
-          <label for="languages">Idiomas</label>
-          <textarea id="languages" oninput="updateResume()" placeholder="Idiomas que você fala"></textarea>
-          <button class="bullet-btn" onclick="insertBullet('languages')">+</button>
-        </div>
-
-        <div class="form-group">
-          <label for="awards">Prêmios e Reconhecimentos</label>
-          <textarea id="awards" oninput="updateResume()" placeholder="Prêmios recebidos"></textarea>
-          <button class="bullet-btn" onclick="insertBullet('awards')">+</button>
-        </div>
-
-        <div class="form-group">
-          <label for="style">Escolha o estilo (opcional):</label>
-          <select id="style" onchange="updateResume()">
-            <option value="classic">Clássico</option>
-            <option value="modern">Moderno</option>
-            <option value="elegant">Elegante</option>
-          </select>
-        </div>
-
-        <button onclick="generatePDF()">Baixar Currículo em PDF</button>
-      </div>
-
-      <div class="resume-section">
-        <div id="resumePreview"></div>
+   
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">Gerador de Currículo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="privacy.html">Privacidade</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="terms.html">Termos</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <footer>
-      <p>Version 1.0.0 | Developed by CodeDesk</p>
+  </nav>
+
+  <header class="hero-section text-center py-4">
+    <div class="container">
+      <h1 class="display-3 text-white fw-bold">Transforme Sua Carreira Hoje</h1>
+      <p class="lead text-white mb-3">Crie um currículo profissional em <strong>minutos</strong> e destaque-se no mercado!</p>
+      <a href="create-resume.html" class="btn btn-primary btn-lg px-4 py-2 scroll-to-create">Começar Agora</a>
+      <div class="hero-art"><i class="bi bi-file-earmark-text fs-1 text-warning"></i></div>
+    </div>
+  </header>
+
+  <section class="how-it-works-section py-4">
+    <div class="container">
+      <h2 class="text-center mb-3 text-primary">Como Funciona?</h2>
+      <p class="lead text-center mb-3 text-muted">Crie seu currículo online de forma rápida e eficiente com estas etapas simples.</p>
+      <div class="row g-3 text-center">
+        <div class="col-md-4 col-12">
+          <div class="block-card bg-light p-3 rounded-3 shadow-sm">
+            <i class="bi bi-file-earmark-text fs-2 text-primary mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Escolha Seu Modelo</h3>
+            <p class="text-muted">Selecione entre <span class="highlight">5 modelos</span> personalizáveis para jovem aprendiz, primeiro emprego e mais. Ajuste cores e layout.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="block-card bg-light p-3 rounded-3 shadow-sm">
+            <i class="bi bi-pencil-square fs-2 text-success mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Preencha Seu Conteúdo</h3>
+            <p class="text-muted">Adicione dados como <em>formação</em> e <em>experiência</em>. Use sugestões para cargos como auxiliar de produção.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="block-card bg-light p-3 rounded-3 shadow-sm">
+            <i class="bi bi-download fs-2 text-danger mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Baixe Seu Currículo</h3>
+            <p class="text-muted">Exporte em <span class="highlight">PDF</span> com um clique. Revisões ilimitadas incluídas.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="block-card bg-light p-3 rounded-3 shadow-sm">
+            <i class="bi bi-brush fs-2 text-warning mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Personalize</h3>
+            <p class="text-muted">Edite em tempo real com dicas integradas. Adicione <em>certificações</em> ou <em>projetos</em>.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="block-card bg-light p-3 rounded-3 shadow-sm">
+            <i class="bi bi-headset fs-2 text-info mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Suporte 24/7</h3>
+            <p class="text-muted">Entre em contato em <span class="highlight">codedesk001@gmail.com</span> para ajuda. Guias gratuitos disponíveis.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <a href="create-resume.html" class="btn btn-success btn-lg px-4 py-2 scroll-to-create">Criar meu currículo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="reasons-section py-4 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-3 text-primary">Por Que Nos Escolher?</h2>
+      <div class="row g-3 text-center">
+        <div class="col-md-6 col-12">
+          <div class="block-card p-3 rounded-3 shadow-sm bg-white">
+            <i class="bi bi-person-check-fill fs-2 text-primary mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Modelos Únicos</h3>
+            <p class="text-muted">Use CVs desenvolvidos especificamente para o site e únicos. Compatível com ATS de empresas como <em>Google</em> e <em>Nestlé</em>.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="block-card p-3 rounded-3 shadow-sm bg-white">
+            <i class="bi bi-lightbulb-fill fs-2 text-warning mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Dicas Práticas</h3>
+            <p class="text-muted">Guias para cada seção, de <em>objetivo</em> to <em>habilidades</em>.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="block-card p-3 rounded-3 shadow-sm bg-white">
+            <i class="bi bi-clock-history fs-2 text-info mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Edição Instantânea</h3>
+            <p class="text-muted">Atualize seu CV ao vivo com nossa ferramenta intuitiva.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tips-section py-4">
+    <div class="container">
+      <h2 class="text-center mb-3 text-primary">Dicas Rápidas</h2>
+      <div class="row g-3 text-center">
+        <div class="col-md-4 col-12">
+          <div class="block-card bg-light p-3 rounded-3 shadow-sm">
+            <i class="bi bi-lightbulb fs-2 text-warning mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Use Verbos de Ação</h3>
+            <p class="text-muted">Comece frases com "Desenvolvi" ou "Gerenciei" para destacar suas habilidades.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="block-card bg-light p-3 rounded-3 shadow-sm">
+            <i class="bi bi-clock fs-2 text-info mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Mantenha Conciso</h3>
+            <p class="text-muted">Limite seu currículo a uma página para facilitar a leitura.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="block-card bg-light p-3 rounded-3 shadow-sm">
+            <i class="bi bi-check-circle fs-2 text-success mb-2"></i>
+            <h3 class="h5 text-dark fw-bold">Revise Erros</h3>
+            <p class="text-muted">Cheque ortografia e gramática antes de baixar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section py-4 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-3 text-primary">O Que Dizem Nossos Usuários</h2>
+      <div class="row g-3 text-center">
+        <div class="col-md-6 col-12">
+          <div class="block-card p-3 rounded-3 shadow-sm bg-white">
+            <p class="text-muted">"A rapidez no download em PDF foi incrível!" - João Silva</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="block-card p-3 rounded-3 shadow-sm bg-white">
+            <p class="text-muted">"Os modelos são fáceis de usar e personalizar." - Maria Oliveira</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section text-center py-4">
+    <div class="container">
+      <h2 class="display-5 text-primary fw-bold">Comece Agora Sua Jornada!</h2>
+      <p class="lead mb-3 text-muted">Escolha modelos para <strong>jovem aprendiz</strong> ou <strong>primeiro emprego</strong>.</p>
+      <a href="create-resume.html" class="btn btn-warning btn-lg px-4 py-2 scroll-to-create">Criar Meu Currículo</a>
+      <div class="cta-art"><i class="bi bi-arrow-up-circle-fill fs-1 text-success"></i></div>
+    </div>
+  </section>
+
+  <footer class="footer-section py-3 bg-dark text-white">
+    <div class="container text-center">
+      <p class="mb-1">Versão 1.0.0 | Desenvolvido por <a href="#" class="text-warning text-decoration-none">CodeDesk</a></p>
       <p>
-        <a href="about.html">Sobre</a> | 
-        <a href="blog.html">Blog</a> | 
-        <a href="contact.html">Contato</a> | 
-        <a href="privacy.html">Política de Privacidade</a> | 
-        <a href="terms.html">Termos de Uso</a>
+        <a href="about.html" class="text-warning text-decoration-none me-2">Sobre</a>
+        <a href="blog.html" class="text-warning text-decoration-none me-2">Blog</a>
+        <a href="contact.html" class="text-warning text-decoration-none me-2">Contato</a>
+        <a href="privacy.html" class="text-warning text-decoration-none me-2">Política de Privacidade</a>
+        <a href="terms.html" class="text-warning text-decoration-none">Termos de Uso</a>
       </p>
-    </footer>
-  </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    document.querySelectorAll('.scroll-to-create').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        setTimeout(() => {
+          window.location.href = this.getAttribute('href');
+        }, 500);
+      });
+    });
+  </script>
 </body>
 </html>

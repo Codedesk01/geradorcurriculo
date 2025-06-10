@@ -1,5 +1,3 @@
-// Currículo com fontes maiores e títulos visíveis apenas se houver conteúdo
-
 function insertBullet(fieldId) {
   const textarea = document.getElementById(fieldId);
   const start = textarea.selectionStart;
@@ -11,38 +9,38 @@ function insertBullet(fieldId) {
 }
 
 function updateResume() {
-  const name = document.getElementById('name').value || 'SEU NOME';
-  const address = document.getElementById('address').value || '[Endereço]';
-  const city = document.getElementById('city').value || '[Cidade, Estado, CEP]';
-  const phone = document.getElementById('phone').value || '[telefone]';
-  const email = document.getElementById('email').value || '[email]';
-  const objective = document.getElementById('objective').value;
-  const education = document.getElementById('education').value;
-  const experience = document.getElementById('experience').value;
-  const languages = document.getElementById('languages').value;
-  const awards = document.getElementById('awards').value;
+  const fullName = document.getElementById('fullName').value || 'SEU NOME';
+  const address = document.getElementById('address').value || 'Endereço';
+  const city = document.getElementById('city').value || 'Cidade, Estado, CEP';
+  const phone = document.getElementById('phone').value || 'Telefone';
+  const email = document.getElementById('email').value || 'Email';
+  const objective = normalizeText(document.getElementById('objective').value);
+  const education = normalizeText(document.getElementById('education').value);
+  const experience = normalizeText(document.getElementById('experience').value);
+  const skills = normalizeText(document.getElementById('skills').value);
   const style = document.getElementById('style').value || 'classic';
 
   const colorMap = {
     classic: '#000000',
-    modern: '#007bff',
-    elegant: '#4a2c2a'
+    modern: '#1e90ff',
+    elegant: '#cc4d00'
   };
   const sectionColor = colorMap[style] || '#000000';
 
   const resumeHTML = `
-    <div style="font-family: 'Open Sans', sans-serif; padding: 1rem; max-width: 800px; color: #333;">
-      <h2 style="font-size: 2.2rem; font-weight: bold; margin-bottom: 0; color: ${sectionColor};">${name.toUpperCase()}</h2>
-      <p style="margin: 0.25rem 0; font-size: 1.1rem; font-weight: 600;">Vaga pretendida ou área de atuação</p>
-      <hr style="margin: 1rem 0; border: none; border-top: 1px solid ${sectionColor};">
-      <p style="margin: 0.2rem 0; font-size: 1rem;">Telefone: ${phone}</p>
-      <p style="margin: 0.2rem 0; font-size: 1rem;">Email: ${email}</p>
-      <p style="margin: 0.2rem 0 2rem 0; font-size: 1rem;">Endereço: ${address}, ${city}</p>
-      ${objective ? sectionHTML('OBJETIVO', objective, sectionColor) : ''}
-      ${experience ? sectionHTML('EXPERIÊNCIA', experience, sectionColor) : ''}
-      ${education ? sectionHTML('FORMAÇÃO', education, sectionColor) : ''}
-      ${languages ? sectionHTML('IDIOMAS', languages, sectionColor) : ''}
-      ${awards ? sectionHTML('INFORMAÇÕES ADICIONAIS', awards, sectionColor) : ''}
+    <div style="font-family: 'Poppins', sans-serif; padding: 2rem; max-width: 800px; color: #333;">
+      <h2 style="font-family: 'Lora', serif; font-size: 3rem; font-weight: bold; margin-bottom: 1rem; color: ${sectionColor}; text-transform: uppercase;">${fullName}</h2>
+      <p style="margin: 0.5rem 0; font-size: 1.8rem; font-weight: 600; color: ${sectionColor};">Vaga pretendida</p>
+      <hr style="margin: 1rem 0; border: none; border-top: 2px solid ${sectionColor};">
+      <div style="margin: 1rem 0 2rem 0; font-size: 1.4rem;">
+        <p style="margin: 0.5rem 0; white-space: pre-wrap;">Telefone: ${phone}</p>
+        <p style="margin: 0.5rem 0; white-space: pre-wrap;">Email: ${email}</p>
+        <p style="margin: 0.5rem 0; white-space: pre-wrap;">Endereço: ${address}, ${city}</p>
+      </div>
+      ${objective ? sectionHTML('Objetivo', objective, sectionColor) : ''}
+      ${experience ? sectionHTML('Experiência', experience, sectionColor) : ''}
+      ${education ? sectionHTML('Formação', education, sectionColor) : ''}
+      ${skills ? sectionHTML('Habilidades', skills, sectionColor) : ''}
     </div>
   `;
 
@@ -51,79 +49,149 @@ function updateResume() {
 
 function sectionHTML(title, content, color) {
   return `
-    <h3 style="font-size: 1.2rem; font-weight: bold; text-transform: uppercase; margin-top: 2rem; margin-bottom: 0.5rem; color: ${color};">${title}</h3>
-    <p style="margin-top: 0.2rem; white-space: pre-line; font-size: 1rem;">${content}</p>
+    <h3 style="font-family: 'Lora', serif; font-size: 2rem; font-weight: bold; margin-top: 4rem; margin-bottom: 2rem; color: ${color}; text-transform: uppercase;">${title}</h3>
+    <p style="margin-top: 1rem; white-space: pre-wrap; font-size: 1.6rem; color: #333; line-height: 1.8;">${content}</p>
   `;
 }
 
 function generatePDF() {
-  // Enviar evento para o dataLayer do GTM
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    'event': 'download_pdf',
-    'category': 'PDF',
-    'action': 'Download',
-    'label': 'Curriculum_Download'
-  });
-  // Gerar o PDF usando jsPDF
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
-  const margin = 20;
+  const margin = 15;
   const pageWidth = doc.internal.pageSize.getWidth();
   const maxWidth = pageWidth - margin * 2;
   const pageHeight = doc.internal.pageSize.getHeight();
   let y = margin;
 
-  const name = document.getElementById('name').value || 'SEU NOME';
-  const address = document.getElementById('address').value || '[Endereço]';
-  const city = document.getElementById('city').value || '[Cidade, Estado, CEP]';
-  const phone = document.getElementById('phone').value || '[telefone]';
-  const email = document.getElementById('email').value || '[email]';
-  const objective = document.getElementById('objective').value;
-  const education = document.getElementById('education').value;
-  const experience = document.getElementById('experience').value;
-  const languages = document.getElementById('languages').value;
-  const awards = document.getElementById('awards').value;
+  const fullName = document.getElementById('fullName').value || 'SEU_NOME';
+  const address = document.getElementById('address').value || 'Endereço';
+  const city = document.getElementById('city').value || 'Cidade, Estado, CEP';
+  const phone = document.getElementById('phone').value || 'Telefone';
+  const email = document.getElementById('email').value || 'Email';
+  const objective = normalizeText(document.getElementById('objective').value);
+  const education = normalizeText(document.getElementById('education').value);
+  const experience = normalizeText(document.getElementById('experience').value);
+  const skills = normalizeText(document.getElementById('skills').value);
   const style = document.getElementById('style').value || 'classic';
 
   const colorMap = {
     classic: [0, 0, 0],
-    modern: [0, 123, 255],
-    elegant: [74, 44, 42]
+    modern: [30, 144, 255],
+    elegant: [204, 77, 0]
   };
   const sectionColor = colorMap[style] || [0, 0, 0];
 
+  // Header Section
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(22);
+  doc.setFontSize(28);
   doc.setTextColor(...sectionColor);
-  doc.text(name.toUpperCase(), margin, y); y += 14;
+  doc.text(fullName.toUpperCase(), margin, y);
+  y += 14;
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(13);
-  doc.setTextColor(51, 51, 51);
-  doc.text(`Telefone: ${phone}`, margin, y); y += 8;
-  doc.text(`Email: ${email}`, margin, y); y += 8;
-  doc.text(`Endereço: ${address}, ${city}`, margin, y); y += 10;
+  doc.setFontSize(17);
+  doc.setTextColor(...sectionColor);
+  doc.text('Vaga pretendida', margin, y);
+  y += 10;
 
   doc.setDrawColor(...sectionColor);
-  doc.line(margin, y, pageWidth - margin, y); y += 10;
+  doc.line(margin, y, pageWidth - margin, y);
+  y += 10;
 
-  if (objective) y = addSection(doc, 'OBJETIVO', objective, y, margin, maxWidth, sectionColor);
-  if (experience) y = addSection(doc, 'EXPERIÊNCIA', experience, y, margin, maxWidth, sectionColor);
-  if (education) y = addSection(doc, 'FORMAÇÃO', education, y, margin, maxWidth, sectionColor);
-  if (languages) y = addSection(doc, 'IDIOMAS', languages, y, margin, maxWidth, sectionColor);
-  if (awards) y = addSection(doc, 'INFORMAÇÕES ADICIONAIS', awards, y, margin, maxWidth, sectionColor);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(15);
+  doc.setTextColor(51, 51, 51);
 
-  doc.save(`${name}_curriculo.pdf`);
+  // Split address into lines
+  const addressLines = [`Endereço: ${address}, ${city}`].join('\n').split('\n');
+  doc.text(`Telefone: ${phone}`, margin, y);
+  y += 8;
+  doc.text(`Email: ${email}`, margin, y);
+  y += 8;
+  addressLines.forEach(line => {
+    if (y + 8 > pageHeight - margin) {
+      doc.addPage();
+      y = margin;
+    }
+    const wrappedLines = doc.splitTextToSize(line, maxWidth);
+    wrappedLines.forEach(wrappedLine => {
+      if (y + 8 > pageHeight - margin) {
+        doc.addPage();
+        y = margin;
+      }
+      doc.text(wrappedLine, margin, y);
+      y += 8;
+    });
+  });
+  y += 14;
+
+  const lineHeight = 8;
+  const sectionSpacing = 18;
+  const bufferHeight = 20;
+
+  // Function to estimate section height
+  function estimateSectionHeight(content) {
+    const lines = content.split('\n');
+    let height = sectionSpacing;
+    lines.forEach(line => {
+      const wrappedLines = doc.splitTextToSize(line, maxWidth).length;
+      height += wrappedLines * lineHeight;
+    });
+    return height + bufferHeight;
+  }
+
+  // Add sections with page break management
+  if (objective) {
+    const sectionHeight = estimateSectionHeight(objective);
+    if (y + sectionHeight > pageHeight - margin) {
+      doc.addPage();
+      y = margin;
+    }
+    y = addSection(doc, 'Objetivo', objective, y, margin, maxWidth, sectionColor, lineHeight, sectionSpacing, pageHeight);
+  }
+  if (experience) {
+    const sectionHeight = estimateSectionHeight(experience);
+    if (y + sectionHeight > pageHeight - margin) {
+      doc.addPage();
+      y = margin;
+    }
+    y = addSection(doc, 'Experiência', experience, y, margin, maxWidth, sectionColor, lineHeight, sectionSpacing, pageHeight);
+  }
+  if (education) {
+    const sectionHeight = estimateSectionHeight(education);
+    if (y + sectionHeight > pageHeight - margin) {
+      doc.addPage();
+      y = margin;
+    }
+    y = addSection(doc, 'Formação', education, y, margin, maxWidth, sectionColor, lineHeight, sectionSpacing, pageHeight);
+  }
+  if (skills) {
+    const sectionHeight = estimateSectionHeight(skills);
+    if (y + sectionHeight > pageHeight - margin) {
+      doc.addPage();
+      y = margin;
+    }
+    y = addSection(doc, 'Habilidades', skills, y, margin, maxWidth, sectionColor, lineHeight, sectionSpacing, pageHeight);
+  }
+
+  const safeFileName = fullName.replace(/[^a-zA-Z0-9]/g, '_') || 'Curriculo';
+  doc.save(`${safeFileName}_Curriculo.pdf`);
+
+  // GTM Integration
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'download_pdf',
+    'category': 'PDF',
+    'action': 'Download',
+    'label': 'Curriculum_Download',
+    'user_name': fullName,
+    'style': style
+  });
 }
 
-function addSection(doc, title, content, y, margin, maxWidth, color) {
-  const lineHeight = 8;
-  const sectionSpacing = 14;
-  const pageHeight = doc.internal.pageSize.getHeight();
-
-  if (y + lineHeight > pageHeight - margin) {
+function addSection(doc, title, content, y, margin, maxWidth, color, lineHeight, sectionSpacing, pageHeight) {
+  if (y + sectionSpacing > pageHeight - margin) {
     doc.addPage();
     y = margin;
   }
@@ -131,26 +199,37 @@ function addSection(doc, title, content, y, margin, maxWidth, color) {
   y += sectionSpacing;
 
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(15);
+  doc.setFontSize(20);
   doc.setTextColor(...color);
-  doc.text(title, margin, y);
-  y += 9;
+  doc.text(title.toUpperCase(), margin, y);
+  y += 11;
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(12);
+  doc.setFontSize(15);
   doc.setTextColor(51, 51, 51);
 
-  const lines = doc.splitTextToSize(content, maxWidth);
+  const lines = content.split('\n');
   lines.forEach(line => {
     if (y + lineHeight > pageHeight - margin) {
       doc.addPage();
       y = margin;
     }
-    doc.text(line, margin + 2, y);
-    y += lineHeight;
+    const wrappedLines = doc.splitTextToSize(line, maxWidth);
+    wrappedLines.forEach(wrappedLine => {
+      if (y + lineHeight > pageHeight - margin) {
+        doc.addPage();
+        y = margin;
+      }
+      doc.text(wrappedLine, margin, y);
+      y += lineHeight;
+    });
   });
 
   return y;
+}
+
+function normalizeText(text) {
+  return text ? text.replace(/\r\n/g, '\n').replace(/\r/g, '\n') : '';
 }
 
 updateResume();
