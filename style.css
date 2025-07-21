@@ -455,3 +455,31 @@ body {
     margin-bottom: 1rem;
   }
 }
+
+
+  #star-rating i {
+    font-size: 2rem;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  #star-rating i.selected {
+    color: gold;
+  }
+
+<style>
+  #feedbackList .card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+  }
+  .feedback-stars {
+    color: gold;
+    font-size: 1.2rem;
+  }
+  .feedback-name {
+    font-weight: bold;
+  }
+</style>
