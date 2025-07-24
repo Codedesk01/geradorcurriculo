@@ -33,9 +33,14 @@
     })(window,document,'script','dataLayer','GTM-PKZHK9G6');
   </script>
   <!-- End Google Tag Manager -->
+  
    <link rel="icon" href="Logo.png" type="image/x-icon">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKZHK9G6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <!-- Modal HTML -->
 <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -78,10 +83,7 @@
   </div>
 </div>
 
-
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKZHK9G6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">Gerador de Currículo</a>
@@ -505,7 +507,6 @@ window.generatePDF = () => {
   const drawSection = (title, items) => {
     y += 16;
 
-    // Título da seção
     doc.setFont(font, 'bold');
     doc.setFontSize(15);
 
@@ -516,7 +517,6 @@ window.generatePDF = () => {
     doc.text(title, margin, y);
     y += 10;
 
-    // Conteúdo
     doc.setFont(font, 'normal');
     doc.setFontSize(12);
     doc.setTextColor(40, 40, 40);
@@ -529,7 +529,6 @@ window.generatePDF = () => {
       });
     });
 
-    // Linha decorativa se aplicável
     if (style === 'modern') {
       y += 4;
       doc.setDrawColor(200);
@@ -543,7 +542,7 @@ window.generatePDF = () => {
       doc.setLineWidth(0.2);
       doc.setLineDashPattern([1, 1], 0);
       doc.line(margin, y, pageWidth - margin, y);
-      doc.setLineDashPattern([], 0); // Reset
+      doc.setLineDashPattern([], 0);
     }
   };
 
@@ -606,7 +605,19 @@ window.generatePDF = () => {
   drawSection('Habilidades', skills);
   drawSection('Idiomas', languages);
 
+  // Salva o PDF
   doc.save('curriculo.pdf');
+
+  // 🔥 Aqui envia o evento para o Google Tag Manager
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'download_pdf',
+    category: 'PDF',
+    action: 'Download',
+    label: 'Curriculum_Download',
+    user_name: fullName,
+    style: style
+  });
 };
 
 
@@ -681,8 +692,13 @@ window.generatePDF = () => {
 
 // Quando clica no botão, mostra o modal
 document.getElementById("btnDownload").addEventListener("click", () => {
-  const feedbackModal = new bootstrap.Modal(document.getElementById("feedbackModal"));
-  feedbackModal.show();
+  generatePDF(); // Gera e baixa o PDF primeiro
+
+  // Depois de um pequeno delay, abre o modal
+  setTimeout(() => {
+    const feedbackModal = new bootstrap.Modal(document.getElementById("feedbackModal"));
+    feedbackModal.show();
+  }, 1000); // tempo de espera para garantir download (ajuste se necessário)
 });
 
 // Quando envia o formulário do modal
@@ -731,6 +747,7 @@ const stars = document.querySelectorAll('#star-rating i');
       });
     });
   });
+
   </script>
 </body>
 </html>
