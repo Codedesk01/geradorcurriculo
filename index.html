@@ -1,18 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerador de Currículo Grátis - Crie Seu Currículo Online</title>
-  <meta name="description" content="Crie currículos profissionais grátis para jovem aprendiz, primeiro emprego, estágios e mais. Baixe em PDF em minutos, sem cadastro!">
-  <meta name="keywords" content="gerador de currículo, currículo grátis, criar currículo online, jovem aprendiz, primeiro emprego, estágio, currículo profissional">
+  <title>Gerador de Currículo Inteligente - Transforme sua Carreira</title>
+  <meta name="description" content="Crie um currículo de alto impacto, otimizado para ATS e aprovado por recrutadores. Nossa tecnologia com IA te guia do rascunho à contratação. Grátis e online.">
+  <meta name="keywords" content="gerador de currículo, currículo grátis, criar currículo online, currículo com ia, ats, modelo de currículo, carreira, emprego">
   <meta name="author" content="CodeDesk">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.geradorcurriculo.xyz">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="canonical" href="https://www.geradorcurriculo.com">
+  
+    <!-- Favicon - A Solução Completa para o Ícone -->
+  <link rel="icon" href="c.png" type="image/png">
+  <link rel="shortcut icon" href="c.png" type="image/png">
+  <!-- Para Apple Touch Icon (iPhones, iPads) -->
+  <link rel="apple-touch-icon" href="c.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- AOS - Animate On Scroll Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Analytics -->
   <meta name="google-adsense-account" content="ca-pub-8530320176723847">
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17173526751"></script>
   <script>
@@ -21,243 +36,454 @@
     gtag('js', new Date());
     gtag('config', 'AW-17173526751');
   </script>
-  <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PKZHK9G6');
-  </script>
-   <link rel="icon" href="Logo.png" type="image/x-icon">
+
+  <style>
+    :root {
+      --primary-color: #4f46e5; /* Roxo-azulado vibrante */
+      --primary-hover: #4338ca;
+      --bg-light: #f9fafb;
+      --bg-dark: #111827;
+      --text-dark: #1f2937;
+      --text-muted: #6b7280;
+      --border-color: #e5e7eb;
+      --font-family: 'Inter', sans-serif;
+    }
+    body {
+      font-family: var(--font-family);
+      background-color: #fff;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .section-padding {
+      padding: 100px 0;
+    }
+    .section-bg {
+      background-color: var(--bg-light);
+    }
+
+    /* Header */
+    .hero-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, #f9fafb 0%, #fff 100%);
+    }
+    .hero-section h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text-dark);
+    }
+    .hero-section .highlight {
+      background: linear-gradient(90deg, var(--primary-color), #7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-section p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 1.5rem auto 2.5rem;
+    }
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      padding: 16px 36px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.5s ease;
+      z-index: -1;
+    }
+    .btn-primary:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
+    }
+    .hero-stats {
+      margin-top: 5rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 3rem;
+    }
+    .stat-item h3 {
+      font-weight: 700;
+      color: var(--primary-color);
+      font-size: 2.5rem;
+    }
+    .stat-item p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    /* Seções Gerais */
+    .section-title {
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 4rem;
+      font-size: 1.1rem;
+    }
+
+    /* Cards */
+    .info-card {
+      background-color: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: left;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .info-card .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      background-color: #eef2ff;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .info-card h5 {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .info-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Seção "Como Funciona" */
+    .step-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      background-color: #eef2ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    /* Seção de Depoimentos */
+    .testimonial-card {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .testimonial-card .quote {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .testimonial-card .quote::before {
+      content: '“';
+      font-size: 3rem;
+      color: var(--primary-color);
+      font-weight: 800;
+      line-height: 0;
+      margin-right: 0.5rem;
+    }
+    .testimonial-card .author-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+    .testimonial-card .author-name {
+      font-weight: 600;
+    }
+    .testimonial-card .author-title {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* FAQ Accordion */
+    .accordion-item {
+      border: 1px solid var(--border-color);
+      border-radius: 8px !important;
+      margin-bottom: 1rem;
+      background-color: #fff;
+    }
+    .accordion-button {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #eef2ff;
+      color: var(--primary-color);
+      box-shadow: none;
+    }
+    .accordion-button:focus {
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+    }
+    .accordion-body {
+      color: var(--text-muted);
+    }
+
+    /* Seção CTA (Call to Action) */
+    .cta-section {
+      background: var(--bg-dark);
+      color: #fff;
+      border-radius: 16px;
+      padding: 5rem 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -20%;
+        width: 100%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(79, 70, 229, 0.3), transparent 70%);
+        animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .cta-section h2 {
+      font-weight: 800;
+      font-size: 2.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 4rem 0 2rem;
+      background-color: var(--bg-dark);
+      color: #9ca3af;
+    }
+    .footer .footer-brand {
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .footer a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer a:hover {
+      color: #fff;
+    }
+    .footer .social-icons a {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+    .footer .copyright {
+      border-top: 1px solid #374151;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2.8rem;
+      }
+      .section-padding {
+        padding: 60px 0;
+      }
+    }
+    .logo{
+      max-width: 150px;
+      margin-bottom: 2rem;
+      display: inline;
+      margin-top: 2rem;
+    }
+
+    .logo2{
+      max-width: 150px;
+      margin-bottom: 2rem;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      
+    }
+  </style>
 </head>
 <body>
-  
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKZHK9G6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Gerador de Currículo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">Sobre</a></li>
-          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-         
-          
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contato</a></li>
-          <li class="nav-item"><a class="nav-link btn btn-warning ms-2 px-4" href="create-resume.html">Criar Currículo</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <!-- Seção Hero -->
+  <section class="hero-section text-center">
+          <img class="logo" src="Logo.png" alt="Logo">
 
-  <header class="hero-section text-center">
     <div class="container">
-      <h1 class="display-3 fw-bold text-white">Crie um Currículo que Abre Portas</h1>
-      <p class="lead text-white mb-4">Monte currículos profissionais para jovem aprendiz, primeiro emprego ou cargos avançados em minutos!</p>
-      <a href="create-resume.html" class="btn btn-warning btn-lg px-5 py-3">Criar Meu Currículo Grátis</a>
-      <div class="stats mt-4 d-flex justify-content-center gap-4">
-        <div class="stat-item text-white">
-          <i class="bi bi-person-fill fs-3"></i>
-          <p class="fw-bold">+500 Downloads</p>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <section class="how-it-works-section py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center mb-4 text-primary">Como Criar Seu Currículo?</h2>
-      <p class="text-center mb-5 text-muted">Siga estas etapas simples para criar um currículo profissional e compatível com sistemas ATS.</p>
-      <div class="row g-4 text-center">
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white">
-            <i class="bi bi-file-earmark-text fs-1 text-primary mb-3"></i>
-            <h3 class="h5 fw-bold">1. Escolha um Modelo</h3>
-            <p>Selecione modelos, otimizados para jovem aprendiz, estágio ou cargos corporativos. Personalize cores e fontes.</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white">
-            <i class="bi bi-pencil-square fs-1 text-primary mb-3"></i>
-            <h3 class="h5 fw-bold">2. Preencha Suas Informações</h3>
-            <p>Adicione formação, experiências e habilidades com sugestões automáticas para cargos como auxiliar administrativo ou vendedor.</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white">
-            <i class="bi bi-download fs-1 text-primary mb-3"></i>
-            <h3 class="h5 fw-bold">3. Baixe em PDF</h3>
-            <p>Exporte seu currículo em PDF com um clique. Revise quantas vezes quiser, sem custos.</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <h1 data-aos="fade-down">Seu currículo não é um documento. <br>É sua <span class="highlight">campanha de marketing pessoal.</span></h1>
+          <p data-aos="fade-up" data-aos-delay="100">Nós criamos a ferramenta definitiva para você construir um currículo de alto impacto. Com tecnologia de ponta e design impecável, transformamos seu potencial em oportunidade. Grátis.</p>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <a href="create-resume.html" class="btn btn-primary">Construir meu futuro <i class="bi bi-stars"></i></a>
           </div>
         </div>
       </div>
-      <div class="text-center mt-5">
-        <a href="create-resume.html" class="btn btn-primary btn-lg px-5 py-3">Começar Agora</a>
+      <div class="row hero-stats justify-content-center g-5" data-aos="fade-up" data-aos-delay="400">
+        <div class="col-6 col-md-3 stat-item">
+          <h3>+600</h3>
+          <p>Downloads em 3 meses</p>
+        </div>
+        <div class="col-6 col-md-3 stat-item">
+          <h3>98%</h3>
+          <p>Compatibilidade ATS</p>
+        </div>
+        <div class="col-6 col-md-3 stat-item">
+          <h3>4.9/5</h3>
+          <p>Nota dos usuários</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="features-section py-5">
+  <!-- Seção Como Funciona -->
+  <section class="section-padding">
+    <div class="container text-center">
+        <h2 class="section-title" data-aos="fade-up">Rápido, Intuitivo e Poderoso.</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Em três passos simples, você transforma suas informações em um currículo profissional.</p>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-right" data-aos-delay="200">
+                <div class="info-card text-center">
+                    <div class="step-number">1</div>
+                    <h5>Preencha</h5>
+                    <p>Use nossa interface guiada para adicionar suas informações. Nosso assistente de IA ajuda a criar textos impactantes.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="info-card text-center">
+                    <div class="step-number">2</div>
+                    <h5>Personalize</h5>
+                    <p>Escolha entre modelos de design de elite e cores que combinam com sua personalidade e área de atuação.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-left" data-aos-delay="200">
+                <div class="info-card text-center">
+                    <div class="step-number">3</div>
+                    <h5>Conquiste</h5>
+                    <p>Baixe seu currículo em PDF de alta qualidade, otimizado para ATS, e comece a se candidatar para as vagas dos seus sonhos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Seção de Features -->
+  <section class="section-padding section-bg">
     <div class="container">
-      <h2 class="text-center mb-4 text-primary">Por Que Escolher Nosso Gerador?</h2>
-      <p class="text-center mb-5 text-muted">Ferramentas e recursos que fazem a diferença na sua busca por emprego.</p>
+      <div class="text-center">
+        <h2 class="section-title" data-aos="fade-up">De candidato a contratado.</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Nossa plataforma foi desenhada com um único objetivo: maximizar suas chances. Cada recurso é uma vantagem competitiva.</p>
+      </div>
       <div class="row g-4">
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white d-flex align-items-start">
-            <i class="bi bi-star-fill fs-2 text-warning me-3"></i>
-            <div>
-              <h3 class="h5 fw-bold">Modelos Compatíveis com ATS</h3>
-              <p>Currículos otimizados para sistemas de rastreamento de candidatos usados por empresas como Google, Nestlé e Ambev.</p>
-            </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="info-card">
+            <div class="icon"><i class="bi bi-lightbulb"></i></div>
+            <h5>Redator IA Integrado</h5>
+            <p>Bloqueio criativo? Nosso assistente inteligente cria textos de objetivo profissional que capturam a atenção de qualquer recrutador.</p>
           </div>
         </div>
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white d-flex align-items-start">
-            <i class="bi bi-lightbulb-fill fs-2 text-warning me-3"></i>
-            <div>
-              <h3 class="h5 fw-bold">Dicas Personalizadas</h3>
-              <p>Receba sugestões para descrever experiências, objetivos e habilidades específicas para cada vaga.</p>
-            </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="info-card">
+            <div class="icon"><i class="bi bi-robot"></i></div>
+            <h5>DNA Otimizado para ATS</h5>
+            <p>Construímos cada modelo para ser perfeitamente analisado pelos robôs de triagem, garantindo que seu currículo chegue a mãos humanas.</p>
           </div>
         </div>
-        
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white d-flex align-items-start">
-            <i class="bi bi-universal-access fs-2 text-warning me-3"></i>
-            <div>
-              <h3 class="h5 fw-bold">Acessibilidade</h3>
-              <p>Interface intuitiva e compatível com leitores de tela para todos os usuários.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white d-flex align-items-start">
-            <i class="bi bi-headset fs-2 text-warning me-3"></i>
-            <div>
-              <h3 class="h5 fw-bold">Suporte 24/7</h3>
-              <p>Entre em contato via e-mail ou WhatsApp para ajuda instantânea.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white d-flex align-items-start">
-            <i class="bi bi-shield-lock-fill fs-2 text-warning me-3"></i>
-            <div>
-              <h3 class="h5 fw-bold">Privacidade Garantida</h3>
-              <p>Seus dados são protegidos com criptografia avançada e nunca compartilhados.</p>
-            </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="info-card">
+            <div class="icon"><i class="bi bi-palette2"></i></div>
+            <h5>Design de Elite</h5>
+            <p>Escolha entre templates modernos e elegantes, criados por designers premiados, para que sua primeira impressão seja inesquecível.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="tips-section py-5 bg-light">
+  <!-- Seção de Depoimentos -->
+  <section class="section-padding">
     <div class="container">
-      <h2 class="text-center mb-4 text-primary">Dicas para um Currículo de Sucesso</h2>
-      <p class="text-center mb-5 text-muted">Aumente suas chances com estas dicas práticas de especialistas.</p>
+      <div class="text-center">
+        <h2 class="section-title" data-aos="fade-up">A prova social de quem já conseguiu.</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Não acredite apenas em nossa palavra. Veja o que profissionais como você estão dizendo.</p>
+      </div>
       <div class="row g-4">
-        <div class="col-md-6 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white">
-            <h3 class="h5 fw-bold"><i class="bi bi-lightbulb fs-4 text-warning me-2"></i>Use Verbos de Ação</h3>
-            <p>Inicie frases com verbos como "Desenvolvi", "Gerenciei" ou "Implementei" para destacar suas conquistas. Exemplo: "Gerenciei equipe de 5 pessoas em projeto de vendas."</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white">
-            <h3 class="h5 fw-bold"><i class="bi bi-file-text fs-4 text-warning me-2"></i>Mantenha Conciso</h3>
-            <p>Limite seu currículo a uma página, priorizando informações relevantes para a vaga desejada.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white">
-            <h3 class="h5 fw-bold"><i class="bi bi-check-circle fs-4 text-warning me-2"></i>Revise Erros</h3>
-            <p>Verifique ortografia e gramática. Erros podem passar uma impressão negativa aos recrutadores.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white">
-            <h3 class="h5 fw-bold"><i class="bi bi-briefcase fs-4 text-warning me-2"></i>Adapte à Vaga</h3>
-            <p>Personalize seu currículo para cada vaga, destacando habilidades e experiências específicas.</p>
-            <a href="blog.html" class="text-primary text-decoration-none">Leia mais dicas no blog</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials-section py-5">
-    <div class="container">
-      <h2 class="text-center mb-4 text-primary">O Que Nossos Usuários Dizem</h2>
-      <p class="text-center mb-5 text-muted">Veja como nosso gerador ajudou pessoas a conquistar suas vagas.</p>
-      <div class="row g-4">
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white text-center">
-           
-            <p class="text-muted">"Consegui meu primeiro emprego como jovem aprendiz em menos de uma semana!"</p>
-            <p class="fw-bold">João Silva, Auxiliar Administrativo</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white text-center">
-            
-            <p class="text-muted">"Os modelos são incríveis e fáceis de personalizar. Super recomendo!"</p>
-            <p class="fw-bold">Maria Oliveira, Estagiária de Marketing</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white text-center">
-            
-            <p class="text-muted">"O suporte foi rápido e me ajudou a ajustar meu currículo para uma vaga internacional."</p>
-            <p class="fw-bold">Lucas Pereira, Analista de TI</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="faq-section py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center mb-4 text-primary">Perguntas Frequentes</h2>
-      <p class="text-center mb-5 text-muted">Tire suas dúvidas sobre nosso gerador de currículos.</p>
-      <div class="accordion" id="faqAccordion">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-              O serviço é realmente gratuito?
-            </button>
-          </h2>
-          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Sim, nosso gerador é 100% gratuito! Você pode criar, editar e baixar seu currículo em PDF sem custos ou cadastro.
+        <div class="col-lg-4" data-aos="fade-right" data-aos-delay="200">
+          <div class="testimonial-card">
+            <p class="quote">Passei semanas tentando montar um currículo decente. Em 10 minutos aqui, eu tinha uma versão melhor do que qualquer uma que paguei para fazer. Fui chamado para 3 entrevistas na mesma semana.</p>
+            <div class="author d-flex align-items-center">
+              <img src="https://i.pravatar.cc/150?img=1" alt="Foto de Mariana Costa" class="author-img">
+              <div>
+                <div class="author-name">Lucas Martins</div>
+                <div class="author-title">Aprovado para Analista de Marketing</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-              Posso usar o currículo em vagas internacionais?
-            </button>
-          </h2>
-          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Sim, oferecemos modelos em português, inglês e espanhol, compatíveis com padrões internacionais e sistemas ATS.
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-card">
+            <p class="quote">O assistente de IA é genial. Eu não sabia como começar meu 'Objetivo' e ele me deu um texto perfeito que eu só precisei adaptar. É o futuro da criação de currículos, e é grátis.</p>
+            <div class="author d-flex align-items-center">
+              <img src="https://i.pravatar.cc/150?img=3" alt="Foto de João Pedro Almeida" class="author-img">
+              <div>
+                <div class="author-name">João Pedro Almeida</div>
+                <div class="author-title">Contratado como Auxiliar Administrativo</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-              Como protegem meus dados?
-            </button>
-          </h2>
-          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Usamos criptografia SSL e não armazenamos seus dados após o download do currículo. Veja nossa <a href="privacy.html" class="text-primary">Política de Privacidade</a>.
+        <div class="col-lg-4" data-aos="fade-left" data-aos-delay="200">
+          <div class="testimonial-card">
+            <p class="quote">Como desenvolvedora, a estrutura do currículo importa muito. Os modelos são limpos, o PDF é perfeito e sei que passou fácil pelos filtros da empresa. Fui elogiada pelo design na entrevista.</p>
+            <div class="author d-flex align-items-center">
+              <img src="https://i.pravatar.cc/150?img=5" alt="Foto de Lucas Martins" class="author-img">
+              <div>
+                <div class="author-name">Mariana Costa</div>
+                <div class="author-title">Nova desenvolvedora Jr. na TechCorp</div>
+              </div>
             </div>
           </div>
         </div>
@@ -265,85 +491,108 @@
     </div>
   </section>
 
-  <section class="cta-section text-center py-5 bg-primary text-white">
+  <!-- Seção FAQ -->
+  <section class="section-padding section-bg">
     <div class="container">
-      <h2 class="display-5 fw-bold">Pronto para Transformar Sua Carreira?</h2>
-      <p class="lead mb-4">Crie seu currículo profissional agora e conquiste sua próxima oportunidade!</p>
-      <a href="create-resume.html" class="btn btn-warning btn-lg px-5 py-3">Criar Meu Currículo</a>
+        <div class="text-center">
+            <h2 class="section-title" data-aos="fade-up">Perguntas Frequentes</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Respostas rápidas para suas dúvidas mais comuns.</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                O gerador é realmente 100% gratuito?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Sim. Absolutamente tudo é gratuito. Sem taxas escondidas, sem assinaturas, sem marcas d'água no seu PDF. Criamos esta ferramenta para ajudar a comunidade e ela permanecerá assim.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Meus dados pessoais estão seguros?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Sua privacidade é nossa prioridade máxima. Todas as informações que você insere são processadas diretamente no seu navegador. Nós não vemos, coletamos ou armazenamos nenhum dos seus dados pessoais. Ao fechar a página, tudo se vai (a menos que você opte por salvar localmente).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                O que é "otimizado para ATS"?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                ATS (Applicant Tracking System) é um software que as empresas usam para filtrar currículos. Nossos modelos são projetados com uma estrutura limpa e texto selecionável, garantindo que esses robôs consigam ler e entender suas informações corretamente, aumentando suas chances de passar para a próxima fase.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </section>
 
-  <section class="support-section py-5">
+  <!-- Seção CTA -->
+  <section class="section-padding">
     <div class="container">
-      <h2 class="text-center mb-4 text-primary">Suporte ao Cliente</h2>
-      <p class="text-center mb-5 text-muted">Estamos aqui para ajudar você em cada etapa do processo.</p>
-      <div class="row g-4 text-center">
-        <div class="col-md-6 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white">
-            <i class="bi bi-envelope-fill fs-2 text-primary mb-3"></i>
-            <h3 class="h5 fw-bold">E-mail</h3>
-            <p>Envie sua dúvida para <a href="mailto:codedesk001@gmail.com" class="text-primary">codedesk001@gmail.com</a>.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-12">
-          <div class="block-card p-4 rounded-3 shadow-sm bg-white">
-            <i class="bi bi-whatsapp fs-2 text-primary mb-3"></i>
-            <h3 class="h5 fw-bold">WhatsApp</h3>
-            <p>Converse conosco pelo WhatsApp em <a href="https://wa.me/5511962921323" class="text-primary">+55 11 962921323</a>.</p>
-          </div>
-        </div>
+      <div class="cta-section text-center position-relative" data-aos="zoom-in">
+        <h2 class="position-relative">Sua próxima oportunidade de emprego <br>começa com um clique.</h2>
+        <p class="my-4 position-relative">Chega de se preocupar com formatação, o que escrever ou se seu currículo será notado. <br>Nós cuidamos da tecnologia para que você possa focar no seu talento.</p>
+        <a href="create-resume.html" class="btn btn-light position-relative">Criar meu currículo de alto impacto</a>
       </div>
     </div>
   </section>
 
-  <footer class="footer-section py-4 bg-dark text-white">
+  <!-- Footer -->
+  <footer class="footer">
+    <img class="logo2" src="Logo.png" alt="Logo">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <h5 class="fw-bold">Gerador de Currículo</h5>
-          <p>Crie currículos profissionais rapidamente, sem complicações, para qualquer tipo de vaga.</p>
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12">
+          <a href="#" class="footer-brand"><i class=""></i> Gerador de Currículo Inteligente</a>
+          <p>Uma ferramenta gratuita e de código aberto, criada para democratizar o acesso a oportunidades de carreira.</p>
         </div>
-        <div class="col-md-2">
-          <h5 class="fw-bold">Links Úteis</h5>
+        <div class="col-lg-3 col-6">
+          <h5>Navegação</h5>
           <ul class="list-unstyled">
-            <li><a href="about.html" class="text-warning text-decoration-none">Sobre</a></li>
-            <li><a href="blog.html" class="text-warning text-decoration-none">Blog</a></li>
-            <li><a href="career-tips.html" class="text-warning text-decoration-none">Dicas de Carreira</a></li>
-            <li><a href="contact.html" class="text-warning text-decoration-none">Contato</a></li>
+            <li><a href="create-resume.html">Criar Currículo</a></li>
+            <li><a href="#">Dicas</a></li>
+            <li><a href="#">Sobre</a></li>
           </ul>
         </div>
-        <div class="col-md-2">
-          <h5 class="fw-bold">Políticas</h5>
-          <ul class="list-unstyled">
-            <li><a href="privacy.html" class="text-warning text-decoration-none">Política de Privacidade</a></li>
-            <li><a href="terms.html" class="text-warning text-decoration-none">Termos de Uso</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5 class="fw-bold">Siga-nos</h5>
-          <p>
-            
-            <a href="https://www.instagram.com/geradorcurriculo/" class="text-warning text-decoration-none me-2"><i class="bi bi-instagram"></i> Instagram</a>
-            
-          </p>
+        <div class="col-lg-4 col-6">
+          <h5>Contato & Suporte</h5>
+          <p>Precisa de ajuda ou tem uma sugestão?</p>
+          <div class="social-icons">
+            <a href="https://instagram.com/tagsoluctions/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://wa.me/5511962921323" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
         </div>
       </div>
-      <p class="text-center mt-4">© 2025 CodeDesk. Todos os direitos reservados.</p>
+      <div class="copyright text-center">
+        <p>&copy; 2025 Tagsoluctions. Todos os direitos reservados.</p>
+      </div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script>document.addEventListener('DOMContentLoaded', () => {
-  const buttons = document.querySelectorAll('.btn[href="create-resume.html"]');
-  buttons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => {
-        window.location.href = button.getAttribute('href');
-      }, 400);
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800, // Duração da animação
+      once: true, // Animar apenas uma vez
     });
-  });
-});</script>
+  </script>
 </body>
 </html>
