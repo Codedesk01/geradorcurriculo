@@ -327,13 +327,41 @@
 
   <footer class="footer">
     <div class="container d-flex justify-content-between align-items-center flex-wrap">
-        <p class="mb-0">&copy; 2025 CodeDesk. Todos os direitos reservados.</p>
+        <p class="mb-0">&copy; 2025 Tagsoluctions Todos os direitos reservados.</p>
         <div class="social-icons">
             <a href="https://instagram.com/tagsoluctions/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
             <a href="https://wa.me/5511962921323" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
         </div>
     </div>
   </footer>
+
+  <!-- NOVO: Modal de Feedback -->
+<div class="modal fade" id="feedback-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Gostou do resultado? Deixe seu feedback!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <i class="bi bi-stars" style="font-size: 3rem; color: var(--accent-color);"></i>
+        <p class="mt-3">Sua opinião é muito importante para nós! Ela nos ajuda a melhorar a ferramenta para todos.</p>
+        <p>Ficou com alguma dúvida ou tem uma sugestão?</p>
+        
+        <div class="d-grid gap-2 col-10 mx-auto mt-4">
+          <a href="https://wa.me/5511962921323?text=Ol%C3%A1!%20Gostaria%20de%20dar%20um%20feedback%20sobre%20o%20Gerador%20de%20Curr%C3%ADculo." class="btn btn-success" target="_blank">
+            <i class="bi bi-whatsapp"></i> Enviar Feedback pelo WhatsApp
+          </a>
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- Modals de Ajuda -->
   <div class="modal fade" id="objective-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Objetivo Profissional</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Este é um resumo curto (2-3 linhas) sobre seus principais objetivos de carreira e o que você busca na vaga.</p><h6>Dica de Ouro</h6><p>Personalize o objetivo para cada vaga que você se candidatar, mencionando o nome do cargo ou a área.</p><h6>Exemplo:</h6><p class="example">Busco uma oportunidade como Desenvolvedor Front-end para aplicar minhas habilidades em React e contribuir para a criação de interfaces de usuário inovadoras e responsivas.</p></div></div></div></div>
@@ -565,33 +593,44 @@
       }
     }
 
-    function generatePDF() {
-        const data = collectFormData();
-        const doc = new window.jspdf.jsPDF('p', 'mm', 'a4');
-        const downloadButton = document.getElementById('download-btn');
-        
-        downloadButton.innerHTML = '<i class="bi bi-hourglass-split"></i> Gerando PDF...';
-        downloadButton.disabled = true;
+    function generatePDF( ) {
+    const data = collectFormData();
+    const doc = new window.jspdf.jsPDF('p', 'mm', 'a4');
+    const downloadButton = document.getElementById('download-btn');
+    
+    downloadButton.innerHTML = '<i class="bi bi-hourglass-split"></i> Gerando PDF...';
+    downloadButton.disabled = true;
 
-        // Lógica para chamar a função de desenho correta
-        if (data.model === 'executive') {
-            drawExecutivePDF(doc, data);
-        } else if (data.model === 'creative') {
-            drawCreativePDF(doc, data);
-        } else if (data.model === 'minimalist') {
-            drawMinimalistPDF(doc, data);
-        } else {
-            drawExecutivePDF(doc, data); // Padrão
-        }
-
-        const safeFileName = (data.fullName || 'curriculo').replace(/[^a-z0-9]/gi, '_').toLowerCase();
-        doc.save(`${safeFileName}_${data.model}.pdf`);
-        
-        if (typeof gtag === 'function') { gtag('event', 'download_pdf', { 'event_category': 'engagement', 'event_label': data.model }); }
-
-        downloadButton.innerHTML = '<i class="bi bi-download"></i> Baixar PDF de Alta Qualidade';
-        downloadButton.disabled = false;
+    // Lógica para chamar a função de desenho correta
+    if (data.model === 'executive') {
+        drawExecutivePDF(doc, data);
+    } else if (data.model === 'creative') {
+        drawCreativePDF(doc, data);
+    } else if (data.model === 'minimalist') {
+        drawMinimalistPDF(doc, data);
+    } else {
+        drawExecutivePDF(doc, data); // Padrão
     }
+
+    const safeFileName = (data.fullName || 'curriculo').replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    doc.save(`${safeFileName}_${data.model}.pdf`);
+    
+    if (typeof gtag === 'function') { gtag('event', 'download_pdf', { 'event_category': 'engagement', 'event_label': data.model }); }
+
+    downloadButton.innerHTML = '<i class="bi bi-download"></i> Baixar PDF de Alta Qualidade';
+    downloadButton.disabled = false;
+
+    // --- LINHAS ADICIONADAS ---
+    // Incrementa o contador de downloads no localStorage (se a função existir na página principal)
+    if (window.parent && typeof window.parent.incrementDownloads === 'function') {
+        window.parent.incrementDownloads();
+    }
+    
+    // Mostra o modal de feedback
+    const feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
+    feedbackModal.show();
+}
+
 
     // --- FUNÇÕES DE DESENHO PARA CADA MODELO ---
     function hexToRgb(hex) {

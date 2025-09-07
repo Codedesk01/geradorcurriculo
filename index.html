@@ -27,6 +27,9 @@
   <!-- AOS - Animate On Scroll Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+
+
+  
   <!-- Analytics -->
   <meta name="google-adsense-account" content="ca-pub-8530320176723847">
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17173526751"></script>
@@ -37,8 +40,12 @@
     gtag('config', 'AW-17173526751');
   </script>
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530320176723847"
+     crossorigin="anonymous"></script>
+
+
   <style>
-    :root {
+    :root { 
       --primary-color: #4f46e5; /* Roxo-azulado vibrante */
       --primary-hover: #4338ca;
       --bg-light: #f9fafb;
@@ -344,40 +351,206 @@
       margin-left: auto;
       
     }
+
+/* Estilos para a Seção de Vagas de Emprego */
+.job-card {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.job-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+.job-card .company-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+.job-card .job-title {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+}
+.job-card .job-company {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.btn-apply {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+.btn-apply:hover {
+  background-color: var(--primary-hover);
+  color: #fff;
+}
+
+/* Estilo para o card de "Anuncie Aqui" */
+.advertise-card {
+  background-color: #eef2ff; /* Fundo suave para destaque */
+  border: 2px dashed var(--primary-color);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.advertise-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.15);
+  border-style: solid;
+}
+.advertise-card .icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+.advertise-card h5 {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+.advertise-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* NOVO ESTILO: Card para Profissionais Anunciarem Serviços */
+/* NOVO ESTILO: Card para Profissionais Anunciarem Serviços */
+.freelancer-card {
+  background-color: var(--primary-color); /* Fundo roxo para contraste */
+  border: 2px solid var(--primary-hover);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.freelancer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
+  background-color: var(--primary-hover);
+}
+.freelancer-card .icon {
+  font-size: 3rem;
+  color: #fff; /* Ícone branco */
+  margin-bottom: 1rem;
+}
+.freelancer-card h5 {
+  font-weight: 700;
+  color: #fff; /* Título branco */
+}
+.freelancer-card p {
+  color: #e0e7ff; /* Texto branco com leve transparência */
+  font-size: 0.95rem;
+}
+.freelancer-card .btn-light {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+.freelancer-card .btn-light:hover {
+  background-color: #f9fafb;
+}
+
+
+
+
+
   </style>
 </head>
 <body>
 
   <!-- Seção Hero -->
-  <section class="hero-section text-center">
-          <img class="logo" src="Logo.png" alt="Logo">
+  <!-- Seção Hero -->
+<section class="hero-section text-center">
+  <img class="logo" src="Logo.png" alt="Logo">
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <h1 data-aos="fade-down">Seu currículo não é um documento. <br>É sua <span class="highlight">campanha de marketing pessoal.</span></h1>
-          <p data-aos="fade-up" data-aos-delay="100">Nós criamos a ferramenta definitiva para você construir um currículo de alto impacto. Com tecnologia de ponta e design impecável, transformamos seu potencial em oportunidade. Grátis.</p>
-          <div data-aos="fade-up" data-aos-delay="200">
-            <a href="create-resume.html" class="btn btn-primary">Construir meu futuro <i class="bi bi-stars"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="row hero-stats justify-content-center g-5" data-aos="fade-up" data-aos-delay="400">
-        <div class="col-6 col-md-3 stat-item">
-          <h3>+600</h3>
-          <p>Downloads em 3 meses</p>
-        </div>
-        <div class="col-6 col-md-3 stat-item">
-          <h3>98%</h3>
-          <p>Compatibilidade ATS</p>
-        </div>
-        <div class="col-6 col-md-3 stat-item">
-          <h3>4.9/5</h3>
-          <p>Nota dos usuários</p>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h1 data-aos="fade-down">Sua carreira vai além de um currículo.   
+É a <span class="highlight">sua marca no mundo.</span></h1>
+        <p data-aos="fade-up" data-aos-delay="100">Criamos um ecossistema para democratizar o acesso a oportunidades. Construa um currículo de impacto, anuncie seus serviços como freelancer ou encontre o talento ideal para sua empresa. Tudo em um só lugar. </p>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <a href="create-resume.html" class="btn btn-primary">Começar minha jornada <i class="bi bi-stars"></i></a>
         </div>
       </div>
     </div>
-  </section>
+    
+    <div class="row hero-stats justify-content-center g-5" data-aos="fade-up" data-aos-delay="400">
+      <div class="col-6 col-md-3 stat-item">
+        <h3 id="downloads-counter">+681</h3>
+        <p>Currículos Gerados</p>
+      </div>
+      <div class="col-6 col-md-3 stat-item">
+        <h3 id="access-counter">+1059</h3>
+        <p>Usuários na Plataforma</p>
+      </div>
+      <div class="col-6 col-md-3 stat-item">
+        <h3>100%</h3>
+        <p>Seguro</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- Seção de Oportunidades (Empresas e Profissionais) -->
+<section class="section-padding section-bg">
+  <div class="container text-center">
+      <h2 class="section-title" data-aos="fade-up">Um Ecossistema de Oportunidades</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Conectamos empresas a talentos e profissionais a novos projetos. Encontre o que você busca.</p>
+      
+      <div class="row justify-content-center g-4">
+          <!-- Card para Empresas Anunciarem Vagas -->
+          <div class="col-lg-6 col-md-10" data-aos="fade-right" data-aos-delay="200">
+              <div class="advertise-card">
+                  <div class="icon"><i class="bi bi-megaphone-fill"></i></div>
+                  <h5>Para Empresas</h5>
+                  <p>Divulgue sua vaga para milhares de profissionais e encontre o candidato ideal para sua equipe.</p>
+                  <a href="https://wa.me/5511962921323" class="btn btn-primary mt-3">Anunciar Vaga</a>
+              </div>
+          </div>
+
+          <!-- Card para Profissionais Anunciarem Serviços -->
+          <div class="col-lg-6 col-md-10" data-aos="fade-left" data-aos-delay="200">
+              <div class="freelancer-card">
+                  <div class="icon"><i class="bi bi-person-badge-fill"></i></div>
+                  <h5>Para Profissionais</h5>
+                  <p>É freelancer ou consultor? Anuncie seus serviços e seja encontrado por clientes que precisam da sua expertise.</p>
+                  <a href="https://wa.me/5511962921323" class="btn btn-light mt-3">Anunciar Serviços</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
 
   <!-- Seção Como Funciona -->
   <section class="section-padding">
@@ -555,36 +728,57 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <img class="logo2" src="Logo.png" alt="Logo">
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12">
-          <a href="#" class="footer-brand"><i class=""></i> Gerador de Currículo Inteligente</a>
-          <p>Uma ferramenta gratuita e de código aberto, criada para democratizar o acesso a oportunidades de carreira.</p>
-        </div>
-        <div class="col-lg-3 col-6">
-          <h5>Navegação</h5>
-          <ul class="list-unstyled">
-            <li><a href="create-resume.html">Criar Currículo</a></li>
-            <li><a href="#">Dicas</a></li>
-            <li><a href="#">Sobre</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-4 col-6">
-          <h5>Contato & Suporte</h5>
-          <p>Precisa de ajuda ou tem uma sugestão?</p>
-          <div class="social-icons">
-            <a href="https://instagram.com/tagsoluctions/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://wa.me/5511962921323" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          </div>
+<footer class="footer">
+  <img class="logo2" src="Logo.png" alt="Logo">
+  <div class="container">
+    <div class="row gy-4">
+      <!-- Coluna da Marca -->
+      <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+        <a href="#" class="footer-brand">Gerador de Currículo Inteligente</a>
+        <p class="mt-2">Uma ferramenta gratuita e de código aberto, criada para democratizar o acesso a oportunidades de carreira.</p>
+        <div class="social-icons mt-3">
+          <a href="https://instagram.com/tagsoluctions/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://wa.me/5511962921323" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
-      <div class="copyright text-center">
-        <p>&copy; 2025 Tagsoluctions. Todos os direitos reservados.</p>
+
+      <!-- Coluna de Navegação -->
+      <div class="col-lg-2 col-6">
+        <h5>Navegação</h5>
+        <ul class="list-unstyled">
+          <li><a href="create-resume.html">Criar Currículo</a></li>
+          <li><a href="#">Dicas</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna Para Empresas -->
+      <div class="col-lg-3 col-6">
+        <h5>Para Empresas</h5>
+        <ul class="list-unstyled">
+          <li><a href="https://wa.me/5511962921323">Anunciar Vaga</a></li>
+          <li><a href="#">Buscar Talentos</a></li>
+        </ul>
+      </div>
+
+      <!-- NOVA COLUNA: Para Profissionais -->
+      <div class="col-lg-3 col-6">
+        <h5>Para Profissionais</h5>
+        <ul class="list-unstyled">
+          <li><a href="https://wa.me/5511962921323">Anunciar Serviços</a></li>
+          <li><a href="#">Vagas Abertas</a></li>
+        </ul>
       </div>
     </div>
-  </footer>
+
+    <!-- Copyright -->
+    <div class="copyright text-center">
+      <p>&copy; 2025 Tagsoluctions. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -592,6 +786,56 @@
     AOS.init({
       duration: 800, // Duração da animação
       once: true, // Animar apenas uma vez
+    });
+
+
+    // --- SCRIPT DOS CONTADORES DINÂMICOS ---
+    document.addEventListener('DOMContentLoaded', function() {
+      const downloadsCounter = document.getElementById('downloads-counter');
+      const accessCounter = document.getElementById('access-counter');
+
+      // --- LÓGICA DO CONTADOR DE ACESSOS ---
+      let visits = localStorage.getItem('siteVisits');
+      if (visits === null) {
+        // Se for a primeira visita do usuário, começa em 1051.
+        visits = 1051;
+      } else {
+        // Se não, incrementa o número de visitas.
+        visits = parseInt(visits) + 1;
+      }
+      // Salva o novo valor no localStorage.
+      localStorage.setItem('siteVisits', visits);
+      // Exibe o valor no elemento HTML.
+      accessCounter.textContent = `+${visits}`;
+
+
+      // --- LÓGICA DO CONTADOR DE DOWNLOADS ---
+      // O número inicial de downloads que você definiu.
+      const initialDownloads = 681;
+      // Pega o número de downloads "extras" que o usuário já fez, salvos no navegador.
+      let userDownloads = localStorage.getItem('userDownloads');
+      
+      if (userDownloads === null) {
+        userDownloads = 0;
+      } else {
+        userDownloads = parseInt(userDownloads);
+      }
+
+      // O total a ser exibido é a soma do valor inicial + os downloads deste usuário.
+      const totalDownloads = initialDownloads + userDownloads;
+      downloadsCounter.textContent = `+${totalDownloads}`;
+
+      // Para simular um download, você pode chamar esta função
+      // quando o usuário clicar no botão de baixar o PDF.
+      // Exemplo: window.incrementDownloads();
+      window.incrementDownloads = function() {
+        let currentDownloads = parseInt(localStorage.getItem('userDownloads') || 0);
+        currentDownloads++;
+        localStorage.setItem('userDownloads', currentDownloads);
+        
+        const newTotal = initialDownloads + currentDownloads;
+        downloadsCounter.textContent = `+${newTotal}`;
+      }
     });
   </script>
 </body>
