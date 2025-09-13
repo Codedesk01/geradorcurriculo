@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerador de Currículo Inteligente - Transforme sua Carreira</title>
-  <meta name="description" content="Crie um currículo de alto impacto, otimizado para ATS e aprovado por recrutadores. Nossa tecnologia com IA te guia do rascunho à contratação. Grátis e online.">
-  <meta name="keywords" content="gerador de currículo, currículo grátis, criar currículo online, currículo com ia, ats, modelo de currículo, carreira, emprego">
-  <meta name="author" content="CodeDesk">
+  <title>Conecte-se: Vagas, Profissionais e Currículos</title>
+  <meta name="description" content="Encontre vagas de emprego, contrate profissionais locais e crie um currículo de impacto. Nossa missão é democratizar o acesso a oportunidades.">
+  <meta name="keywords" content="vagas de emprego, profissionais locais, encontrar eletricista, marceneiro, anuncie sua vaga, gerador de currículo, nossa missão">
+  <meta name="author" content="CodeDesk Remodelado por Manus">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.geradorcurriculo.com">
+  <link rel="canonical" href="https://www.seusite.com">
   
-    <!-- Favicon - A Solução Completa para o Ícone -->
+  <!-- Favicon -->
   <link rel="icon" href="c.png" type="image/png">
   <link rel="shortcut icon" href="c.png" type="image/png">
-  <!-- Para Apple Touch Icon (iPhones, iPads) -->
   <link rel="apple-touch-icon" href="c.png">
 
   <!-- Fonts & Icons -->
@@ -27,26 +25,9 @@
   <!-- AOS - Animate On Scroll Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-
-
-  
-  <!-- Analytics -->
-  <meta name="google-adsense-account" content="ca-pub-8530320176723847">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17173526751"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-17173526751');
-  </script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530320176723847"
-     crossorigin="anonymous"></script>
-
-
   <style>
     :root { 
-      --primary-color: #4f46e5; /* Roxo-azulado vibrante */
+      --primary-color: #4f46e5;
       --primary-hover: #4338ca;
       --bg-light: #f9fafb;
       --bg-dark: #111827;
@@ -55,786 +36,245 @@
       --border-color: #e5e7eb;
       --font-family: 'Inter', sans-serif;
     }
-    body {
-      font-family: var(--font-family);
-      background-color: #fff;
-      color: var(--text-dark);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    .section-padding {
-      padding: 100px 0;
-    }
-    .section-bg {
-      background-color: var(--bg-light);
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-family ); background-color: #fff; color: var(--text-dark); }
+    .section-padding { padding: 80px 0; }
+    .section-bg { background-color: var(--bg-light); }
+    .section-title { font-weight: 800; color: var(--text-dark); margin-bottom: 1rem; }
+    .section-subtitle { color: var(--text-muted); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; }
 
-    /* Header */
-    .hero-section {
-      padding: 120px 0;
-      background: linear-gradient(180deg, #f9fafb 0%, #fff 100%);
-    }
-    .hero-section h1 {
-      font-size: 3.8rem;
-      font-weight: 800;
-      line-height: 1.2;
-      color: var(--text-dark);
-    }
-    .hero-section .highlight {
-      background: linear-gradient(90deg, var(--primary-color), #7c3aed);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-section p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 1.5rem auto 2.5rem;
-    }
-    .btn-primary {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      padding: 16px 36px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300%;
-      height: 300%;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      transition: transform 0.5s ease;
-      z-index: -1;
-    }
-    .btn-primary:hover::before {
-      transform: translate(-50%, -50%) scale(1);
-    }
-    .btn-primary:hover {
-      background-color: var(--primary-hover);
-      border-color: var(--primary-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
-    }
-    .hero-stats {
-      margin-top: 5rem;
-      border-top: 1px solid var(--border-color);
-      padding-top: 3rem;
-    }
-    .stat-item h3 {
-      font-weight: 700;
-      color: var(--primary-color);
-      font-size: 2.5rem;
-    }
-    .stat-item p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      margin: 0;
-    }
+    /* Navbar */
+    .navbar { background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1rem 0; }
+    .navbar-brand img { max-height: 40px; }
+    .nav-link { font-weight: 600; color: var(--text-dark); }
+    .nav-link:hover { color: var(--primary-color); }
+    .btn-nav { padding: 0.5rem 1.2rem; font-weight: 600; border-radius: 0.5rem; }
 
-    /* Seções Gerais */
-    .section-title {
-      font-weight: 800;
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-    }
-    .section-subtitle {
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 4rem;
-      font-size: 1.1rem;
-    }
+    /* Hero Section */
+    .hero-section { padding: 80px 0; background: linear-gradient(180deg, #f9fafb 0%, #fff 100%); }
+    .hero-section h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.2; }
+    .hero-section .highlight { color: var(--primary-color); }
+    .hero-section p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 1.5rem auto 2.5rem; }
+    .search-form { background: #fff; padding: 1rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--border-color); }
+    .search-form .form-control { border: none; padding: 0.75rem 1rem; font-size: 1rem; }
+    .search-form .form-control:focus { box-shadow: none; }
+    .btn-primary { background-color: var(--primary-color); border-color: var(--primary-color); padding: 12px 24px; font-weight: 600; border-radius: 0.5rem; transition: all 0.3s ease; }
+    .btn-primary:hover { background-color: var(--primary-hover); border-color: var(--primary-hover); transform: translateY(-2px); }
 
-    /* Cards */
-    .info-card {
-      background-color: #fff;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: left;
-      transition: all 0.3s ease;
-      height: 100%;
-    }
-    .info-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    }
-    .info-card .icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      border-radius: 8px;
-      background-color: #eef2ff;
-      color: var(--primary-color);
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .info-card h5 {
-      font-weight: 700;
-      color: var(--text-dark);
-    }
-    .info-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
+    /* Mission Section */
+    .mission-card { background-color: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; text-align: left; transition: all 0.3s ease; height: 100%; }
+    .mission-card .icon { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 8px; background-color: #eef2ff; color: var(--primary-color); font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .mission-card h5 { font-weight: 700; color: var(--text-dark); }
+    .mission-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-    /* Seção "Como Funciona" */
-    .step-number {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      background-color: #eef2ff;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
+    /* Card Item (Jobs & Professionals) */
+    .card-item { background-color: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; text-align: left; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; }
+    .card-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .card-item .card-title { font-weight: 700; color: var(--text-dark); font-size: 1.2rem; }
+    .card-item .card-subtitle { color: var(--text-muted); font-weight: 500; margin-bottom: 1rem; }
+    .card-item .card-text { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; }
+    .card-item .tag { display: inline-block; background-color: #eef2ff; color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+    .btn-contact { background-color: var(--primary-color); color: #fff; font-weight: 600; border-radius: 8px; padding: 0.75rem 1rem; text-align: center; text-decoration: none; display: block; transition: background-color 0.3s; margin-top: 1.5rem; }
+    .btn-contact:hover { background-color: var(--primary-hover); color: #fff; }
+    .premium-badge { position: absolute; top: 15px; right: 15px; background-color: #f59e0b; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 5px; transform: rotate(10deg); }
+    .card-item.premium { border: 2px solid var(--primary-color); }
+    @keyframes highlight-animation { 0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(79, 70, 229, 0); } 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); } }
+    .highlight-search-result { animation: highlight-animation 1.5s 2; }
 
-    /* Seção de Depoimentos */
-    .testimonial-card {
-      background-color: #fff;
-      border-radius: 16px;
-      padding: 2.5rem;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .testimonial-card .quote {
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
-    }
-    .testimonial-card .quote::before {
-      content: '“';
-      font-size: 3rem;
-      color: var(--primary-color);
-      font-weight: 800;
-      line-height: 0;
-      margin-right: 0.5rem;
-    }
-    .testimonial-card .author-img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 1rem;
-    }
-    .testimonial-card .author-name {
-      font-weight: 600;
-    }
-    .testimonial-card .author-title {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
+    /* Pricing Section */
+    .pricing-card { background-color: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 2.5rem 2rem; height: 100%; display: flex; flex-direction: column; }
+    .pricing-card.premium { border-color: var(--primary-color); transform: scale(1.05); box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15); }
+    .pricing-card h3 { font-weight: 700; }
+    .pricing-card .price { font-size: 2.5rem; font-weight: 800; color: var(--primary-color); }
+    .pricing-card .price span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+    .pricing-card ul { list-style: none; padding: 0; margin: 2rem 0; flex-grow: 1; }
+    .pricing-card ul li { margin-bottom: 1rem; display: flex; align-items: center; }
+    .pricing-card ul li i { color: #10b981; margin-right: 0.75rem; font-size: 1.2rem; }
+    .btn-outline-primary { border-color: var(--primary-color); color: var(--primary-color); }
+    .btn-outline-primary:hover { background-color: var(--primary-color); color: #fff; }
 
-    /* FAQ Accordion */
-    .accordion-item {
-      border: 1px solid var(--border-color);
-      border-radius: 8px !important;
-      margin-bottom: 1rem;
-      background-color: #fff;
-    }
-    .accordion-button {
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-    .accordion-button:not(.collapsed) {
-      background-color: #eef2ff;
-      color: var(--primary-color);
-      box-shadow: none;
-    }
-    .accordion-button:focus {
-      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
-    }
-    .accordion-body {
-      color: var(--text-muted);
-    }
-
-    /* Seção CTA (Call to Action) */
-    .cta-section {
-      background: var(--bg-dark);
-      color: #fff;
-      border-radius: 16px;
-      padding: 5rem 2rem;
-      overflow: hidden;
-      position: relative;
-    }
-    .cta-section::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -20%;
-        width: 100%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(79, 70, 229, 0.3), transparent 70%);
-        animation: rotate 20s linear infinite;
-    }
-    @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-    .cta-section h2 {
-      font-weight: 800;
-      font-size: 2.5rem;
-    }
+    /* CTA Section */
+    .cta-section { background-color: var(--bg-dark); color: #fff; border-radius: 16px; padding: 4rem 2rem; }
+    .cta-section h2 { font-weight: 800; }
 
     /* Footer */
-    .footer {
-      padding: 4rem 0 2rem;
-      background-color: var(--bg-dark);
-      color: #9ca3af;
-    }
-    .footer .footer-brand {
-      font-weight: 700;
-      color: #fff;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .footer a {
-      color: #9ca3af;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer a:hover {
-      color: #fff;
-    }
-    .footer .social-icons a {
-      font-size: 1.5rem;
-      margin-right: 1rem;
-    }
-    .footer .copyright {
-      border-top: 1px solid #374151;
-      padding-top: 2rem;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-    }
+    .footer { padding: 4rem 0 2rem; background-color: var(--bg-dark); color: #9ca3af; }
+    .footer a { color: #9ca3af; text-decoration: none; transition: color 0.2s; }
+    .footer a:hover { color: #fff; }
+    .footer .copyright { border-top: 1px solid #374151; padding-top: 2rem; margin-top: 2rem; font-size: 0.9rem; }
+    .logo{ max-width: 150px; }
 
     @media (max-width: 768px) {
-      .hero-section h1 {
-        font-size: 2.8rem;
-      }
-      .section-padding {
-        padding: 60px 0;
-      }
+      .hero-section h1 { font-size: 2.5rem; }
+      .pricing-card.premium { transform: scale(1); }
     }
-    .logo{
-      max-width: 150px;
-      margin-bottom: 2rem;
-      display: inline;
-      margin-top: 2rem;
-    }
-
-    .logo2{
-      max-width: 150px;
-      margin-bottom: 2rem;
-      display: block;
-      margin-right: auto;
-      margin-left: auto;
-      
-    }
-
-/* Estilos para a Seção de Vagas de Emprego */
-.job-card {
-  background-color: #fff;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: left;
-  transition: all 0.3s ease;
-  height: 100%;
-}
-.job-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-.job-card .company-logo {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-  border: 1px solid var(--border-color);
-}
-.job-card .job-title {
-  font-weight: 700;
-  color: var(--text-dark);
-  font-size: 1.1rem;
-}
-.job-card .job-company {
-  color: var(--text-muted);
-  font-weight: 500;
-}
-.btn-apply {
-  background-color: var(--primary-color);
-  color: #fff;
-  font-weight: 600;
-  border-radius: 8px;
-  padding: 0.6rem 1rem;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  transition: background-color 0.3s;
-  margin-top: 1rem;
-}
-.btn-apply:hover {
-  background-color: var(--primary-hover);
-  color: #fff;
-}
-
-/* Estilo para o card de "Anuncie Aqui" */
-.advertise-card {
-  background-color: #eef2ff; /* Fundo suave para destaque */
-  border: 2px dashed var(--primary-color);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.advertise-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.15);
-  border-style: solid;
-}
-.advertise-card .icon {
-  font-size: 3rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-.advertise-card h5 {
-  font-weight: 700;
-  color: var(--primary-color);
-}
-.advertise-card p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-/* NOVO ESTILO: Card para Profissionais Anunciarem Serviços */
-/* NOVO ESTILO: Card para Profissionais Anunciarem Serviços */
-.freelancer-card {
-  background-color: var(--primary-color); /* Fundo roxo para contraste */
-  border: 2px solid var(--primary-hover);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.freelancer-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
-  background-color: var(--primary-hover);
-}
-.freelancer-card .icon {
-  font-size: 3rem;
-  color: #fff; /* Ícone branco */
-  margin-bottom: 1rem;
-}
-.freelancer-card h5 {
-  font-weight: 700;
-  color: #fff; /* Título branco */
-}
-.freelancer-card p {
-  color: #e0e7ff; /* Texto branco com leve transparência */
-  font-size: 0.95rem;
-}
-.freelancer-card .btn-light {
-  font-weight: 600;
-  color: var(--primary-color);
-}
-.freelancer-card .btn-light:hover {
-  background-color: #f9fafb;
-}
-
-
-
-
-
   </style>
 </head>
 <body>
 
-  <!-- Seção Hero -->
-  <!-- Seção Hero -->
-<section class="hero-section text-center">
-  <img class="logo" src="Logo.png" alt="Logo">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="Logo.png" alt="Logo Conecte-se"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#vagas">Vagas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#profissionais">Profissionais</a></li>
+          <li class="nav-item"><a class="nav-link" href="#planos">Anuncie</a></li>
+          <li class="nav-item ms-lg-3"><a href="create-resume.html" class="btn btn-primary btn-nav">Criar Currículo <i class="bi bi-stars"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <h1 data-aos="fade-down">Sua carreira vai além de um currículo.   
-É a <span class="highlight">sua marca no mundo.</span></h1>
-        <p data-aos="fade-up" data-aos-delay="100">Criamos um ecossistema para democratizar o acesso a oportunidades. Construa um currículo de impacto, anuncie seus serviços como freelancer ou encontre o talento ideal para sua empresa. Tudo em um só lugar. </p>
-        <div data-aos="fade-up" data-aos-delay="200">
-          <a href="create-resume.html" class="btn btn-primary">Começar minha jornada <i class="bi bi-stars"></i></a>
+  <!-- Seção Hero com Busca -->
+  <section class="hero-section text-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <h1 data-aos="fade-down">A oportunidade que você busca, <span class="highlight">perto de você.</span></h1>
+          <p data-aos="fade-up" data-aos-delay="100">Conectamos talentos a vagas de emprego e clientes a profissionais qualificados. Encontre, anuncie e cresça conosco.</p>
+          <div class="search-form mx-auto" style="max-width: 800px;" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-2 align-items-center">
+              <div class="col-lg-5"><input type="text" id="searchInput" class="form-control" placeholder="Cargo, serviço ou profissional..."></div>
+              <div class="col-lg-4"><input type="text" id="locationInput" class="form-control" placeholder="Cidade ou região..."></div>
+              <div class="col-lg-3"><button type="button" id="searchButton" class="btn btn-primary w-100">Buscar <i class="bi bi-search"></i></button></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    
-    <div class="row hero-stats justify-content-center g-5" data-aos="fade-up" data-aos-delay="400">
-      <div class="col-6 col-md-3 stat-item">
-        <h3 id="downloads-counter">+681</h3>
-        <p>Currículos Gerados</p>
+  </section>
+
+  <!-- Seção Nossa Missão -->
+  <section id="missao" class="section-padding">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title" data-aos="fade-up">Nossa Missão: Conectar Oportunidades</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Nascemos de uma necessidade real: a dificuldade de encontrar oportunidades e profissionais locais. Nossa plataforma existe para quebrar essa barreira.</p>
       </div>
-      <div class="col-6 col-md-3 stat-item">
-        <h3 id="access-counter">+1059</h3>
-        <p>Usuários na Plataforma</p>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="mission-card">
+            <div class="icon"><i class="bi bi-briefcase-fill"></i></div>
+            <h5>Para Quem Busca Emprego</h5>
+            <p>Facilitamos o acesso a vagas de emprego na sua região, ajudando você a dar o próximo passo na sua carreira.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="mission-card">
+            <div class="icon"><i class="bi bi-building-fill"></i></div>
+            <h5>Para Empresas</h5>
+            <p>Oferecemos um canal direto para encontrar os melhores talentos locais, fortalecendo a economia da sua comunidade.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="mission-card">
+            <div class="icon"><i class="bi bi-tools"></i></div>
+            <h5>Para Profissionais e Clientes</h5>
+            <p>Criamos a ponte entre quem oferece um serviço de qualidade e quem precisa de um trabalho bem feito, com confiança e praticidade.</p>
+          </div>
+        </div>
       </div>
-      <div class="col-6 col-md-3 stat-item">
-        <h3>100%</h3>
-        <p>Seguro</p>
-      </div>
-      
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- Seção de Oportunidades (Empresas e Profissionais) -->
-<section class="section-padding section-bg">
-  <div class="container text-center">
-      <h2 class="section-title" data-aos="fade-up">Um Ecossistema de Oportunidades</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Conectamos empresas a talentos e profissionais a novos projetos. Encontre o que você busca.</p>
+  <!-- Seção de Vagas de Emprego -->
+  <section id="vagas" class="section-padding section-bg">
+    <div class="container">
       
+      <div class="text-center mt-5" data-aos="fade-up"><a href="https://wa.me/551196921323" class="btn btn-primary">Sua empresa precisa contratar? Anuncie sua vaga aqui!</a></div>
+    </div>
+  </section>
+
+  <!-- Seção de Profissionais -->
+  <section id="profissionais" class="section-padding">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title" data-aos="fade-up">Profissionais Perto de Você</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Precisa de um serviço? Encontre profissionais qualificados e de confiança para te ajudar.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-8 col-lg-6" data-aos="fade-up" data-item-type="profissional" data-title="jefferson souza eletricista marceneiro montador" data-location="embu-guaçu são paulo">
+          <div class="card-item premium position-relative"><div class="premium-badge"><i class="bi bi-star-fill"></i> Destaque</div><h3 class="card-title">Jefferson Souza</h3><h4 class="card-subtitle">Eletricista Residencial e Marceneiro</h4><div class="card-text"><p>Realizo serviços de elétrica residencial e marcenaria, incluindo montagem de móveis planejados e padrão. Atuo na região de Embu Guaçu e toda grande São Paulo.</p></div><div><span class="tag">Eletricista</span><span class="tag">Marceneiro</span><span class="tag">Montador de Móveis</span></div><a href="https://wa.me/5511916297767" target="_blank" class="btn-contact">Contatar via WhatsApp</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Planos -->
+  <section id="planos" class="section-padding section-bg">
+    <div class="container">
+      <div class="text-center"><h2 class="section-title" data-aos="fade-up">Anuncie Sua Vaga ou Serviço</h2><p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Escolha o plano ideal para você e alcance milhares de pessoas na sua região.</p></div>
       <div class="row justify-content-center g-4">
-          <!-- Card para Empresas Anunciarem Vagas -->
-          <div class="col-lg-6 col-md-10" data-aos="fade-right" data-aos-delay="200">
-              <div class="advertise-card">
-                  <div class="icon"><i class="bi bi-megaphone-fill"></i></div>
-                  <h5>Para Empresas</h5>
-                  <p>Divulgue sua vaga para milhares de profissionais e encontre o candidato ideal para sua equipe.</p>
-                  <a href="https://wa.me/5511962921323" class="btn btn-primary mt-3">Anunciar Vaga</a>
-              </div>
-          </div>
-
-          <!-- Card para Profissionais Anunciarem Serviços -->
-          <div class="col-lg-6 col-md-10" data-aos="fade-left" data-aos-delay="200">
-              <div class="freelancer-card">
-                  <div class="icon"><i class="bi bi-person-badge-fill"></i></div>
-                  <h5>Para Profissionais</h5>
-                  <p>É freelancer ou consultor? Anuncie seus serviços e seja encontrado por clientes que precisam da sua expertise.</p>
-                  <a href="https://wa.me/5511962921323" class="btn btn-light mt-3">Anunciar Serviços</a>
-              </div>
-          </div>
+        <div class="col-lg-5 col-md-6" data-aos="fade-right"><div class="pricing-card"><h3>Plano Gratuito</h3><div class="price">R$0<span>/mês</span></div><ul><li><i class="bi bi-check-circle-fill"></i>Publicar 1 vaga (ou 1 anúncio ) por mês</li><li><i class="bi bi-check-circle-fill"></i>Anúncio visível no feed básico</li><li><i class="bi bi-check-circle-fill"></i>Inclui contato direto (WhatsApp, e-mail)</li><li><i class="bi bi-check-circle-fill"></i>Divulgação apenas no site</li></ul><a href="https://wa.me/551196921323" class="btn btn-outline-primary mt-auto">Começar Gratuitamente</a></div></div>
+        <div class="col-lg-5 col-md-6" data-aos="fade-left"><div class="pricing-card premium"><h3>Plano Premium</h3><div class="price">R$10<span>/mês</span></div><ul><li><i class="bi bi-check-circle-fill"></i>Tudo do gratuito +</li><li><i class="bi bi-check-circle-fill"></i>🚀 Publicar anúncios ilimitados</li><li><i class="bi bi-check-circle-fill"></i>✨ Logo em evidência</li><li><i class="bi bi-check-circle-fill"></i>✨ Destaque no topo da categoria/região</li><li><i class="bi bi-check-circle-fill"></i>✨ Divulgação em redes sociais parceiras</li><li><i class="bi bi-check-circle-fill"></i>✨ Anúncio com selo de destaque</li><li><i class="bi bi-check-circle-fill"></i>✨ Suporte rápido para edição</li></ul><a href="https://wa.me/551196921323" class="btn btn-primary mt-auto">Assinar Premium</a></div></div>
       </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-
-
-
-
-  <!-- Seção Como Funciona -->
+  <!-- Seção CTA para Gerar Currículo -->
   <section class="section-padding">
-    <div class="container text-center">
-        <h2 class="section-title" data-aos="fade-up">Rápido, Intuitivo e Poderoso.</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Em três passos simples, você transforma suas informações em um currículo profissional.</p>
-        <div class="row g-4">
-            <div class="col-md-4" data-aos="fade-right" data-aos-delay="200">
-                <div class="info-card text-center">
-                    <div class="step-number">1</div>
-                    <h5>Preencha</h5>
-                    <p>Use nossa interface guiada para adicionar suas informações. Nosso assistente de IA ajuda a criar textos impactantes.</p>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="info-card text-center">
-                    <div class="step-number">2</div>
-                    <h5>Personalize</h5>
-                    <p>Escolha entre modelos de design de elite e cores que combinam com sua personalidade e área de atuação.</p>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="fade-left" data-aos-delay="200">
-                <div class="info-card text-center">
-                    <div class="step-number">3</div>
-                    <h5>Conquiste</h5>
-                    <p>Baixe seu currículo em PDF de alta qualidade, otimizado para ATS, e comece a se candidatar para as vagas dos seus sonhos.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-  </section>
-
-  <!-- Seção de Features -->
-  <section class="section-padding section-bg">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="section-title" data-aos="fade-up">De candidato a contratado.</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Nossa plataforma foi desenhada com um único objetivo: maximizar suas chances. Cada recurso é uma vantagem competitiva.</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="info-card">
-            <div class="icon"><i class="bi bi-lightbulb"></i></div>
-            <h5>Redator IA Integrado</h5>
-            <p>Bloqueio criativo? Nosso assistente inteligente cria textos de objetivo profissional que capturam a atenção de qualquer recrutador.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="info-card">
-            <div class="icon"><i class="bi bi-robot"></i></div>
-            <h5>DNA Otimizado para ATS</h5>
-            <p>Construímos cada modelo para ser perfeitamente analisado pelos robôs de triagem, garantindo que seu currículo chegue a mãos humanas.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-          <div class="info-card">
-            <div class="icon"><i class="bi bi-palette2"></i></div>
-            <h5>Design de Elite</h5>
-            <p>Escolha entre templates modernos e elegantes, criados por designers premiados, para que sua primeira impressão seja inesquecível.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Depoimentos -->
-  <section class="section-padding">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="section-title" data-aos="fade-up">A prova social de quem já conseguiu.</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Não acredite apenas em nossa palavra. Veja o que profissionais como você estão dizendo.</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-lg-4" data-aos="fade-right" data-aos-delay="200">
-          <div class="testimonial-card">
-            <p class="quote">Passei semanas tentando montar um currículo decente. Em 10 minutos aqui, eu tinha uma versão melhor do que qualquer uma que paguei para fazer. Fui chamado para 3 entrevistas na mesma semana.</p>
-            <div class="author d-flex align-items-center">
-              <img src="https://i.pravatar.cc/150?img=1" alt="Foto de Mariana Costa" class="author-img">
-              <div>
-                <div class="author-name">Lucas Martins</div>
-                <div class="author-title">Aprovado para Analista de Marketing</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="testimonial-card">
-            <p class="quote">O assistente de IA é genial. Eu não sabia como começar meu 'Objetivo' e ele me deu um texto perfeito que eu só precisei adaptar. É o futuro da criação de currículos, e é grátis.</p>
-            <div class="author d-flex align-items-center">
-              <img src="https://i.pravatar.cc/150?img=3" alt="Foto de João Pedro Almeida" class="author-img">
-              <div>
-                <div class="author-name">João Pedro Almeida</div>
-                <div class="author-title">Contratado como Auxiliar Administrativo</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4" data-aos="fade-left" data-aos-delay="200">
-          <div class="testimonial-card">
-            <p class="quote">Como desenvolvedora, a estrutura do currículo importa muito. Os modelos são limpos, o PDF é perfeito e sei que passou fácil pelos filtros da empresa. Fui elogiada pelo design na entrevista.</p>
-            <div class="author d-flex align-items-center">
-              <img src="https://i.pravatar.cc/150?img=5" alt="Foto de Lucas Martins" class="author-img">
-              <div>
-                <div class="author-name">Mariana Costa</div>
-                <div class="author-title">Nova desenvolvedora Jr. na TechCorp</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção FAQ -->
-  <section class="section-padding section-bg">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="section-title" data-aos="fade-up">Perguntas Frequentes</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Respostas rápidas para suas dúvidas mais comuns.</p>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-                <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                O gerador é realmente 100% gratuito?
-                            </button>
-                        </h2>
-                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Sim. Absolutamente tudo é gratuito. Sem taxas escondidas, sem assinaturas, sem marcas d'água no seu PDF. Criamos esta ferramenta para ajudar a comunidade e ela permanecerá assim.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                Meus dados pessoais estão seguros?
-                            </button>
-                        </h2>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Sua privacidade é nossa prioridade máxima. Todas as informações que você insere são processadas diretamente no seu navegador. Nós não vemos, coletamos ou armazenamos nenhum dos seus dados pessoais. Ao fechar a página, tudo se vai (a menos que você opte por salvar localmente).
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                O que é "otimizado para ATS"?
-                            </button>
-                        </h2>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                ATS (Applicant Tracking System) é um software que as empresas usam para filtrar currículos. Nossos modelos são projetados com uma estrutura limpa e texto selecionável, garantindo que esses robôs consigam ler e entender suas informações corretamente, aumentando suas chances de passar para a próxima fase.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </section>
-
-  <!-- Seção CTA -->
-  <section class="section-padding">
-    <div class="container">
-      <div class="cta-section text-center position-relative" data-aos="zoom-in">
-        <h2 class="position-relative">Sua próxima oportunidade de emprego <br>começa com um clique.</h2>
-        <p class="my-4 position-relative">Chega de se preocupar com formatação, o que escrever ou se seu currículo será notado. <br>Nós cuidamos da tecnologia para que você possa focar no seu talento.</p>
-        <a href="create-resume.html" class="btn btn-light position-relative">Criar meu currículo de alto impacto</a>
-      </div>
-    </div>
+    <div class="container"><div class="cta-section text-center" data-aos="zoom-in"><h2 class="position-relative">Prepare-se para a Oportunidade</h2><p class="my-4 position-relative">Sua próxima entrevista de emprego começa com um currículo de impacto.   
+Use nossa ferramenta gratuita e destaque-se.</p><a href="create-resume.html" class="btn btn-light position-relative">Criar meu currículo grátis <i class="bi bi-arrow-right-short"></i></a></div></div>
   </section>
 
   <!-- Footer -->
-<footer class="footer">
-  <img class="logo2" src="Logo.png" alt="Logo">
-  <div class="container">
-    <div class="row gy-4">
-      <!-- Coluna da Marca -->
-      <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-        <a href="#" class="footer-brand">Gerador de Currículo Inteligente</a>
-        <p class="mt-2">Uma ferramenta gratuita e de código aberto, criada para democratizar o acesso a oportunidades de carreira.</p>
-        <div class="social-icons mt-3">
-          <a href="https://instagram.com/tagsoluctions/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="https://wa.me/5511962921323" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-        </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-4 text-center text-md-start">
+        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0"><img src="Logo.png" alt="Logo" class="logo mb-2"><p>Democratizando o acesso a oportunidades para impulsionar carreiras e negócios locais.</p></div>
+        <div class="col-lg-2 col-6"><h5>Navegação</h5><ul class="list-unstyled"><li><a href="#vagas">Vagas</a></li><li><a href="#profissionais">Profissionais</a></li><li><a href="create-resume.html">Criar Currículo</a></li></ul></div>
+        <div class="col-lg-3 col-6"><h5>Para Empresas</h5><ul class="list-unstyled"><li><a href="#planos">Anunciar Vaga</a></li></ul></div>
+        <div class="col-lg-3 col-6"><h5>Para Profissionais</h5><ul class="list-unstyled"><li><a href="#planos">Anunciar Serviços</a></li></ul></div>
       </div>
-
-      <!-- Coluna de Navegação -->
-      <div class="col-lg-2 col-6">
-        <h5>Navegação</h5>
-        <ul class="list-unstyled">
-          <li><a href="create-resume.html">Criar Currículo</a></li>
-          <li><a href="#">Dicas</a></li>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="#">Contato</a></li>
-        </ul>
-      </div>
-
-      <!-- Coluna Para Empresas -->
-      <div class="col-lg-3 col-6">
-        <h5>Para Empresas</h5>
-        <ul class="list-unstyled">
-          <li><a href="https://wa.me/5511962921323">Anunciar Vaga</a></li>
-          <li><a href="#">Buscar Talentos</a></li>
-        </ul>
-      </div>
-
-      <!-- NOVA COLUNA: Para Profissionais -->
-      <div class="col-lg-3 col-6">
-        <h5>Para Profissionais</h5>
-        <ul class="list-unstyled">
-          <li><a href="https://wa.me/5511962921323">Anunciar Serviços</a></li>
-          <li><a href="#">Vagas Abertas</a></li>
-        </ul>
-      </div>
+      <div class="copyright text-center"><p>&copy; 2025 Tagsoluctions. Todos os direitos reservados.</p></div>
     </div>
-
-    <!-- Copyright -->
-    <div class="copyright text-center">
-      <p>&copy; 2025 Tagsoluctions. Todos os direitos reservados.</p>
-    </div>
-  </div>
-</footer>
-
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 800, // Duração da animação
-      once: true, // Animar apenas uma vez
-    });
+    AOS.init({ duration: 800, once: true } );
 
+    document.getElementById('searchButton').addEventListener('click', function() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+      const locationTerm = document.getElementById('locationInput').value.toLowerCase().trim();
+      const allItems = document.querySelectorAll('[data-item-type]');
+      let foundItems = [];
 
-    // --- SCRIPT DOS CONTADORES DINÂMICOS ---
-    document.addEventListener('DOMContentLoaded', function() {
-      const downloadsCounter = document.getElementById('downloads-counter');
-      const accessCounter = document.getElementById('access-counter');
-
-      // --- LÓGICA DO CONTADOR DE ACESSOS ---
-      let visits = localStorage.getItem('siteVisits');
-      if (visits === null) {
-        // Se for a primeira visita do usuário, começa em 1051.
-        visits = 1051;
-      } else {
-        // Se não, incrementa o número de visitas.
-        visits = parseInt(visits) + 1;
-      }
-      // Salva o novo valor no localStorage.
-      localStorage.setItem('siteVisits', visits);
-      // Exibe o valor no elemento HTML.
-      accessCounter.textContent = `+${visits}`;
-
-
-      // --- LÓGICA DO CONTADOR DE DOWNLOADS ---
-      // O número inicial de downloads que você definiu.
-      const initialDownloads = 681;
-      // Pega o número de downloads "extras" que o usuário já fez, salvos no navegador.
-      let userDownloads = localStorage.getItem('userDownloads');
-      
-      if (userDownloads === null) {
-        userDownloads = 0;
-      } else {
-        userDownloads = parseInt(userDownloads);
-      }
-
-      // O total a ser exibido é a soma do valor inicial + os downloads deste usuário.
-      const totalDownloads = initialDownloads + userDownloads;
-      downloadsCounter.textContent = `+${totalDownloads}`;
-
-      // Para simular um download, você pode chamar esta função
-      // quando o usuário clicar no botão de baixar o PDF.
-      // Exemplo: window.incrementDownloads();
-      window.incrementDownloads = function() {
-        let currentDownloads = parseInt(localStorage.getItem('userDownloads') || 0);
-        currentDownloads++;
-        localStorage.setItem('userDownloads', currentDownloads);
+      allItems.forEach(item => {
+        const title = item.dataset.title.toLowerCase();
+        const location = item.dataset.location.toLowerCase();
         
-        const newTotal = initialDownloads + currentDownloads;
-        downloadsCounter.textContent = `+${newTotal}`;
+        const matchesSearch = searchTerm === '' || title.includes(searchTerm);
+        const matchesLocation = locationTerm === '' || location.includes(locationTerm);
+
+        if (matchesSearch && matchesLocation) {
+          item.style.display = 'block';
+          foundItems.push(item);
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (foundItems.length > 0) {
+        const firstFound = foundItems[0];
+        firstFound.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        foundItems.forEach((item, index) => {
+          setTimeout(() => {
+            const cardContent = item.querySelector('.card-item');
+            if (cardContent) {
+              cardContent.classList.add('highlight-search-result');
+              setTimeout(() => cardContent.classList.remove('highlight-search-result'), 3000);
+            }
+          }, index * 200);
+        });
+      } else {
+        alert('Nenhum resultado encontrado para sua busca.');
+        allItems.forEach(item => item.style.display = 'block'); // Mostra todos novamente se nada for encontrado
       }
     });
   </script>
