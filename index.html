@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conecte-se: Vagas, Profissionais e Currículos</title>
-  <meta name="description" content="Encontre vagas de emprego, contrate profissionais locais e crie um currículo de impacto. Nossa missão é democratizar o acesso a oportunidades.">
-  <meta name="keywords" content="vagas de emprego, profissionais locais, encontrar eletricista, marceneiro, anuncie sua vaga, gerador de currículo, nossa missão">
+  <title>Gerador de Currículo com IA - Crie Grátis</title>
+  <meta name="description" content="Crie um currículo profissional em minutos com nosso gerador gratuito. Escolha modelos, personalize cores e use a ajuda de IA para se destacar.">
+  <meta name="keywords" content="gerador de currículo, criar currículo, currículo com ia, modelo de currículo, currículo grátis, currículo profissional">
   <meta name="author" content="Tagsoluctions">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.geradorcurriculo.com">
-  
+
   <!-- Favicon -->
   <link rel="icon" href="c.png" type="image/png">
   <link rel="shortcut icon" href="c.png" type="image/png">
@@ -18,23 +16,21 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap CSS & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-  <!-- AOS - Animate On Scroll Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- PDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8530320176723847"
-     crossorigin="anonymous"></script>
-
-
-<meta name="google-adsense-account" content="ca-pub-8530320176723847">
-  <!-- Google tag (gtag.js) -->
+  <!-- Analytics -->
+  <meta name="google-adsense-account" content="ca-pub-8530320176723847">
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17173526751"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag( ){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'AW-17173526751');
   </script>
@@ -43,315 +39,770 @@
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f );
     })(window,document,'script','dataLayer','GTM-PKZHK9G6');
   </script>
   <!-- End Google Tag Manager -->
 
-
-
   <style>
-    :root { 
-      --primary-color: #4f46e5;
-      --primary-hover: #4338ca;
-      --bg-light: #f9fafb;
-      --bg-dark: #111827;
-      --text-dark: #1f2937;
-      --text-muted: #6b7280;
-      --border-color: #e5e7eb;
+    :root {
+      --bg-color: #f8fafc;
+      --panel-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --text-primary: #0f172a;
+      --text-secondary: #64748b;
+      --accent-color: #2563eb; /* Cor padrão, será sobrescrita pelo JS */
+      --danger-color: #dc2626;
       --font-family: 'Inter', sans-serif;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-family ); background-color: #fff; color: var(--text-dark); }
-    .section-padding { padding: 80px 0; }
-    .section-bg { background-color: var(--bg-light); }
-    .section-title { font-weight: 800; color: var(--text-dark); margin-bottom: 1rem; }
-    .section-subtitle { color: var(--text-muted); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; }
-
-    /* Navbar */
-    .navbar { background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1rem 0; }
-    .navbar-brand img { max-height:75px; }
-    .nav-link { font-weight: 600; color: var(--text-dark); }
-    .nav-link:hover { color: var(--primary-color); }
-    .btn-nav { padding: 0.5rem 1.2rem; font-weight: 600; border-radius: 0.5rem; }
-
-    /* Hero Section */
-    .hero-section { padding: 80px 0; background: linear-gradient(180deg, #f9fafb 0%, #fff 100%); }
-    .hero-section h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.2; }
-    .hero-section .highlight { color: var(--primary-color); }
-    .hero-section p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 1.5rem auto 2.5rem; }
-    .search-form { background: #fff; padding: 1rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--border-color); }
-    .search-form .form-control { border: none; padding: 0.75rem 1rem; font-size: 1rem; }
-    .search-form .form-control:focus { box-shadow: none; }
-    .btn-primary { background-color: var(--primary-color); border-color: var(--primary-color); padding: 12px 24px; font-weight: 600; border-radius: 0.5rem; transition: all 0.3s ease; }
-    .btn-primary:hover { background-color: var(--primary-hover); border-color: var(--primary-hover); transform: translateY(-2px); }
-
-    /* Mission Section */
-    .mission-card { background-color: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; text-align: left; transition: all 0.3s ease; height: 100%; }
-    .mission-card .icon { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 8px; background-color: #eef2ff; color: var(--primary-color); font-size: 1.5rem; margin-bottom: 1.5rem; }
-    .mission-card h5 { font-weight: 700; color: var(--text-dark); }
-    .mission-card p { color: var(--text-muted); font-size: 0.95rem; }
-
-    /* Partners Section */
-    .partners-section { padding: 60px 0; }
-    .partners-section .partner-logo { max-height: 76px; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s; }
-    .partners-section .partner-logo:hover { filter: grayscale(0%); opacity: 1; }
-    .partners-section .plus-icon { font-size: 1.5rem; color: var(--text-muted); }
-
-    .text-gradient {
-  background: linear-gradient(90deg, #ae00ff, #ff4b2b);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-
-    /* Card Item (Jobs & Professionals) */
-    .card-item { background-color: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; text-align: left; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; }
-    .card-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-    .card-item .card-title { font-weight: 700; color: var(--text-dark); font-size: 1.2rem; }
-    .card-item .card-subtitle { color: var(--text-muted); font-weight: 500; margin-bottom: 1rem; }
-    .card-item .card-text { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; }
-    .card-item .tag { display: inline-block; background-color: #eef2ff; color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-right: 0.5rem; margin-bottom: 0.5rem; }
-    .btn-contact { background-color: var(--primary-color); color: #fff; font-weight: 600; border-radius: 8px; padding: 0.75rem 1rem; text-align: center; text-decoration: none; display: block; transition: background-color 0.3s; margin-top: 1.5rem; }
-    .btn-contact:hover { background-color: var(--primary-hover); color: #fff; }
-    .premium-badge { position: absolute; top: 15px; right: 15px; background-color: #f59e0b; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 5px; transform: rotate(10deg); }
-    .card-item.premium { border: 2px solid var(--primary-color); }
-    @keyframes highlight-animation { 0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(79, 70, 229, 0); } 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); } }
-    .highlight-search-result { animation: highlight-animation 1.5s 2; }
-
-    /* Pricing Section */
-    .pricing-card { background-color: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 2.5rem 2rem; height: 100%; display: flex; flex-direction: column; }
-    .pricing-card.premium { border-color: var(--primary-color); transform: scale(1.05); box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15); }
-    .pricing-card h3 { font-weight: 700; }
-    .pricing-card .price { font-size: 2.5rem; font-weight: 800; color: var(--primary-color); }
-    .pricing-card .price span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
-    .pricing-card ul { list-style: none; padding: 0; margin: 2rem 0; flex-grow: 1; }
-    .pricing-card ul li { margin-bottom: 1rem; display: flex; align-items: center; }
-    .pricing-card ul li i { color: #10b981; margin-right: 0.75rem; font-size: 1.2rem; }
-    .btn-outline-primary { border-color: var(--primary-color); color: var(--primary-color); }
-    .btn-outline-primary:hover { background-color: var(--primary-color); color: #fff; }
-
-    /* CTA Section */
-    .cta-section { background-color: var(--bg-dark); color: #fff; border-radius: 16px; padding: 4rem 2rem; }
-    .cta-section h2 { font-weight: 800; }
-
-    /* Footer */
-    .footer { padding: 4rem 0 2rem; background-color: var(--bg-dark); color: #9ca3af; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background-color: var(--panel-bg);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 0.75rem 2rem;
+      flex-shrink: 0;
+    }
+    .navbar-brand img { max-height: 40px; }
+    .nav-link { color: var(--text-secondary); font-weight: 500; transition: color 0.2s; cursor: pointer; }
+    .nav-link:hover, .nav-link.active { color: var(--accent-color); }
+    .navbar-toggler { border: none; }
+    .navbar-toggler:focus { box-shadow: none; }
+    .main-content { flex-grow: 1; overflow: hidden; }
+    .main-grid { display: grid; grid-template-columns: 55% 45%; height: 100%; }
+    .form-container { padding: 2rem 3rem; overflow-y: auto; background: var(--panel-bg); border-right: 1px solid var(--border-color); }
+    .form-container::-webkit-scrollbar { width: 8px; }
+    .form-container::-webkit-scrollbar-track { background: var(--bg-color); }
+    .form-container::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+    .form-header { margin-bottom: 2rem; }
+    .form-header h1 { font-weight: 700; font-size: 2rem; color: var(--text-primary); }
+    .form-header p { color: var(--text-secondary); }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-label { font-weight: 500; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .help-icon { color: var(--text-secondary); cursor: pointer; transition: color 0.2s; }
+    .help-icon:hover { color: var(--accent-color); }
+    .form-control, .form-select {
+      width: 100%; padding: 0.75rem 1rem; background-color: #f8fafc; border: 1px solid var(--border-color);
+      border-radius: 0.5rem; color: var(--text-primary); font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus, .form-select:focus {
+      outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); background-color: #fff;
+    }
+    .color-picker-wrapper { display: flex; align-items: center; gap: 10px; }
+    .color-swatch { width: 30px; height: 30px; border-radius: 50%; cursor: pointer; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--border-color); transition: transform 0.2s; }
+    .color-swatch:hover, .color-swatch.active { transform: scale(1.2); box-shadow: 0 0 0 2px var(--accent-color); }
+    #color-hex { width: 120px; }
+    .dynamic-field { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; align-items: center; }
+    .btn-add { color: var(--accent-color); font-weight: 600; cursor: pointer; transition: color 0.2s; }
+    .btn-remove { background: none; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: color 0.2s; padding: 0; }
+    .btn-remove:hover { color: var(--danger-color); }
+    .action-buttons { display: flex; gap: 1rem; margin-top: 2rem; }
+    .btn { padding: 0.8rem 1.5rem; border-radius: 0.5rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .btn-primary { background-color: var(--accent-color); color: #fff; }
+    .btn-secondary { background-color: #fff; color: var(--text-secondary); border: 1px solid var(--border-color); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
+    .btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; box-shadow: none; }
+    .preview-container { display: flex; justify-content: center; align-items: flex-start; padding: 2rem; overflow-y: auto; background-color: var(--bg-color); }
+    #resume-preview { width: 210mm; min-height: 297mm; background: white; color: #111827; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 15mm; transition: all 0.3s ease; }
+    #resume-preview h1, #resume-preview h2, #resume-preview .desired-position { color: var(--accent-color); }
+    #resume-preview h2 { border-color: var(--accent-color); }
+    #resume-preview ul li::before { background-color: var(--accent-color); }
+    #resume-preview.executive { font-family: 'Lora', serif; }
+    #resume-preview.executive h1 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 0.5rem; }
+    #resume-preview.executive .desired-position { font-size: 1.1rem; text-align: center; margin-bottom: 1rem; }
+    #resume-preview.executive .contact-info { text-align: center; font-size: 0.9rem; color: #4b5563; margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    #resume-preview.executive h2 { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 1.5rem; margin-bottom: 0.75rem; border-bottom: 2px solid; padding-bottom: 0.25rem; }
+    #resume-preview.executive ul { list-style: none; padding-left: 0; }
+    #resume-preview.executive ul li { position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; }
+    #resume-preview.executive ul li::before { content: '•'; position: absolute; left: 0; top: 0; color: var(--accent-color); }
+    #resume-preview.creative { display: grid; grid-template-columns: 1fr 2.5fr; gap: 15mm; padding: 0; }
+    #resume-preview.creative .sidebar { background-color: #f9fafb; padding: 15mm; }
+    #resume-preview.creative .main-column { padding: 15mm 15mm 15mm 0; }
+    #resume-preview.creative h1 { font-size: 1.8rem; }
+    #resume-preview.creative h2 { font-size: 1rem; border-bottom-width: 1px; }
+    #resume-preview.creative .contact-info { border-bottom: none; padding-bottom: 0; }
+    #resume-preview.creative .sidebar h2 { margin-top: 1rem; }
+    #resume-preview.creative .sidebar ul { font-size: 0.9rem; }
+    #resume-preview.creative .sidebar ul li::before { display: none; }
+    #resume-preview.creative .sidebar ul li { padding-left: 0; }
+    #resume-preview.minimalist { font-family: 'Inter', sans-serif; }
+    #resume-preview.minimalist h1 { font-size: 1.8rem; }
+    #resume-preview.minimalist h2 { font-size: 1rem; border-bottom-width: 1px; }
+    #resume-preview.minimalist p, #resume-preview.minimalist ul { font-size: 0.9rem; }
+    #resume-preview.minimalist ul li::before { content: '—'; position: absolute; left: 0; top: 0; color: var(--accent-color); }
+    .footer {
+      background-color: #111827;
+      color: #9ca3af;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
     .footer a { color: #9ca3af; text-decoration: none; transition: color 0.2s; }
     .footer a:hover { color: #fff; }
-    .footer .copyright { border-top: 1px solid #374151; padding-top: 2rem; margin-top: 2rem; font-size: 0.9rem; }
-    .logo{ max-width: 150px; }
-
-    @media (max-width: 768px) {
-      .hero-section h1 { font-size: 2.5rem; }
-      .pricing-card.premium { transform: scale(1); }
+    .footer .logo { max-width: 150px; }
+    .modal-header { border-bottom-color: var(--border-color); }
+    .modal-body h6 { color: var(--accent-color); font-weight: 600; }
+    .modal-body p { color: var(--text-secondary); }
+    .modal-body .example { background-color: var(--bg-color); border-left: 3px solid var(--accent-color); padding: 0.75rem; font-style: italic; border-radius: 0.25rem; }
+    .modal-footer { border-top-color: var(--border-color); }
+    @media (max-width: 1200px) {
+      body { height: auto; }
+      .main-content { overflow: visible; }
+      .main-grid { grid-template-columns: 1fr; height: auto; }
+      .form-container { border-right: none; border-bottom: 1px solid var(--border-color); padding: 2rem 1.5rem; }
+      .preview-container { padding: 2rem 1rem; }
+      #resume-preview { width: 100%; min-height: auto; padding: 1.5rem; }
+      #resume-preview.creative { display: block; }
+      #resume-preview.creative .sidebar, #resume-preview.creative .main-column { padding: 0; }
+      #resume-preview.creative .sidebar { background-color: transparent; }
     }
   </style>
 </head>
 <body>
- <!-- Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKZHK9G6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <!-- End Google Tag Manager (noscript ) -->
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="#"><img src="Logo.png" alt="Logo Conecte-se"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="Logo.png" alt="Logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item"><a class="nav-link" href="#vagas">Vagas</a></li>
-          <li class="nav-item"><a class="nav-link" href="#profissionais">Profissionais</a></li>
-          <li class="nav-item"><a class="nav-link" href="#planos">Anuncie</a></li>
-         <!-- <li class="nav-item "><a class="nav-link" href="parcerias.html">Parcerias</a></li>-->
-          <li class="nav-item ms-lg-3"><a href="create-resume.html" class="btn btn-primary btn-nav">Criar Currículo <i class="bi bi-stars"></i></a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Gerador de Currículo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#general-tips-modal">Dicas de Currículo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#feedback-modal">Deixar Feedback</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Seção Hero com Busca -->
-  <section class="hero-section text-center">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <h1 data-aos="fade-down">A oportunidade que você busca, <span class="highlight">perto de você.</span></h1>
-          <p data-aos="fade-up" data-aos-delay="100">Conectamos talentos a vagas de emprego e clientes a profissionais qualificados. Encontre, anuncie e cresça conosco.</p>
-          <div class="search-form mx-auto" style="max-width: 800px;" data-aos="fade-up" data-aos-delay="200">
-            <div class="row g-2 align-items-center">
-              <div class="col-lg-5"><input type="text" id="searchInput" class="form-control" placeholder="Cargo, serviço ou profissional..."></div>
-              <div class="col-lg-4"><input type="text" id="locationInput" class="form-control" placeholder="Cidade ou região..."></div>
-              <div class="col-lg-3"><button type="button" id="searchButton" class="btn btn-primary w-100">Buscar <i class="bi bi-search"></i></button></div>
+  <main class="main-content">
+    <div class="main-grid">
+      <div class="form-container">
+        <header class="form-header">
+          <h1>Crie seu Currículo de Destaque</h1>
+          <p>Preencha os campos abaixo e veja a pré-visualização em tempo real ao lado. É rápido, fácil e gratuito!</p>
+        </header>
+
+        <form id="resume-form">
+          <!-- Conteúdo do formulário do gerador de currículo -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="model-select">Modelo do Currículo</label>
+                <select id="model-select" class="form-select">
+                  <option value="executive" selected>Executivo</option>
+                  <option value="creative">Criativo</option>
+                  <option value="minimalist">Minimalista</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="color-hex">Cor de Destaque</label>
+                <div class="color-picker-wrapper">
+                  <div class="color-swatch active" style="background-color: #2563eb;" data-color="#2563eb"></div>
+                  <div class="color-swatch" style="background-color: #7c3aed;" data-color="#7c3aed"></div>
+                  <div class="color-swatch" style="background-color: #16a34a;" data-color="#16a34a"></div>
+                  <div class="color-swatch" style="background-color: #db2777;" data-color="#db2777"></div>
+                  <div class="color-swatch" style="background-color: #374151;" data-color="#374151"></div>
+                  <input type="text" id="color-hex" class="form-control" value="#2563eb">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção Nossa Missão -->
-  <section id="missao" class="section-padding">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="section-title" data-aos="fade-up">Nossa Missão: Conectar Oportunidades</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Nascemos de uma necessidade real: a dificuldade de encontrar oportunidades e profissionais locais. Nossa plataforma existe para quebrar essa barreira.</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="mission-card">
-            <div class="icon"><i class="bi bi-briefcase-fill"></i></div>
-            <h5>Para Quem Busca Emprego</h5>
-            <p>Facilitamos o acesso a vagas de emprego na sua região, ajudando você a dar o próximo passo na sua carreira.</p>
+          <div class="form-group">
+            <label for="full-name">Dados Pessoais</label>
+            <input type="text" id="full-name" class="form-control" placeholder="Nome Completo" required>
+            <input type="text" id="desired-position" class="form-control mt-3" placeholder="Vaga Pretendida (Ex: Desenvolvedor Front-end)">
+            <div class="row g-3 mt-1">
+              <div class="col-12"><input type="email" id="email" class="form-control" placeholder="E-mail"></div>
+              <div class="col-md-6"><input type="tel" id="phone" class="form-control" placeholder="Telefone"></div>
+              <div class="col-md-6"><input type="text" id="address" class="form-control" placeholder="Cidade, Estado"></div>
+              <div class="col-md-6"><input type="url" id="linkedin" class="form-control" placeholder="URL do seu LinkedIn"></div>
+              <div class="col-md-6"><input type="url" id="github" class="form-control" placeholder="URL do seu GitHub"></div>
+              <div class="col-12"><input type="url" id="portfolio" class="form-control" placeholder="URL do seu Portfólio/Site"></div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="mission-card">
-            <div class="icon"><i class="bi bi-building-fill"></i></div>
-            <h5>Para Empresas</h5>
-            <p>Oferecemos um canal direto para encontrar os melhores talentos locais, fortalecendo a economia da sua comunidade.</p>
+          <div class="form-group">
+            <label for="objective">
+              <span>Objetivo Profissional</span>
+              <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#objective-help-modal"></i>
+            </label>
+            <select id="ai-assistant" class="form-select mb-2">
+              <option value="">Assistente IA: Escolha uma área para gerar um objetivo...</option>
+              <option value="jovem-aprendiz">Jovem Aprendiz</option>
+              <option value="estagio">Estágio (qualquer área)</option>
+              <option value="vendedor">Vendedor(a) / Loja</option>
+              <option value="administrativo">Auxiliar Administrativo</option>
+              <option value="producao">Auxiliar de Produção</option>
+              <option value="ti">Tecnologia / Desenvolvimento</option>
+            </select>
+            <textarea id="objective" class="form-control" rows="4" placeholder="Seu objetivo será gerado aqui, ou escreva o seu."></textarea>
           </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-          <div class="mission-card">
-            <div class="icon"><i class="bi bi-tools"></i></div>
-            <h5>Para Profissionais e Clientes</h5>
-            <p>Criamos a ponte entre quem oferece um serviço de qualidade e quem precisa de um trabalho bem feito, com confiança e praticidade.</p>
+          <div class="form-group">
+            <label>Formação Acadêmica <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#education-help-modal"></i></label>
+            <div id="education-fields"></div>
+            <span class="btn-add" onclick="addField('education')"><i class="bi bi-plus-circle"></i> Adicionar formação</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOVA SEÇÃO DE PARCEIROS -->
-  <section class="partners-section section-bg">
-    <div class="container">
-      <div class="row justify-content-center align-items-center text-center">
-        <div class="col-lg-8">
-          <h6 class="text-muted mb-4" data-aos="fade-up">UMA PARCERIA QUE GERA OPORTUNIDADES</h6>
-          <div class="d-flex justify-content-center align-items-center gap-4" data-aos="fade-up" data-aos-delay="100">
-            <a href="parcerias.html"><img src="Logo.png" alt="Logo TagSoluctions" class="partner-logo"></a>
-            <i class="bi bi-plus-lg plus-icon"></i>
-<a href="https://www.instagram.com/empreendereempregar" target="_blank" class="text-decoration-none" data-aos="fade-up">
-  <h6 class="fw-bold text-gradient">empreendereempregar</h6>
-</a>          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- FIM DA NOVA SEÇÃO -->
-
-  <!-- Seção de Vagas de Emprego -->
-  <section id="vagas" class="section-padding">
-    <div class="container">
-      
-      <div class="text-center mt-5" data-aos="fade-up"><a href="https://wa.me/5511962921323" class="btn btn-primary">Sua empresa precisa contratar? Anuncie sua vaga aqui!</a></div>
-    </div>
-  </section>
-
-  <!-- Seção de Profissionais -->
-  <section id="profissionais" class="section-padding section-bg">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="section-title" data-aos="fade-up">Profissionais Perto de Você</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Precisa de um serviço? Encontre profissionais qualificados e de confiança para te ajudar.</p>
-      </div>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-8 col-lg-6" data-aos="fade-up" data-item-type="profissional" data-title="jefferson souza eletricista marceneiro montador" data-location="embu-guaçu são paulo">
-          <div class="card-item premium position-relative"><div class="premium-badge"><i class="bi bi-star-fill"></i> Destaque</div><h3 class="card-title">Jefferson Souza</h3><h4 class="card-subtitle">Eletricista Residencial e Marceneiro</h4><div class="card-text"><p>Realizo serviços de elétrica residencial e marcenaria, incluindo montagem de móveis planejados e padrão. Atuo na região de Embu Guaçu e toda grande São Paulo.</p></div><div><span class="tag">Eletricista</span><span class="tag">Marceneiro</span><span class="tag">Montador de Móveis</span></div><a href="https://wa.me/5511916297767" target="_blank" class="btn-contact">Contatar via WhatsApp</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Planos -->
-  <section id="planos" class="section-padding">
-    <div class="container">
-      <div class="text-center"><h2 class="section-title" data-aos="fade-up">Anuncie Sua Vaga ou Serviço</h2><p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Escolha o plano ideal para você e alcance milhares de pessoas na sua região.</p></div>
-      <div class="row justify-content-center g-4">
-<div class="col-lg-6 col-md-8" data-aos="fade-up" data-aos-delay="200">
-          <div class="pricing-card premium">
-            <h3>Plano Promocional</h3>
-            <div class="price">R$14,99<span>/único</span></div>
-            <ul>
-              <li><i class="bi bi-check-circle-fill"></i>🚀 <strong>Até 5 anúncios simultâneos de vagas ou serviços</li>
-              <li><i class="bi bi-check-circle-fill"></i>✨ Logo em evidência no anúncio</li>
-              <li><i class="bi bi-check-circle-fill"></i>✨ Destaque no topo da sua categoria e região</li>
-              <li><i class="bi bi-check-circle-fill"></i>✨ Anúncio com selo de destaque para maior confiança</li>
-              <li><i class="bi bi-check-circle-fill"></i>✨ Post Divulgação em nossas redes sociais parceiras</li>
-              <li><i class="bi bi-check-circle-fill"></i>✨ Suporte rápido para edição e dúvidas</li>
-              <li><i class="bi bi-check-circle-fill"></i>Inclui contato direto (WhatsApp, e-mail)</strong></li>
-            </ul>
-            <a href="https://wa.me/5511962921323" class="btn btn-primary mt-auto">Quero Anunciar Agora!</a>
+          <div class="form-group">
+            <label>Experiência Profissional <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#experience-help-modal"></i></label>
+            <div id="experience-fields"></div>
+            <span class="btn-add" onclick="addField('experience')"><i class="bi bi-plus-circle"></i> Adicionar experiência</span>
           </div>
-        </div>      
+          <div class="form-group">
+            <label>Projetos <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#projects-help-modal"></i></label>
+            <div id="projects-fields"></div>
+            <span class="btn-add" onclick="addField('projects')"><i class="bi bi-plus-circle"></i> Adicionar projeto</span>
+          </div>
+          <div class="form-group">
+            <label>Certificações <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#certifications-help-modal"></i></label>
+            <div id="certifications-fields"></div>
+            <span class="btn-add" onclick="addField('certifications')"><i class="bi bi-plus-circle"></i> Adicionar certificação</span>
+          </div>
+          <div class="form-group">
+            <label for="skills">Habilidades <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#skills-help-modal"></i></label>
+            <textarea id="skills" class="form-control" rows="4" placeholder="Liste suas principais competências, uma por linha."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="languages">Idiomas</label>
+            <textarea id="languages" class="form-control" rows="3" placeholder="Ex: Inglês - Avançado&#10;Espanhol - Intermediário"></textarea>
+          </div>
+          <div class="action-buttons">
+            <button type="button" class="btn btn-primary" id="download-btn"><i class="bi bi-download"></i> Baixar PDF de Alta Qualidade</button>
+            <button type="button" class="btn btn-secondary" onclick="resetForm()"><i class="bi bi-arrow-counterclockwise"></i> Limpar</button>
+          </div>
+        </form>
       </div>
+      <div class="preview-container"><div id="resume-preview" class="executive"></div></div>
     </div>
-  </section>
+  </main>
 
-  <!-- Seção CTA para Gerar Currículo -->
-  <section class="section-padding section-bg">
-    <div class="container"><div class="cta-section text-center" data-aos="zoom-in"><h2 class="position-relative">Prepare-se para a Oportunidade</h2><p class="my-4 position-relative">Sua próxima entrevista de emprego começa com um currículo de impacto.   
-Use nossa ferramenta gratuita e destaque-se.</p><a href="create-resume.html" class="btn btn-light position-relative">Criar meu currículo grátis <i class="bi bi-arrow-right-short"></i></a></div></div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="row gy-4 text-center text-md-start">
-        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0"><img src="Logo.png" alt="Logo" class="logo mb-2"><p>Democratizando o acesso a oportunidades para impulsionar carreiras e negócios locais.</p></div>
-        <div class="col-lg-2 col-6"><h5>Navegação</h5><ul class="list-unstyled"><li><a href="#vagas">Vagas</a></li><li><a href="#profissionais">Profissionais</a></li><li><a href="create-resume.html">Criar Currículo</a></li><li><a href="#">Parcerias</a></li></ul></div>
-        <div class="col-lg-3 col-6"><h5>Para Empresas</h5><ul class="list-unstyled"><li><a href="#planos">Anunciar Vaga</a></li></ul></div>
-        <div class="col-lg-3 col-6"><h5>Para Profissionais</h5><ul class="list-unstyled"><li><a href="#planos">Anunciar Serviços</a></li></ul></div>
-      </div>
-      <div class="copyright text-center"><p>&copy; 2025 Tagsoluctions. Todos os direitos reservados.</p></div>
+    <div class="container text-center">
+      <p class="mb-0">&copy; 2025 Tagsoluctions. Todos os direitos reservados.</p>
     </div>
   </footer>
 
+  <!-- Modais (Feedback e Ajuda) -->
+  <div class="modal fade" id="feedback-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Gostou do resultado? Deixe seu feedback!</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body text-center"><i class="bi bi-stars" style="font-size: 3rem; color: var(--accent-color);"></i><p class="mt-3">Sua opinião é muito importante para nós! Ela nos ajuda a melhorar a ferramenta para todos.</p><p>Ficou com alguma dúvida ou tem uma sugestão?</p><div class="d-grid gap-2 col-10 mx-auto mt-4"><a href="https://wa.me/5511962921323?text=Ol%C3%A1!%20Gostaria%20de%20dar%20um%20feedback%20sobre%20o%20Gerador%20de%20Curr%C3%ADculo." class="btn btn-success" target="_blank"><i class="bi bi-whatsapp"></i> Enviar Feedback pelo WhatsApp</a></div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button></div></div></div></div>
+  <div class="modal fade" id="objective-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Objetivo Profissional</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Este é um resumo curto (2-3 linhas ) sobre seus principais objetivos de carreira e o que você busca na vaga.</p><h6>Dica de Ouro</h6><p>Personalize o objetivo para cada vaga que você se candidatar, mencionando o nome do cargo ou a área.</p><h6>Exemplo:</h6><p class="example">Busco uma oportunidade como Desenvolvedor Front-end para aplicar minhas habilidades em React e contribuir para a criação de interfaces de usuário inovadoras e responsivas.</p></div></div></div></div>
+  <div class="modal fade" id="education-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Formação Acadêmica</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Liste suas formações da mais recente para a mais antiga. Inclua o nome do curso, a instituição e o ano de conclusão.</p><h6>Exemplo:</h6><p class="example">Graduação em Análise e Desenvolvimento de Sistemas - Universidade XYZ (2023)</p></div></div></div></div>
+  <div class="modal fade" id="experience-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Experiência Profissional</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Descreva suas experiências anteriores, também da mais recente para a mais antiga. Se não tiver experiência formal, inclua projetos, trabalhos voluntários ou freelancers.</p><h6>Dica de Ouro</h6><p>Use verbos de ação para descrever suas responsabilidades. Ex: "Desenvolvi...", "Gerenciei...", "Organizei...".</p><h6>Exemplo:</h6><p class="example">Estagiário de Marketing - Empresa ABC (2022-2023). Responsável pelo gerenciamento de redes sociais e criação de relatórios de performance.</p></div></div></div></div>
+  <div class="modal fade" id="projects-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Projetos</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Ideal para desenvolvedores, designers e estudantes. Liste projetos relevantes que demonstrem suas habilidades na prática.</p><h6>Dica de Ouro</h6><p>Descreva o projeto, as tecnologias que você usou e, se possível, o resultado ou o link para o projeto.</p><h6>Exemplo:</h6><p class="example">Website de E-commerce (React, Node.js) - Desenvolvi um site completo com sistema de carrinho e pagamento, resultando em uma experiência de usuário 20% mais rápida.</p></div></div></div></div>
+  <div class="modal fade" id="certifications-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Certificações</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Liste quaisquer certificações oficiais que você tenha. Isso mostra um comprometimento com sua área.</p><h6>Exemplo:</h6><p class="example">AWS Certified Cloud Practitioner - Amazon Web Services (2024)</p></div></div></div></div>
+  <div class="modal fade" id="skills-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Habilidades</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Liste suas competências técnicas (ferramentas, softwares) e comportamentais (comunicação, liderança).</p><h6>Dica de Ouro</h6><p>Leia a descrição da vaga e inclua as habilidades que a empresa está procurando.</p><h6>Exemplo:</h6><p class="example">Comunicação Assertiva  
+Pacote Office Avançado  
+JavaScript e React  
+Trabalho em Equipe</p></div></div></div></div>
+  <div class="modal fade" id="general-tips-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Dicas Gerais para um Currículo de Sucesso</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>1. Seja Objetivo e Conciso</h6><p>Recrutadores leem dezenas de currículos por dia. Vá direto ao ponto. Idealmente, seu currículo deve ter apenas uma página, especialmente se você tem menos de 10 anos de experiência.</p><h6>2. Use Palavras-Chave da Vaga</h6><p>Muitas empresas usam sistemas automáticos (ATS) para filtrar currículos. Leia a descrição da vaga e use as mesmas palavras-chave em suas habilidades e experiências para aumentar suas chances de ser selecionado.</p><h6>3. Quantifique suas Conquistas</h6><p>Em vez de apenas listar suas tarefas, mostre seus resultados. Números causam um grande impacto.</p><p class="example">"Aumentei as vendas em 15% em 6 meses." é mais forte do que "Responsável pelas vendas."</p><h6>4. Adapte seu Currículo</h6><p>Não use o mesmo currículo para todas as vagas. Crie uma versão base e ajuste o campo "Objetivo" e as habilidades destacadas para cada candidatura. Nosso gerador facilita isso!</div>
+    </h6><p>Não use o mesmo currículo para todas as vagas. Crie uma versão base e ajuste o campo "Objetivo" e as habilidades destacadas para cada candidatura. Nosso gerador facilita isso!</p>
+            <h6>5. Revise, Revise e Revise</h6>
+            <p>Erros de português ou digitação podem desqualificar um bom candidato. Leia seu currículo em voz alta, peça para um amigo revisar ou use uma ferramenta de correção ortográfica antes de enviar.</p>
+            <h6>6. Escolha a Vaga Pretendida com Cuidado</h6>
+            <p>Seu campo "Vaga Pretendida" deve ser claro e corresponder à vaga para a qual você está se candidatando. Evite termos genéricos como "qualquer área".</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 800, once: true } );
-
-    document.getElementById('searchButton').addEventListener('click', function() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-      const locationTerm = document.getElementById('locationInput').value.toLowerCase().trim();
-      const allItems = document.querySelectorAll('[data-item-type]');
-      let foundItems = [];
-
-      allItems.forEach(item => {
-        const title = item.dataset.title.toLowerCase();
-        const location = item.dataset.location.toLowerCase();
-        
-        const matchesSearch = searchTerm === '' || title.includes(searchTerm);
-        const matchesLocation = locationTerm === '' || location.includes(locationTerm);
-
-        if (matchesSearch && matchesLocation) {
-          item.style.display = 'block';
-          foundItems.push(item);
-        } else {
-          item.style.display = 'none';
-        }
+    document.addEventListener('DOMContentLoaded', ( ) => {
+      const form = document.getElementById('resume-form');
+      form.addEventListener('input', debounce(updateAll, 250));
+      document.getElementById('ai-assistant').addEventListener('change', handleAIAssistant);
+      document.getElementById('download-btn').addEventListener('click', generatePDF);
+      
+      // Lógica do seletor de cores
+      document.getElementById('color-hex').addEventListener('input', (event) => {
+        const color = event.target.value;
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+          swatch.classList.toggle('active', swatch.dataset.color === color);
+        });
+      });
+      document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', () => {
+          const color = swatch.dataset.color;
+          document.getElementById('color-hex').value = color;
+          document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+          swatch.classList.add('active');
+          updateAll();
+        });
       });
 
-      if (foundItems.length > 0) {
-        const firstFound = foundItems[0];
-        firstFound.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        foundItems.forEach((item, index) => {
-          setTimeout(() => {
-            const cardContent = item.querySelector('.card-item');
-            if (cardContent) {
-              cardContent.classList.add('highlight-search-result');
-              setTimeout(() => cardContent.classList.remove('highlight-search-result'), 3000);
-            }
-          }, index * 200);
-        });
-      } else {
-        alert('Nenhum resultado encontrado para sua busca.');
-        allItems.forEach(item => item.style.display = 'block'); // Mostra todos novamente se nada for encontrado
-      }
+      loadFromLocalStorage();
     });
-  </script>
+
+    function debounce(func, delay) {
+      let timeout;
+      return function(...args) { clearTimeout(timeout); timeout = setTimeout(() => func.apply(this, args), delay); };
+    }
+
+    function updateAll() {
+      const data = collectFormData();
+      updatePreview(data);
+      saveToLocalStorage(data);
+    }
+
+    function collectFormData() {
+      return {
+        model: document.getElementById('model-select').value,
+        color: document.getElementById('color-hex').value,
+        fullName: document.getElementById('full-name').value,
+        desiredPosition: document.getElementById('desired-position').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        linkedin: document.getElementById('linkedin').value,
+        github: document.getElementById('github').value,
+        portfolio: document.getElementById('portfolio').value,
+        objective: document.getElementById('objective').value,
+        education: getDynamicFieldValues('education'),
+        experience: getDynamicFieldValues('experience'),
+        projects: getDynamicFieldValues('projects'),
+        certifications: getDynamicFieldValues('certifications'),
+        skills: document.getElementById('skills').value.split('\n').filter(s => s.trim() !== ''),
+        languages: document.getElementById('languages').value.split('\n').filter(s => s.trim() !== ''),
+      };
+    }
+
+    function updatePreview(data) {
+        const preview = document.getElementById('resume-preview');
+        document.documentElement.style.setProperty('--accent-color', data.color);
+        preview.innerHTML = ''; // Limpa a pré-visualização antes de redesenhar
+
+        const contactItems = [data.email, data.phone, data.address];
+        const linkItems = [
+            data.linkedin ? `LinkedIn` : '',
+            data.github ? `GitHub` : '',
+            data.portfolio ? `Portfólio` : ''
+        ].filter(Boolean);
+        const contactInfo = [...contactItems, ...linkItems].filter(Boolean).join(' &nbsp;&bull;&nbsp; ');
+
+        const createSection = (title, items, isList = true) => {
+            if (!items || items.length === 0) return '';
+            let content;
+            if (isList) {
+                content = `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+            } else {
+                content = `<p>${items.replace(/\n/g, '  ')}</p>`;
+            }
+            return `<h2>${title}</h2>${content}`;
+        };
+
+        if (data.model === 'creative') {
+            preview.className = 'creative';
+            preview.innerHTML = `
+                <div class="sidebar">
+                    <h1>${data.fullName || 'Seu Nome'}</h1>
+                    <div class="desired-position">${data.desiredPosition || 'Vaga Pretendida'}</div>
+                    <hr>
+                    <h2>Contato</h2>
+                    <p>${contactItems.join('  ')}</p>
+                    <h2>Links</h2>
+                    <p>${linkItems.join('  ')}</p>
+                    <h2>Habilidades</h2>
+                    <ul>${data.skills.map(s => `<li>${s}</li>`).join('')}</ul>
+                    <h2>Idiomas</h2>
+                    <ul>${data.languages.map(l => `<li>${l}</li>`).join('')}</ul>
+                </div>
+                <div class="main-column">
+                    ${createSection('Objetivo', data.objective, false)}
+                    ${createSection('Experiência Profissional', data.experience)}
+                    ${createSection('Projetos', data.projects)}
+                    ${createSection('Formação Acadêmica', data.education)}
+                    ${createSection('Certificações', data.certifications)}
+                </div>
+            `;
+        } else { 
+            preview.className = data.model;
+            let html = `<h1>${data.fullName || 'Seu Nome'}</h1>`;
+            if (data.desiredPosition) html += `<div class="desired-position">${data.desiredPosition}</div>`;
+            html += `<div class="contact-info">${contactInfo || 'suasinformacoes@contato.com'}</div>`;
+            
+            html += createSection('Objetivo', data.objective, false);
+            html += createSection('Experiência Profissional', data.experience);
+            html += createSection('Projetos', data.projects);
+            html += createSection('Formação Acadêmica', data.education);
+            html += createSection('Certificações', data.certifications);
+            html += createSection('Habilidades', data.skills);
+            html += createSection('Idiomas', data.languages);
+            
+            preview.innerHTML = html;
+        }
+    }
+
+    function addField(type) {
+      const container = document.getElementById(`${type}-fields`);
+      const field = document.createElement('div');
+      field.className = 'dynamic-field';
+      field.innerHTML = `<input type="text" name="${type}" class="form-control" placeholder="Descreva aqui..."><button type="button" class="btn-remove" onclick="removeField(this)"><i class="bi bi-trash"></i></button>`;
+      container.appendChild(field);
+      field.querySelector('input').focus();
+      updateAll();
+    }
+
+    function removeField(button) {
+      button.closest('.dynamic-field').remove();
+      updateAll();
+    }
+
+    function getDynamicFieldValues(type) {
+      return Array.from(document.querySelectorAll(`input[name="${type}"]`)).map(input => input.value).filter(value => value.trim() !== '');
+    }
+
+    function resetForm() {
+      if (confirm('Tem certeza que deseja limpar todos os dados?')) {
+        document.getElementById('resume-form').reset();
+        ['education-fields', 'experience-fields', 'projects-fields', 'certifications-fields'].forEach(id => {
+            document.getElementById(id).innerHTML = '';
+        });
+        localStorage.removeItem('resumeData');
+        addField('education');
+        updateAll();
+      }
+    }
+
+    function saveToLocalStorage(data) {
+      localStorage.setItem('resumeData', JSON.stringify(data));
+    }
+
+    function loadFromLocalStorage() {
+      const data = JSON.parse(localStorage.getItem('resumeData'));
+      if (!data) {
+        addField('education');
+        updateAll();
+        return;
+      }
+      
+      document.getElementById('model-select').value = data.model || 'executive';
+      document.getElementById('color-hex').value = data.color || '#2563eb';
+      document.getElementById('full-name').value = data.fullName || '';
+      document.getElementById('desired-position').value = data.desiredPosition || '';
+      document.getElementById('email').value = data.email || '';
+      document.getElementById('phone').value = data.phone || '';
+      document.getElementById('address').value = data.address || '';
+      document.getElementById('linkedin').value = data.linkedin || '';
+      document.getElementById('github').value = data.github || '';
+      document.getElementById('portfolio').value = data.portfolio || '';
+      document.getElementById('objective').value = data.objective || '';
+      document.getElementById('skills').value = (data.skills || []).join('\n');
+      document.getElementById('languages').value = (data.languages || []).join('\n');
+      
+      ['education', 'experience', 'projects', 'certifications'].forEach(type => {
+        const container = document.getElementById(`${type}-fields`);
+        container.innerHTML = '';
+        const items = data[type] || [];
+        if (items.length > 0) {
+          items.forEach(value => {
+            const field = document.createElement('div');
+            field.className = 'dynamic-field';
+            field.innerHTML = `<input type="text" name="${type}" class="form-control" value="${value}"><button type="button" class="btn-remove" onclick="removeField(this)"><i class="bi bi-trash"></i></button>`;
+            container.appendChild(field);
+          });
+        } else if (type === 'education' && items.length === 0) {
+            addField('education');
+        }
+      });
+      updateAll();
+    }
+
+    function handleAIAssistant(event) {
+      const selectedOption = event.target.value;
+      const objectiveTextarea = document.getElementById('objective');
+      const aiTexts = {
+        'jovem-aprendiz': 'Em busca da minha primeira oportunidade profissional como Jovem Aprendiz. Sou proativo, tenho grande facilidade de aprendizado e desejo contribuir para o ambiente de trabalho enquanto desenvolvo novas competências.',
+        'estagio': 'Estudante de [Sua Área de Estudo], busco uma oportunidade de estágio para aplicar meus conhecimentos teóricos em um ambiente prático, desenvolver novas habilidades e colaborar ativamente com os projetos da equipe.',
+        'vendedor': 'Profissional com foco em resultados e excelente comunicação, busco uma posição como Vendedor. Tenho como objetivo superar metas, garantir a satisfação do cliente e contribuir para o crescimento das vendas da empresa.',
+        'administrativo': 'Organizado e detalhista, busco uma vaga como Auxiliar Administrativo para aplicar minhas habilidades em rotinas de escritório, organização de documentos e suporte à equipe, visando a eficiência dos processos internos.',
+        'producao': 'Busco oportunidade como Auxiliar de Produção, com disposição para aprender e seguir os procedimentos de segurança e qualidade. Tenho como objetivo contribuir para a eficiência da linha de produção e o alcance das metas.',
+        'ti': 'Entusiasta de tecnologia, busco uma oportunidade na área de TI para aplicar minhas habilidades em [Mencione uma tecnologia, ex: desenvolvimento web, redes]. Desejo resolver problemas complexos e crescer junto com a empresa.'
+      };
+      if (aiTexts[selectedOption]) {
+        objectiveTextarea.value = aiTexts[selectedOption];
+        updateAll();
+      }
+    }
+
+    function generatePDF() {
+        const data = collectFormData();
+        const doc = new window.jspdf.jsPDF('p', 'mm', 'a4');
+        const downloadButton = document.getElementById('download-btn');
+        
+        downloadButton.innerHTML = '<i class="bi bi-hourglass-split"></i> Gerando PDF...';
+        downloadButton.disabled = true;
+
+        if (data.model === 'executive') {
+            drawExecutivePDF(doc, data);
+        } else if (data.model === 'creative') {
+            drawCreativePDF(doc, data);
+        } else if (data.model === 'minimalist') {
+            drawMinimalistPDF(doc, data);
+        } else {
+            drawExecutivePDF(doc, data);
+        }
+
+        const safeFileName = (data.fullName || 'curriculo').replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        doc.save(`${safeFileName}_${data.model}.pdf`);
+        
+        if (typeof gtag === 'function') { gtag('event', 'download_pdf', { 'event_category': 'engagement', 'event_label': data.model }); }
+
+        downloadButton.innerHTML = '<i class="bi bi-download"></i> Baixar PDF de Alta Qualidade';
+        downloadButton.disabled = false;
+        
+        const feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
+        feedbackModal.show();
+    }
+
+    function hexToRgb(hex) {
+        let r = 0, g = 0, b = 0;
+        if (hex.length == 4) {
+            r = "0x" + hex[1] + hex[1];
+            g = "0x" + hex[2] + hex[2];
+            b = "0x" + hex[3] + hex[3];
+        } else if (hex.length == 7) {
+            r = "0x" + hex[1] + hex[2];
+            g = "0x" + hex[3] + hex[4];
+            b = "0x" + hex[5] + hex[6];
+        }
+        return [+r, +g, +b];
+    }
+
+    function drawExecutivePDF(doc, data) {
+        const MARGIN = 15;
+        const MAX_WIDTH = doc.internal.pageSize.getWidth() - MARGIN * 2;
+        let y = 20;
+        const themeColor = hexToRgb(data.color);
+
+        doc.setFont('Helvetica', 'bold');
+        doc.setFontSize(22);
+        doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
+        doc.text(data.fullName.toUpperCase() || 'SEU NOME', doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
+        y += 8;
+
+        if (data.desiredPosition) {
+            doc.setFont('Helvetica', 'normal');
+            doc.setFontSize(12);
+            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
+            doc.text(data.desiredPosition, doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
+            y += 8;
+        }
+
+        const contactInfo = [data.email, data.phone, data.address, data.linkedin, data.github, data.portfolio].filter(Boolean).join(' | ');
+        doc.setFontSize(9);
+        doc.setTextColor('#6b7280');
+        doc.text(contactInfo, doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
+        y += 8;
+        doc.setDrawColor('#e5e7eb');
+        doc.line(MARGIN, y, doc.internal.pageSize.getWidth() - MARGIN, y);
+        y += 10;
+
+        const drawSection = (title, content, isList = false) => {
+            if (!content || (Array.isArray(content) && content.length === 0)) return;
+            doc.setFont('Helvetica', 'bold');
+            doc.setFontSize(11);
+            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
+            doc.text(title.toUpperCase(), MARGIN, y);
+            y += 6;
+            doc.setFont('Helvetica', 'normal');
+            doc.setFontSize(10);
+            doc.setTextColor('#374151');
+            if (isList) {
+                content.forEach(item => {
+                    const lines = doc.splitTextToSize(`• ${item}`, MAX_WIDTH);
+                    if (y + lines.length * 5 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
+                    doc.text(lines, MARGIN, y);
+                    y += lines.length * 5 + 2;
+                });
+            } else {
+                const lines = doc.splitTextToSize(content, MAX_WIDTH);
+                if (y + lines.length * 5 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
+                doc.text(lines, MARGIN, y);
+                y += lines.length * 5 + 2;
+            }
+            y += 5;
+        };
+
+        drawSection('Objetivo', data.objective);
+        drawSection('Experiência Profissional', data.experience, true);
+        drawSection('Projetos', data.projects, true);
+        drawSection('Formação Acadêmica', data.education, true);
+        drawSection('Certificações', data.certifications, true);
+        drawSection('Habilidades', data.skills, true);
+        drawSection('Idiomas', data.languages, true);
+    }
+
+    function drawCreativePDF(doc, data) {
+        const SIDE_MARGIN = 15;
+        const TOP_MARGIN = 20;
+        const GUTTER = 10;
+        const SIDEBAR_WIDTH = 55;
+        const MAIN_WIDTH = doc.internal.pageSize.getWidth() - SIDEBAR_WIDTH - GUTTER - SIDE_MARGIN * 2;
+        let y = TOP_MARGIN;
+        let sidebarY = TOP_MARGIN;
+        const themeColor = hexToRgb(data.color);
+
+        doc.setFillColor(243, 244, 246);
+        doc.rect(0, 0, SIDEBAR_WIDTH + SIDE_MARGIN, doc.internal.pageSize.getHeight(), 'F');
+        
+        doc.setFont('Helvetica', 'bold');
+        doc.setFontSize(20);
+        doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
+        const nameLines = doc.splitTextToSize(data.fullName || 'Seu Nome', SIDEBAR_WIDTH);
+        doc.text(nameLines, SIDE_MARGIN, sidebarY);
+        sidebarY += nameLines.length * 8 + 2;
+
+        if (data.desiredPosition) {
+            doc.setFont('Helvetica', 'normal');
+            doc.setFontSize(11);
+            doc.setTextColor('#1f2937');
+            const positionLines = doc.splitTextToSize(data.desiredPosition, SIDEBAR_WIDTH);
+            doc.text(positionLines, SIDE_MARGIN, sidebarY);
+            sidebarY += positionLines.length * 5 + 5;
+        }
+
+        const drawSidebarSection = (title, content) => {
+            if (!content || (Array.isArray(content) && content.length === 0)) return;
+            sidebarY += 8;
+            doc.setFont('Helvetica', 'bold');
+            doc.setFontSize(10);
+            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
+            doc.text(title.toUpperCase(), SIDE_MARGIN, sidebarY);
+            sidebarY += 5;
+            doc.setFont('Helvetica', 'normal');
+            doc.setFontSize(9);
+            doc.setTextColor('#4b5563');
+            content.forEach(item => {
+                const lines = doc.splitTextToSize(item, SIDEBAR_WIDTH);
+                if (sidebarY + lines.length * 4 > doc.internal.pageSize.getHeight() - SIDE_MARGIN) { return; } // Evita overflow
+                doc.text(lines, SIDE_MARGIN, sidebarY);
+                sidebarY += lines.length * 4 + 2;
+            });
+        };
+        
+        drawSidebarSection('Contato', [data.email, data.phone, data.address].filter(Boolean));
+        drawSidebarSection('Links', [data.linkedin, data.github, data.portfolio].filter(Boolean));
+        drawSidebarSection('Habilidades', data.skills);
+        drawSidebarSection('Idiomas', data.languages);
+
+        const mainX = SIDEBAR_WIDTH + SIDE_MARGIN + GUTTER;
+        const drawMainSection = (title, content, isList = false) => {
+            if (!content || (Array.isArray(content) && content.length === 0)) return;
+            if (y > TOP_MARGIN) y += 5;
+            doc.setFont('Helvetica', 'bold');
+            doc.setFontSize(14);
+            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
+            doc.text(title, mainX, y);
+            y += 8;
+            doc.setFont('Helvetica', 'normal');
+            doc.setFontSize(10);
+            doc.setTextColor('#374151');
+            if (isList) {
+                content.forEach(item => {
+                    const lines = doc.splitTextToSize(`• ${item}`, MAIN_WIDTH);
+                    if (y + lines.length * 5 > doc.internal.pageSize.getHeight() - TOP_MARGIN) { doc.addPage(); y = TOP_MARGIN; doc.rect(0, 0, SIDEBAR_WIDTH + SIDE_MARGIN, doc.internal.pageSize.getHeight(), 'F'); }
+                    doc.text(lines, mainX, y);
+                    y += lines.length * 5 + 3;
+                });
+            } else {
+                const lines = doc.splitTextToSize(content, MAIN_WIDTH);
+                if (y + lines.length * 5 > doc.internal.pageSize.getHeight() - TOP_MARGIN) { doc.addPage(); y = TOP_MARGIN; doc.rect(0, 0, SIDEBAR_WIDTH + SIDE_MARGIN, doc.internal.pageSize.getHeight(), 'F'); }
+                doc.text(lines, mainX, y);
+                y += lines.length * 5 + 3;
+            }
+            y += 5;
+        };
+
+        drawMainSection('Objetivo', data.objective);
+        drawMainSection('Experiência Profissional', data.experience, true);
+        drawMainSection('Projetos', data.projects, true);
+        drawMainSection('Formação Acadêmica', data.education, true);
+        drawMainSection('Certificações', data.certifications, true);
+    }
+
+    function drawMinimalistPDF(doc, data) {
+        const MARGIN = 12;
+        const MAX_WIDTH = doc.internal.pageSize.getWidth() - MARGIN * 2;
+        let y = MARGIN + 5;
+        const themeColor = hexToRgb(data.color);
+
+        doc.setFont('Helvetica', 'bold');
+        doc.setFontSize(18);
+        doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
+        doc.text(data.fullName || 'SEU NOME', MARGIN, y);
+        y += 6;
+
+        if (data.desiredPosition) {
+            doc.setFont('Helvetica', 'normal');
+            doc.setFontSize(10);
+            doc.setTextColor('#1f2937');
+            doc.text(data.desiredPosition, MARGIN, y);
+            y += 6;
+        }
+
+        const contactInfo = [data.email, data.phone, data.address, data.linkedin, data.github, data.portfolio].filter(Boolean).join(' | ');
+        doc.setFontSize(8);
+        doc.setTextColor('#6b7280');
+        doc.text(contactInfo, MARGIN, y);
+        y += 8;
+
+        const drawSection = (title, content, isList = false) => {
+            if (!content || (Array.isArray(content) && content.length === 0)) return;
+            if (y + 15 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
+            doc.setFont('Helvetica', 'bold');
+            doc.setFontSize(9);
+            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
+            doc.text(title.toUpperCase(), MARGIN, y);
+            y += 3;
+            doc.setDrawColor(themeColor[0], themeColor[1], themeColor[2]);
+            doc.setLineWidth(0.2);
+            doc.line(MARGIN, y, doc.internal.pageSize.getWidth() - MARGIN, y);
+            y += 5;
+
+            doc.setFont('Helvetica', 'normal');
+            doc.setFontSize(9);
+            doc.setTextColor('#374151');
+            if (isList) {
+                content.forEach(item => {
+                    const lines = doc.splitTextToSize(`• ${item}`, MAX_WIDTH);
+                    if (y + lines.length * 4 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
+                    doc.text(lines, MARGIN, y);
+                    y += lines.length * 4 + 2;
+                });
+            } else {
+                const lines = doc.splitTextToSize(content, MAX_WIDTH);
+                if (y + lines.length * 4 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
+                doc.text(lines, MARGIN, y);
+                y += lines.length * 4 + 2;
+            }
+            y += 4;
+        };
+
+        drawSection('Objetivo', data.objective);
+        drawSection('Experiência Profissional', data.experience, true);
+        drawSection('Projetos', data.projects, true);
+        drawSection('Formação Acadêmica', data.education, true);
+        drawSection('Certificações', data.certifications, true);
+        drawSection('Habilidades', data.skills, true);
+        drawSection('Idiomas', data.languages, true);
+    }
+</script>
 </body>
 </html>
+
