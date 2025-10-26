@@ -24,6 +24,8 @@
 
   <!-- PDF Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Adicionando html2canvas para melhor conversão de HTML para PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <!-- Analytics -->
   <meta name="google-adsense-account" content="ca-pub-8530320176723847">
@@ -181,628 +183,952 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item"><a class="nav-link active" href="#">Gerador de Currículo</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#general-tips-modal">Dicas de Currículo</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#feedback-modal">Deixar Feedback</a></li>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-globe"></i> <span id="current-lang-text">PT-BR</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" onclick="setLanguage('pt-BR')">Português (Brasil)</a></li>
+              <li><a class="dropdown-item" onclick="setLanguage('en')">English (US)</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="main-content">
+  <div class="main-content">
     <div class="main-grid">
       <div class="form-container">
-        <header class="form-header">
-          <h1>Crie seu Currículo de Destaque</h1>
-          <p>Preencha os campos abaixo e veja a pré-visualização em tempo real ao lado. É rápido, fácil e gratuito!</p>
-        </header>
+        <div class="form-header">
+          <h1 data-lang-key="form_title">Gerador de Currículo com IA</h1>
+          <p data-lang-key="form_subtitle">Preencha os campos abaixo para criar seu currículo. A pré-visualização é atualizada em tempo real.</p>
+        </div>
 
         <form id="resume-form">
-          <!-- Conteúdo do formulário do gerador de currículo -->
+          <!-- Dados Pessoais -->
+          <h5 class="mb-3" data-lang-key="section_personal_data">Dados Pessoais</h5>
           <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="model-select">Modelo do Currículo</label>
-                <select id="model-select" class="form-select">
-                  <option value="executive" selected>Executivo</option>
-                  <option value="creative">Criativo</option>
-                  <option value="minimalist">Minimalista</option>
-                </select>
-              </div>
+            <div class="col-md-6 mb-3">
+              <label for="name" class="form-label" data-lang-key="label_name">Nome Completo</label>
+              <input type="text" class="form-control" id="name" data-lang-placeholder="placeholder_name" required>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="color-hex">Cor de Destaque</label>
-                <div class="color-picker-wrapper">
-                  <div class="color-swatch active" style="background-color: #2563eb;" data-color="#2563eb"></div>
-                  <div class="color-swatch" style="background-color: #7c3aed;" data-color="#7c3aed"></div>
-                  <div class="color-swatch" style="background-color: #16a34a;" data-color="#16a34a"></div>
-                  <div class="color-swatch" style="background-color: #db2777;" data-color="#db2777"></div>
-                  <div class="color-swatch" style="background-color: #374151;" data-color="#374151"></div>
-                  <input type="text" id="color-hex" class="form-control" value="#2563eb">
-                </div>
-              </div>
+            <div class="col-md-6 mb-3">
+              <label for="desired-position" class="form-label" data-lang-key="label_desired_position">Cargo Desejado</label>
+              <input type="text" class="form-control" id="desired-position" data-lang-placeholder="placeholder_desired_position" required>
             </div>
           </div>
-          <div class="form-group">
-            <label for="full-name">Dados Pessoais</label>
-            <input type="text" id="full-name" class="form-control" placeholder="Nome Completo" required>
-            <input type="text" id="desired-position" class="form-control mt-3" placeholder="Vaga Pretendida (Ex: Desenvolvedor Front-end)">
-            <div class="row g-3 mt-1">
-              <div class="col-12"><input type="email" id="email" class="form-control" placeholder="E-mail"></div>
-              <div class="col-md-6"><input type="tel" id="phone" class="form-control" placeholder="Telefone"></div>
-              <div class="col-md-6"><input type="text" id="address" class="form-control" placeholder="Cidade, Estado"></div>
-              <div class="col-md-6"><input type="url" id="linkedin" class="form-control" placeholder="URL do seu LinkedIn"></div>
-              <div class="col-md-6"><input type="url" id="github" class="form-control" placeholder="URL do seu GitHub"></div>
-              <div class="col-12"><input type="url" id="portfolio" class="form-control" placeholder="URL do seu Portfólio/Site"></div>
+
+          <!-- Contato -->
+          <h5 class="mb-3 mt-3" data-lang-key="section_contact">Contato</h5>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" data-lang-placeholder="placeholder_email" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="phone" class="form-label" data-lang-key="label_phone">Telefone</label>
+              <input type="tel" class="form-control" id="phone" data-lang-placeholder="placeholder_phone">
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="city-state" class="form-label" data-lang-key="label_city_state">Cidade / Estado</label>
+              <input type="text" class="form-control" id="city-state" data-lang-placeholder="placeholder_city_state">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="linkedin" class="form-label">LinkedIn</label>
+              <input type="url" class="form-control" id="linkedin" data-lang-placeholder="placeholder_linkedin">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="github" class="form-label">GitHub</label>
+              <input type="url" class="form-control" id="github" data-lang-placeholder="placeholder_github">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="portfolio" class="form-label" data-lang-key="label_portfolio">Portfólio / Website</label>
+              <input type="url" class="form-control" id="portfolio" data-lang-placeholder="placeholder_portfolio">
+            </div>
+          </div>
+
+          <!-- Objetivo Profissional -->
+          <h5 class="mb-3 mt-3" data-lang-key="section_objective">Objetivo Profissional</h5>
           <div class="form-group">
-            <label for="objective">
-              <span>Objetivo Profissional</span>
-              <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#objective-help-modal"></i>
-            </label>
-            <select id="ai-assistant" class="form-select mb-2">
-              <option value="">Assistente IA: Escolha uma área para gerar um objetivo...</option>
-              <option value="jovem-aprendiz">Jovem Aprendiz</option>
-              <option value="estagio">Estágio (qualquer área)</option>
-              <option value="vendedor">Vendedor(a) / Loja</option>
-              <option value="administrativo">Auxiliar Administrativo</option>
-              <option value="producao">Auxiliar de Produção</option>
-              <option value="ti">Tecnologia / Desenvolvimento</option>
+            <label for="ai-assistant" class="form-label" data-lang-key="label_ai_assistant">Assistente IA</label>
+            <select class="form-select mb-2" id="ai-assistant">
+              <option value="" data-lang-key="ai_assistant_default"></option>
+              <option value="jovem-aprendiz" data-lang-key="ai_jovem_aprendiz">Jovem Aprendiz</option>
+              <option value="estagio" data-lang-key="ai_estagio">Estágio (qualquer área)</option>
+              <option value="vendedor" data-lang-key="ai_vendedor">Vendedor / Loja</option>
+              <option value="administrativo" data-lang-key="ai_administrativo">Assistente Administrativo</option>
+              <option value="producao" data-lang-key="ai_producao">Auxiliar de Produção</option>
+              <option value="ti" data-lang-key="ai_ti">Tecnologia / Desenvolvimento</option>
             </select>
-            <textarea id="objective" class="form-control" rows="4" placeholder="Seu objetivo será gerado aqui, ou escreva o seu."></textarea>
+            <textarea class="form-control" id="objective" rows="3" data-lang-placeholder="placeholder_objective"></textarea>
+            <small class="form-text text-muted">
+              <i class="bi bi-info-circle help-icon" data-bs-toggle="modal" data-bs-target="#objective-modal"></i>
+              <span data-lang-key="objective_tip">Dica: Use o Assistente IA acima ou escreva um parágrafo curto e direto.</span>
+            </small>
           </div>
+
+          <!-- Formação Acadêmica -->
+          <h5 class="mb-3 mt-3" data-lang-key="section_education">Formação Acadêmica</h5>
+          <div id="education-fields">
+            <!-- Campos de formação serão adicionados aqui -->
+          </div>
+          <a href="#" class="btn-add" onclick="addField('education'); return false;" data-lang-key="btn_add_education">Adicionar formação</a>
+
+          <!-- Experiência Profissional -->
+          <h5 class="mb-3 mt-3" data-lang-key="section_experience">Experiência Profissional</h5>
+          <div id="experience-fields">
+            <!-- Campos de experiência serão adicionados aqui -->
+          </div>
+          <a href="#" class="btn-add" onclick="addField('experience'); return false;" data-lang-key="btn_add_experience">Adicionar experiência</a>
+
+          <!-- Projetos -->
+          <h5 class="mb-3 mt-3" data-lang-key="section_projects">Projetos</h5>
+          <div id="projects-fields">
+            <!-- Campos de projetos serão adicionados aqui -->
+          </div>
+          <a href="#" class="btn-add" onclick="addField('projects'); return false;" data-lang-key="btn_add_project">Adicionar projeto</a>
+
+          <!-- Certificações -->
+          <h5 class="mb-3 mt-3" data-lang-key="section_certifications">Certificações e Cursos</h5>
+          <div id="certifications-fields">
+            <!-- Campos de certificações serão adicionados aqui -->
+          </div>
+          <a href="#" class="btn-add" onclick="addField('certifications'); return false;" data-lang-key="btn_add_certification">Adicionar certificação</a>
+
+          <!-- Habilidades -->
+          <h5 class="mb-3 mt-3" data-lang-key="section_skills">Habilidades</h5>
           <div class="form-group">
-            <label>Formação Acadêmica <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#education-help-modal"></i></label>
-            <div id="education-fields"></div>
-            <span class="btn-add" onclick="addField('education')"><i class="bi bi-plus-circle"></i> Adicionar formação</span>
+            <textarea class="form-control" id="skills" rows="5" data-lang-placeholder="placeholder_skills"></textarea>
+            <small class="form-text text-muted" data-lang-key="skills_tip">Dica: Separe cada habilidade por uma nova linha (ENTER).</small>
+            <i class="bi bi-info-circle help-icon" data-bs-toggle="modal" data-bs-target="#skills-modal"></i>
           </div>
+
+          <!-- Idiomas -->
+          <h5 class="mb-3 mt-3" data-lang-key="section_languages">Idiomas</h5>
           <div class="form-group">
-            <label>Experiência Profissional <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#experience-help-modal"></i></label>
-            <div id="experience-fields"></div>
-            <span class="btn-add" onclick="addField('experience')"><i class="bi bi-plus-circle"></i> Adicionar experiência</span>
+            <textarea class="form-control" id="languages" rows="3" data-lang-placeholder="placeholder_languages"></textarea>
+            <small class="form-text text-muted" data-lang-key="languages_tip">Ex: Inglês - Avançado, Espanhol - Intermediário. Separe por nova linha (ENTER).</small>
           </div>
-          <div class="form-group">
-            <label>Projetos <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#projects-help-modal"></i></label>
-            <div id="projects-fields"></div>
-            <span class="btn-add" onclick="addField('projects')"><i class="bi bi-plus-circle"></i> Adicionar projeto</span>
+
+          <!-- Configurações de Layout -->
+          <h5 class="mb-3 mt-3" data-lang-key="section_layout_settings">Configurações de Layout</h5>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="model-select" class="form-label" data-lang-key="label_model">Modelo de Currículo</label>
+              <select class="form-select" id="model-select">
+                <option value="minimalist" data-lang-key="model_minimalist">Minimalista</option>
+                <option value="executive" data-lang-key="model_executive">Executivo</option>
+                <option value="creative" data-lang-key="model_creative">Criativo (2 Colunas)</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="color-hex" class="form-label" data-lang-key="label_color">Cor de Destaque</label>
+              <div class="color-picker-wrapper">
+                <div class="color-swatch active" style="background-color: #2563eb;" data-color="#2563eb"></div>
+                <div class="color-swatch" style="background-color: #ef4444;" data-color="#ef4444"></div>
+                <div class="color-swatch" style="background-color: #10b981;" data-color="#10b981"></div>
+                <div class="color-swatch" style="background-color: #f59e0b;" data-color="#f59e0b"></div>
+                <div class="color-swatch" style="background-color: #8b5cf6;" data-color="#8b5cf6"></div>
+                <input type="text" class="form-control" id="color-hex" value="#2563eb">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Certificações <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#certifications-help-modal"></i></label>
-            <div id="certifications-fields"></div>
-            <span class="btn-add" onclick="addField('certifications')"><i class="bi bi-plus-circle"></i> Adicionar certificação</span>
-          </div>
-          <div class="form-group">
-            <label for="skills">Habilidades <i class="bi bi-question-circle help-icon" data-bs-toggle="modal" data-bs-target="#skills-help-modal"></i></label>
-            <textarea id="skills" class="form-control" rows="4" placeholder="Liste suas principais competências, uma por linha."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="languages">Idiomas</label>
-            <textarea id="languages" class="form-control" rows="3" placeholder="Ex: Inglês - Avançado&#10;Espanhol - Intermediário"></textarea>
-          </div>
+
           <div class="action-buttons">
-            <button type="button" class="btn btn-primary" id="download-btn"><i class="bi bi-download"></i> Baixar PDF de Alta Qualidade</button>
-            <button type="button" class="btn btn-secondary" onclick="resetForm()"><i class="bi bi-arrow-counterclockwise"></i> Limpar</button>
+            <button type="button" class="btn btn-primary" id="download-btn" data-lang-key="btn_download_pay">
+              <i class="bi bi-file-earmark-arrow-down-fill"></i> Baixar PDF de Alta Qualidade (R$ 2,00)
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="resetForm()" data-lang-key="btn_clear">
+              <i class="bi bi-trash-fill"></i> Limpar
+            </button>
           </div>
         </form>
       </div>
-      <div class="preview-container"><div id="resume-preview" class="executive"></div></div>
-    </div>
-  </main>
 
-  <footer class="footer">
-    <div class="container text-center">
-      <p class="mb-0">&copy; 2025 Tagsoluctions. Todos os direitos reservados.</p>
-    </div>
-  </footer>
-
-  <!-- Modais (Feedback e Ajuda) -->
-  <div class="modal fade" id="feedback-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Gostou do resultado? Deixe seu feedback!</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body text-center"><i class="bi bi-stars" style="font-size: 3rem; color: var(--accent-color);"></i><p class="mt-3">Sua opinião é muito importante para nós! Ela nos ajuda a melhorar a ferramenta para todos.</p><p>Ficou com alguma dúvida ou tem uma sugestão?</p><div class="d-grid gap-2 col-10 mx-auto mt-4"><a href="https://wa.me/5511962921323?text=Ol%C3%A1!%20Gostaria%20de%20dar%20um%20feedback%20sobre%20o%20Gerador%20de%20Curr%C3%ADculo." class="btn btn-success" target="_blank"><i class="bi bi-whatsapp"></i> Enviar Feedback pelo WhatsApp</a></div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button></div></div></div></div>
-  <div class="modal fade" id="objective-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Objetivo Profissional</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Este é um resumo curto (2-3 linhas ) sobre seus principais objetivos de carreira e o que você busca na vaga.</p><h6>Dica de Ouro</h6><p>Personalize o objetivo para cada vaga que você se candidatar, mencionando o nome do cargo ou a área.</p><h6>Exemplo:</h6><p class="example">Busco uma oportunidade como Desenvolvedor Front-end para aplicar minhas habilidades em React e contribuir para a criação de interfaces de usuário inovadoras e responsivas.</p></div></div></div></div>
-  <div class="modal fade" id="education-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Formação Acadêmica</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Liste suas formações da mais recente para a mais antiga. Inclua o nome do curso, a instituição e o ano de conclusão.</p><h6>Exemplo:</h6><p class="example">Graduação em Análise e Desenvolvimento de Sistemas - Universidade XYZ (2023)</p></div></div></div></div>
-  <div class="modal fade" id="experience-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Experiência Profissional</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Descreva suas experiências anteriores, também da mais recente para a mais antiga. Se não tiver experiência formal, inclua projetos, trabalhos voluntários ou freelancers.</p><h6>Dica de Ouro</h6><p>Use verbos de ação para descrever suas responsabilidades. Ex: "Desenvolvi...", "Gerenciei...", "Organizei...".</p><h6>Exemplo:</h6><p class="example">Estagiário de Marketing - Empresa ABC (2022-2023). Responsável pelo gerenciamento de redes sociais e criação de relatórios de performance.</p></div></div></div></div>
-  <div class="modal fade" id="projects-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Projetos</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Ideal para desenvolvedores, designers e estudantes. Liste projetos relevantes que demonstrem suas habilidades na prática.</p><h6>Dica de Ouro</h6><p>Descreva o projeto, as tecnologias que você usou e, se possível, o resultado ou o link para o projeto.</p><h6>Exemplo:</h6><p class="example">Website de E-commerce (React, Node.js) - Desenvolvi um site completo com sistema de carrinho e pagamento, resultando em uma experiência de usuário 20% mais rápida.</p></div></div></div></div>
-  <div class="modal fade" id="certifications-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Certificações</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Liste quaisquer certificações oficiais que você tenha. Isso mostra um comprometimento com sua área.</p><h6>Exemplo:</h6><p class="example">AWS Certified Cloud Practitioner - Amazon Web Services (2024)</p></div></div></div></div>
-  <div class="modal fade" id="skills-help-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Ajuda: Habilidades</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>O que colocar aqui?</h6><p>Liste suas competências técnicas (ferramentas, softwares) e comportamentais (comunicação, liderança).</p><h6>Dica de Ouro</h6><p>Leia a descrição da vaga e inclua as habilidades que a empresa está procurando.</p><h6>Exemplo:</h6><p class="example">Comunicação Assertiva  
-Pacote Office Avançado  
-JavaScript e React  
-Trabalho em Equipe</p></div></div></div></div>
-  <div class="modal fade" id="general-tips-modal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Dicas Gerais para um Currículo de Sucesso</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><h6>1. Seja Objetivo e Conciso</h6><p>Recrutadores leem dezenas de currículos por dia. Vá direto ao ponto. Idealmente, seu currículo deve ter apenas uma página, especialmente se você tem menos de 10 anos de experiência.</p><h6>2. Use Palavras-Chave da Vaga</h6><p>Muitas empresas usam sistemas automáticos (ATS) para filtrar currículos. Leia a descrição da vaga e use as mesmas palavras-chave em suas habilidades e experiências para aumentar suas chances de ser selecionado.</p><h6>3. Quantifique suas Conquistas</h6><p>Em vez de apenas listar suas tarefas, mostre seus resultados. Números causam um grande impacto.</p><p class="example">"Aumentei as vendas em 15% em 6 meses." é mais forte do que "Responsável pelas vendas."</p><h6>4. Adapte seu Currículo</h6><p>Não use o mesmo currículo para todas as vagas. Crie uma versão base e ajuste o campo "Objetivo" e as habilidades destacadas para cada candidatura. Nosso gerador facilita isso!</div>
-    </h6><p>Não use o mesmo currículo para todas as vagas. Crie uma versão base e ajuste o campo "Objetivo" e as habilidades destacadas para cada candidatura. Nosso gerador facilita isso!</p>
-            <h6>5. Revise, Revise e Revise</h6>
-            <p>Erros de português ou digitação podem desqualificar um bom candidato. Leia seu currículo em voz alta, peça para um amigo revisar ou use uma ferramenta de correção ortográfica antes de enviar.</p>
-            <h6>6. Escolha a Vaga Pretendida com Cuidado</h6>
-            <p>Seu campo "Vaga Pretendida" deve ser claro e corresponder à vaga para a qual você está se candidatando. Evite termos genéricos como "qualquer área".</p>
-          </div>
+      <div class="preview-container">
+        <div id="resume-preview" class="minimalist">
+          <!-- Conteúdo do currículo será injetado aqui pelo JavaScript -->
         </div>
       </div>
     </div>
   </div>
 
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="Logo.png" alt="Logo" class="logo mb-2">
+          <p data-lang-key="footer_text">&copy; 2025 Tagsoluctions. Todos os direitos reservados.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p>
+            <a href="#" data-lang-key="link_terms">Termos de Uso</a> |
+            <a href="#" data-lang-key="link_privacy">Política de Privacidade</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals de Ajuda -->
+  <div class="modal fade" id="objective-modal" tabindex="-1" aria-labelledby="objective-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="objective-modal-label" data-lang-key="modal_objective_title">Ajuda: Objetivo Profissional</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6 data-lang-key="modal_objective_h6_1">O que colocar aqui?</h6>
+          <p data-lang-key="modal_objective_p_1">É um resumo curto (2-3 linhas) dos seus principais objetivos de carreira e o que você busca na vaga.</p>
+          <h6 data-lang-key="modal_objective_h6_2">Dica de Ouro</h6>
+          <p data-lang-key="modal_objective_p_2">Personalize o objetivo para cada vaga que se candidatar, mencionando o cargo ou área.</p>
+          <h6 data-lang-key="modal_objective_h6_3">Exemplo:</h6>
+          <p class="example" data-lang-key="modal_objective_example">Busco oportunidade como Desenvolvedor Front-end para aplicar minhas habilidades em React e contribuir para a criação de interfaces de usuário inovadoras e responsivas.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-key="modal_close_btn">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="skills-modal" tabindex="-1" aria-labelledby="skills-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="skills-modal-label" data-lang-key="modal_skills_title">Ajuda: Habilidades</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6 data-lang-key="modal_skills_h6">O que colocar aqui?</h6>
+          <p data-lang-key="modal_skills_p">Liste suas habilidades técnicas (hard skills) e comportamentais (soft skills). Use a tecla ENTER para separar cada habilidade.</p>
+          <h6 data-lang-key="modal_skills_h6_example">Exemplo:</h6>
+          <p class="example" data-lang-key="modal_skills_example">Hard Skills: JavaScript, React, Node.js, SQL<br>Soft Skills: Comunicação, Trabalho em Equipe, Resolução de Problemas</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-key="modal_close_btn_2">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Pagamento -->
+  <div class="modal fade" id="payment-modal" tabindex="-1" aria-labelledby="payment-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="payment-modal-label" data-lang-key="modal_pay_title">Finalizar Download - R$ 2,00</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p data-lang-key="modal_pay_text_1">Para baixar seu currículo em PDF de alta qualidade, é necessário um pagamento único de <strong>R$ 2,00</strong>.</p>
+          <p data-lang-key="modal_pay_text_2">Este valor ajuda a manter a ferramenta online e garante a qualidade do serviço de geração.</p>
+          <hr>
+          <p class="text-start" data-lang-key="modal_pay_step_1"><strong>Passo 1:</strong> Clique no botão abaixo para ir para a página de pagamento.</p>
+          <p class="text-start" data-lang-key="modal_pay_step_2"><strong>Passo 2:</strong> Após a confirmação do pagamento, <strong>retorne a esta página</strong> e clique no botão "Baixar Agora" que estará desbloqueado.</p>
+          
+          <a href="#" id="payment-link" target="_blank" class="btn btn-lg btn-success my-3" data-lang-key="modal_pay_btn" onclick="openPaymentLink()">
+            <i class="bi bi-credit-card-fill"></i> Pagar R$ 2,00 e Desbloquear Download
+          </a>
+          <p class="text-muted" data-lang-key="modal_pay_disclaimer">Você será redirecionado para o ambiente seguro do Mercado Pago.</p>
+          <p id="download-arrow" style="display:none; color: var(--accent-color); font-size: 2rem; margin-bottom: 0;">
+            <i class="bi bi-arrow-down-short"></i>
+          </p>
+          <button type="button" id="final-download-btn" class="btn btn-lg btn-primary my-3" style="display:none;" onclick="downloadPDF()" data-lang-key="modal_download_final_btn">
+            <i class="bi bi-arrow-down-circle-fill"></i> Baixar Agora
+          </button>     </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal" data-lang-key="modal_close_btn_3">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript Principal -->
   <script>
-    document.addEventListener('DOMContentLoaded', ( ) => {
-      const form = document.getElementById('resume-form');
-      form.addEventListener('input', debounce(updateAll, 250));
-      document.getElementById('ai-assistant').addEventListener('change', handleAIAssistant);
-      document.getElementById('download-btn').addEventListener('click', generatePDF);
-      
-      // Lógica do seletor de cores
-      document.getElementById('color-hex').addEventListener('input', (event) => {
-        const color = event.target.value;
-        document.querySelectorAll('.color-swatch').forEach(swatch => {
-          swatch.classList.toggle('active', swatch.dataset.color === color);
-        });
+    // =================================================================
+    // DADOS DE TRADUÇÃO
+    // =================================================================
+    // MUDANÇA: Usando 'var' para permitir a redeclaração em múltiplos blocos <script>
+    var translations = {
+      'pt-BR': {
+        // ... (conteúdo pt-BR omitido por brevidade, mas está no arquivo completo)
+        'title': 'Gerador de Currículo com IA - Crie Grátis',
+        'form_title': 'Gerador de Currículo com IA',
+        'form_subtitle': 'Preencha os campos abaixo para criar seu currículo. A pré-visualização é atualizada em tempo real.',
+        'section_personal_data': 'Dados Pessoais',
+        'label_name': 'Nome Completo',
+        'label_desired_position': 'Cargo Desejado',
+        'section_contact': 'Contato',
+        'label_phone': 'Telefone',
+        'label_city_state': 'Cidade / Estado',
+        'label_portfolio': 'Portfólio / Website',
+        'section_objective': 'Objetivo Profissional',
+        'label_ai_assistant': 'Assistente IA',
+        'objective_tip': 'Dica: Use o Assistente IA acima ou escreva um parágrafo curto e direto.',
+        'section_education': 'Formação Acadêmica',
+        'section_experience': 'Experiência Profissional',
+        'section_projects': 'Projetos',
+        'section_certifications': 'Certificações e Cursos',
+        'section_skills': 'Habilidades',
+        'skills_tip': 'Dica: Separe cada habilidade por uma nova linha (ENTER).',
+        'section_languages': 'Idiomas',
+        'languages_tip': 'Ex: Inglês - Avançado, Espanhol - Intermediário. Separe por nova linha (ENTER).',
+        'section_layout_settings': 'Configurações de Layout',
+        'label_model': 'Modelo de Currículo',
+        'label_color': 'Cor de Destaque',
+        'model_minimalist': 'Minimalista',
+        'model_executive': 'Executivo',
+        'model_creative': 'Criativo (2 Colunas)',
+        'link_terms': 'Termos de Uso',
+        'link_privacy': 'Política de Privacidade',
+
+        // Placeholders
+        'placeholder_name': 'Seu Nome Completo',
+        'placeholder_desired_position': 'Ex: Desenvolvedor Front-end',
+        'placeholder_email': 'seu.email@exemplo.com',
+        'placeholder_phone': 'Telefone',
+        'placeholder_city_state': 'Cidade, Estado',
+        'placeholder_linkedin': 'Seu URL do LinkedIn',
+        'placeholder_github': 'Seu URL do GitHub',
+        'placeholder_portfolio': 'Seu URL de Portfólio/Website',
+        'ai_assistant_default': 'Assistente IA: Escolha uma área para gerar um objetivo...',
+        'placeholder_objective': 'Seu objetivo será gerado aqui, ou escreva o seu.',
+        'placeholder_skills': 'Liste suas principais habilidades, uma por linha.',
+        'placeholder_languages': 'Ex: Inglês - Avançado\nEspanhol - Intermediário',
+
+        // Buttons
+        'btn_download_pay': 'Baixar PDF de Alta Qualidade (R$ 2,00)',
+        'btn_clear': 'Limpar',
+        'btn_add_education': 'Adicionar formação',
+        'btn_add_experience': 'Adicionar experiência',
+        'btn_add_project': 'Adicionar projeto',
+        'btn_add_certification': 'Adicionar certificação',
+
+        // Footer
+        'footer_text': '&copy; 2025 Tagsoluctions. Todos os direitos reservados.',
+
+        // Modals de Pagamento
+        'modal_pay_title': 'Finalizar Download - R$ 2,00',
+        'modal_pay_text_1': 'Para baixar seu currículo em PDF de alta qualidade, é necessário um pagamento único de <strong>R$ 2,00</strong>.',
+        'modal_pay_text_2': 'Este valor ajuda a manter a ferramenta online e garante a qualidade do serviço de geração.',
+        'modal_pay_step_1': '<strong>Passo 1:</strong> Clique no botão abaixo para ir para a página de pagamento.',
+        'modal_pay_step_2': '<strong>Passo 2:</strong> Após a confirmação do pagamento, <strong>retorne a esta página</strong> e clique no botão "Baixar Agora" que estará desbloqueado.',
+        'modal_pay_btn': '<i class="bi bi-credit-card-fill"></i> Pagar R$ 2,00 e Desbloquear Download',
+        'modal_pay_disclaimer': 'Você será redirecionado para o ambiente seguro do Mercado Pago.',
+        'modal_download_final_btn': '<i class="bi bi-arrow-down-circle-fill"></i> Baixar Agora',
+        'modal_close_btn_3': 'Cancelar',
+
+        // Modals de Ajuda (Simplificado)
+        'modal_feedback_title': 'Gostou do resultado? Deixe seu feedback!',
+        'modal_feedback_text_1': 'Sua opinião é muito importante para nós! Ela nos ajuda a melhorar a ferramenta para todos.',
+        'modal_feedback_text_2': 'Tem alguma dúvida ou sugestão?',
+        'modal_feedback_btn': '<i class="bi bi-whatsapp"></i> Enviar Feedback via WhatsApp',
+        'modal_close_btn': 'Fechar',
+        'modal_close_btn_2': 'Fechar',
+        'modal_objective_title': 'Ajuda: Objetivo Profissional',
+        'modal_objective_h6_1': 'O que colocar aqui?',
+        'modal_objective_p_1': 'É um resumo curto (2-3 linhas) dos seus principais objetivos de carreira e o que você busca na vaga.',
+        'modal_objective_h6_2': 'Dica de Ouro',
+        'modal_objective_p_2': 'Personalize o objetivo para cada vaga que se candidatar, mencionando o cargo ou área.',
+        'modal_objective_h6_3': 'Exemplo:',
+        'modal_objective_example': 'Busco oportunidade como Desenvolvedor Front-end para aplicar minhas habilidades em React e contribuir para a criação de interfaces de usuário inovadoras e responsivas.',
+        'modal_education_title': 'Ajuda: Formação Acadêmica',
+        'modal_education_h6': 'O que colocar aqui?',
+        'modal_education_p': 'Liste sua formação da mais recente para a mais antiga. Inclua o nome do curso, instituição e ano de conclusão.',
+        'modal_education_h6_example': 'Exemplo:',
+        'modal_education_example': 'Graduação em Análise e Desenvolvimento de Sistemas - Universidade XYZ (2023)',
+        'modal_experience_title': 'Ajuda: Experiência Profissional',
+        'modal_experience_h6': 'O que colocar aqui?',
+        'modal_experience_p': 'Liste suas experiências da mais recente para a mais antiga. Use tópicos curtos e focados em resultados. Use a tecla ENTER para separar os tópicos.',
+        'modal_experience_h6_example': 'Exemplo:',
+        'modal_experience_example': 'Desenvolvedor Web Júnior - Empresa ABC (Jan 2023 - Atual)\n• Desenvolvi e mantive mais de 5 projetos usando React e Node.js.\n• Reduzi em 30% o tempo de carregamento da página inicial após otimização de imagens e código.',
+        'modal_projects_title': 'Ajuda: Projetos',
+        'modal_projects_h6': 'O que colocar aqui?',
+        'modal_projects_p': 'Projetos pessoais ou acadêmicos relevantes para a vaga. Destaque a tecnologia usada e o resultado.',
+        'modal_projects_h6_example': 'Exemplo:',
+        'modal_projects_example': 'E-commerce de Livros (2023) - Plataforma completa desenvolvida em Python/Django, com integração de pagamento e sistema de estoque.',
+        'modal_certifications_title': 'Ajuda: Certificações',
+        'modal_certifications_h6': 'O que colocar aqui?',
+        'modal_certifications_p': 'Cursos e certificações que agregam valor ao seu perfil.',
+        'modal_certifications_h6_example': 'Exemplo:',
+        'modal_certifications_example': 'Certificação AWS Certified Cloud Practitioner (2024) - Amazon Web Services',
+        'modal_skills_title': 'Ajuda: Habilidades',
+        'modal_skills_h6': 'O que colocar aqui?',
+        'modal_skills_p': 'Liste suas habilidades técnicas (hard skills) e comportamentais (soft skills). Use a tecla ENTER para separar cada habilidade.',
+        'modal_skills_h6_example': 'Exemplo:',
+        'modal_skills_example': 'Hard Skills: JavaScript, React, Node.js, SQL\nSoft Skills: Comunicação, Trabalho em Equipe, Resolução de Problemas',
+
+        // Assistente IA (Objetivos)
+        'ai_jovem_aprendiz': 'Jovem Aprendiz',
+        'ai_estagio': 'Estágio (qualquer área)',
+        'ai_vendedor': 'Vendedor / Loja',
+        'ai_administrativo': 'Assistente Administrativo',
+        'ai_producao': 'Auxiliar de Produção',
+        'ai_ti': 'Tecnologia / Desenvolvimento',
+        'ai_objective_jovem_aprendiz': 'Busco oportunidade como Jovem Aprendiz para desenvolver minhas habilidades profissionais, contribuir com a equipe e iniciar minha carreira em um ambiente de aprendizado contínuo.',
+        'ai_objective_estagio': 'Busco uma posição de Estágio na área de [Inserir Área] para aplicar conhecimentos acadêmicos, adquirir experiência prática e colaborar ativamente nos projetos da empresa.',
+        'ai_objective_vendedor': 'Almejo atuar como Vendedor, utilizando minhas habilidades de comunicação e negociação para alcançar metas de vendas e proporcionar uma excelente experiência ao cliente.',
+        'ai_objective_administrativo': 'Busco contribuir para a eficiência operacional da empresa como Assistente Administrativo, aplicando minha organização e atenção aos detalhes para dar suporte às rotinas do escritório.',
+        'ai_objective_producao': 'Desejo integrar a equipe de Produção, aplicando meu foco em qualidade e segurança para otimizar processos e garantir o atingimento das metas de fabricação.',
+        'ai_objective_ti': 'Aspiro a uma posição em Desenvolvimento de Software, aplicando metodologias ágeis e minhas habilidades em [Inserir Linguagens/Tecnologias] para criar soluções robustas e inovadoras.'
+      },
+      'en': {
+        // ... (conteúdo en omitido por brevidade, mas está no arquivo completo)
+        'title': 'AI Resume Builder - Create for Free',
+        'form_title': 'AI Resume Builder',
+        'form_subtitle': 'Fill in the fields below to create your resume. The preview is updated in real-time.',
+        'section_personal_data': 'Personal Data',
+        'label_name': 'Full Name',
+        'label_desired_position': 'Desired Position',
+        'section_contact': 'Contact',
+        'label_phone': 'Phone',
+        'label_city_state': 'City / State',
+        'label_portfolio': 'Portfolio / Website',
+        'section_objective': 'Professional Objective',
+        'label_ai_assistant': 'AI Assistant',
+        'objective_tip': 'Tip: Use the AI Assistant above or write a short, direct paragraph.',
+        'section_education': 'Academic Background',
+        'section_experience': 'Professional Experience',
+        'section_projects': 'Projects',
+        'section_certifications': 'Certifications and Courses',
+        'section_skills': 'Skills',
+        'skills_tip': 'Tip: Separate each skill with a new line (ENTER).',
+        'section_languages': 'Languages',
+        'languages_tip': 'Ex: English - Advanced, Spanish - Intermediate. Separate with a new line (ENTER).',
+        'section_layout_settings': 'Layout Settings',
+        'label_model': 'Resume Model',
+        'label_color': 'Accent Color',
+        'model_minimalist': 'Minimalist',
+        'model_executive': 'Executive',
+        'model_creative': 'Creative (2 Columns)',
+        'link_terms': 'Terms of Use',
+        'link_privacy': 'Privacy Policy',
+
+        // Placeholders
+        'placeholder_name': 'Your Full Name',
+        'placeholder_desired_position': 'Ex: Front-end Developer',
+        'placeholder_email': 'your.email@example.com',
+        'placeholder_phone': 'Phone',
+        'placeholder_city_state': 'City, State',
+        'placeholder_linkedin': 'Your LinkedIn URL',
+        'placeholder_github': 'Your GitHub URL',
+        'placeholder_portfolio': 'Your Portfolio/Website URL',
+        'ai_assistant_default': 'AI Assistant: Choose an area to generate an objective...',
+        'placeholder_objective': 'Your objective will be generated here, or write your own.',
+        'placeholder_skills': 'List your main skills, one per line.',
+        'placeholder_languages': 'Ex: English - Advanced\nSpanish - Intermediate',
+
+        // Buttons
+        'btn_download_pay': 'Download High-Quality PDF (R$ 2.00)',
+        'btn_clear': 'Clear',
+        'btn_add_education': 'Add education',
+        'btn_add_experience': 'Add experience',
+        'btn_add_project': 'Add project',
+        'btn_add_certification': 'Add certification',
+
+        // Footer
+        'footer_text': '&copy; 2025 Tagsoluctions. All rights reserved.',
+
+        // Modals de Pagamento
+        'modal_pay_title': 'Finalize Download - R$ 2,00',
+        'modal_pay_text_1': 'To download your high-quality PDF resume, a single payment of <strong>R$ 2,00</strong> is required.',
+        'modal_pay_text_2': 'This amount helps keep the tool online and ensures the quality of the generation service.',
+        'modal_pay_step_1': '<strong>Step 1:</strong> Click the button below to go to the payment page.',
+        'modal_pay_step_2': '<strong>Step 2:</strong> After payment is confirmed, <strong>return to this page</strong> and click the "Download Now" button which will be unlocked.',
+        'modal_pay_btn': '<i class="bi bi-credit-card-fill"></i> Pay R$ 2,00 and Unlock Download',
+        'modal_pay_disclaimer': 'You will be redirected to the secure environment of Mercado Pago.',
+        'modal_download_final_btn': '<i class="bi bi-arrow-down-circle-fill"></i> Download Now',
+        'modal_close_btn_3': 'Cancel',
+
+        // Modals (Simplified)
+        'modal_feedback_title': 'Did you like the result? Leave your feedback!',
+        'modal_feedback_text_1': 'Your opinion is very important to us! It helps us improve the tool for everyone.',
+        'modal_feedback_text_2': 'Do you have any questions or suggestions?',
+        'modal_feedback_btn': '<i class="bi bi-whatsapp"></i> Send Feedback via WhatsApp',
+        'modal_close_btn': 'Close',
+        'modal_close_btn_2': 'Close',
+        'modal_objective_title': 'Help: Professional Objective',
+        'modal_objective_h6_1': 'What to put here?',
+        'modal_objective_p_1': 'This is a short summary (2-3 lines) of your main career goals and what you seek in the position.',
+        'modal_objective_h6_2': 'Golden Tip',
+        'modal_objective_p_2': 'Personalize the objective for each job you apply for, mentioning the job title or area.',
+        'modal_objective_h6_3': 'Example:',
+        'modal_objective_example': 'I seek an opportunity as a Front-end Developer to apply my React skills and contribute to the creation of innovative and responsive user interfaces.',
+        'modal_education_title': 'Help: Academic Background',
+        'modal_education_h6': 'What to put here?',
+        'modal_education_p': 'List your education from the most recent to the oldest. Include the course name, institution, and completion year.',
+        'modal_education_h6_example': 'Example:',
+        'modal_education_example': 'Degree in Systems Analysis and Development - XYZ University (2023)',
+        'modal_experience_title': 'Help: Professional Experience',
+        'modal_experience_h6': 'What to put here?',
+        'modal_experience_p': 'List your experiences from the most recent to the oldest. Use short, results-focused bullet points. Use the ENTER key to separate the topics.',
+        'modal_experience_h6_example': 'Example:',
+        'modal_experience_example': 'Junior Web Developer - ABC Company (Jan 2023 - Present)\n• Developed and maintained over 5 projects using React and Node.js.\n• Reduced homepage loading time by 30% after image and code optimization.',
+        'modal_projects_title': 'Help: Projects',
+        'modal_projects_h6': 'What to put here?',
+        'modal_projects_p': 'Personal or academic projects relevant to the position. Highlight the technology used and the result.',
+        'modal_projects_h6_example': 'Example:',
+        'modal_projects_example': 'Book E-commerce (2023) - Complete platform developed in Python/Django, with payment integration and stock system.',
+        'modal_certifications_title': 'Help: Certifications',
+        'modal_certifications_h6': 'What to put here?',
+        'modal_certifications_p': 'Courses and certifications that add value to your profile.',
+        'modal_certifications_h6_example': 'Example:',
+        'modal_certifications_example': 'AWS Certified Cloud Practitioner Certification (2024) - Amazon Web Services',
+        'modal_skills_title': 'Help: Skills',
+        'modal_skills_h6': 'What to put here?',
+        'modal_skills_p': 'List your technical (hard skills) and behavioral (soft skills) skills. Use the ENTER key to separate each skill.',
+        'modal_skills_h6_example': 'Example:',
+        'modal_skills_example': 'Hard Skills: JavaScript, React, Node.js, SQL\nSoft Skills: Communication, Teamwork, Problem Solving',
+
+        // AI Assistant (Objectives)
+        'ai_jovem_aprendiz': 'Young Apprentice',
+        'ai_estagio': 'Internship (any area)',
+        'ai_vendedor': 'Salesperson / Store',
+        'ai_administrativo': 'Administrative Assistant',
+        'ai_producao': 'Production Assistant',
+        'ai_ti': 'Technology / Development',
+        'ai_objective_jovem_aprendiz': 'I seek an opportunity as a Young Apprentice to develop my professional skills, contribute to the team, and start my career in a continuous learning environment.',
+        'ai_objective_estagio': 'I seek an Internship position in the [Insert Area] to apply academic knowledge, gain practical experience, and actively collaborate on company projects.',
+        'ai_objective_vendedor': 'I aim to work as a Salesperson, using my communication and negotiation skills to achieve sales targets and provide an excellent customer experience.',
+        'ai_objective_administrativo': 'I aim to contribute to the operational efficiency of the company as an Administrative Assistant, applying my organization and attention to detail to support office routines.',
+        'ai_objective_producao': 'I wish to join the Production team, applying my focus on quality and safety to optimize processes and ensure the achievement of manufacturing goals.',
+        'ai_objective_ti': 'I aspire to a position in Software Development, applying agile methodologies and my skills in [Insert Languages/Technologies] to create robust and innovative solutions.'
+      }
+    };
+
+    // MUDANÇA: Usando 'var' para permitir a redeclaração em múltiplos blocos <script>
+    var currentLang = 'pt-BR'; // Idioma padrão
+
+    // =================================================================
+    // LÓGICA DE TRADUÇÃO
+    // =================================================================
+
+    function translatePage(lang) {
+      const texts = translations[lang];
+      if (!texts) return;
+
+      // Traduzir elementos com data-lang-key
+      document.querySelectorAll('[data-lang-key]').forEach(el => {
+        const key = el.getAttribute('data-lang-key');
+        if (texts[key]) {
+          el.innerHTML = texts[key];
+        }
       });
+
+      // Traduzir placeholders
+      document.querySelectorAll('[data-lang-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-lang-placeholder');
+        if (texts[key]) {
+          el.setAttribute('placeholder', texts[key]);
+        }
+      });
+
+      // Traduzir o título da página
+      document.title = texts['title'];
+
+      // Atualizar o texto do seletor de idioma
+      document.getElementById('current-lang-text').textContent = lang.toUpperCase();
+
+      // Atualizar a variável global de idioma
+      currentLang = lang;
+      
+      // Atualizar o objetivo do assistente IA para o idioma correto
+      updateAIObjectivePlaceholder(lang);
+    }
+
+    function setLanguage(lang) {
+      translatePage(lang);
+      // Salvar a preferência de idioma (opcional)
+      // localStorage.setItem('lang', lang);
+    }
+
+    function updateAIObjectivePlaceholder(lang) {
+        const select = document.getElementById('ai-assistant');
+        const selectedValue = select.value;
+        if (selectedValue) {
+            const objectiveKey = 'ai_objective_' + selectedValue.replace('-', '_');
+            const objectiveText = translations[lang][objectiveKey] || '';
+            document.getElementById('objective').value = objectiveText;
+            updateResume();
+        }
+    }
+
+    // =================================================================
+    // LÓGICA DE EVENTOS E INICIALIZAÇÃO
+    // =================================================================
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Inicializa a tradução
+      translatePage(currentLang);
+
+      // 1. Configura o link de pagamento no modal
+      const paymentLink = document.getElementById('payment-link');
+      if (paymentLink) {
+        // Variável para armazenar o link de pagamento (Redeclaração com 'var' para evitar erro)
+        var PAYMENT_URL = "https://mpago.la/2vQK4Sw"; // Link fornecido pelo usuário
+        paymentLink.href = PAYMENT_URL;
+      }
+
+      // 2. Altera o comportamento do botão principal de download para abrir o modal
+      const downloadBtn = document.getElementById('download-btn');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+          // Exibe o modal de pagamento
+          const paymentModal = new bootstrap.Modal(document.getElementById('payment-modal'));
+          paymentModal.show();
+        });
+      }
+
+      // Inicialização dos campos dinâmicos e listeners de formulário
+      const formElements = document.querySelectorAll('#resume-form input, #resume-form textarea, #resume-form select');
+      formElements.forEach(element => {
+        element.addEventListener('input', updateResume);
+        element.addEventListener('change', updateResume);
+      });
+
+      // Lógica de seleção de cor
       document.querySelectorAll('.color-swatch').forEach(swatch => {
-        swatch.addEventListener('click', () => {
-          const color = swatch.dataset.color;
-          document.getElementById('color-hex').value = color;
+        swatch.addEventListener('click', function() {
           document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-          swatch.classList.add('active');
-          updateAll();
+          this.classList.add('active');
+          const color = this.getAttribute('data-color');
+          document.getElementById('color-hex').value = color;
+          document.documentElement.style.setProperty('--accent-color', color);
+          updateResume();
         });
       });
 
-      loadFromLocalStorage();
+      document.getElementById('color-hex').addEventListener('input', function() {
+        const color = this.value;
+        document.documentElement.style.setProperty('--accent-color', color);
+        document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+        updateResume();
+      });
+
+      document.getElementById('model-select').addEventListener('change', function() {
+        document.getElementById('resume-preview').className = this.value;
+        updateResume();
+      });
+
+      // Lógica do Assistente IA
+      document.getElementById('ai-assistant').addEventListener('change', function() {
+        const selectedValue = this.value;
+        if (selectedValue) {
+          const objectiveKey = 'ai_objective_' + selectedValue.replace('-', '_');
+          const objectiveText = translations[currentLang][objectiveKey] || '';
+          document.getElementById('objective').value = objectiveText;
+          updateResume();
+        }
+      });
+
+      // Inicializa a pré-visualização
+      updateResume();
     });
 
-    function debounce(func, delay) {
-      let timeout;
-      return function(...args) { clearTimeout(timeout); timeout = setTimeout(() => func.apply(this, args), delay); };
+    // Funções auxiliares (parte do código que foi truncado, mas é necessário)
+    // Variável para armazenar o link de pagamento (Redeclaração com 'var' para evitar erro)
+    var PAYMENT_URL = "https://mpago.la/2vQK4Sw"; // Link fornecido pelo usuário
+
+    function openPaymentLink() {
+      // Oculta o botão de pagamento e exibe o botão de download final E a seta de indicação
+      document.getElementById('payment-link').style.display = 'none';
+      document.getElementById('download-arrow').style.display = 'block'; // Mostra a seta
+      document.getElementById('final-download-btn').style.display = 'block';
+
+      // Removido o fechamento automático do modal, conforme solicitado pelo usuário.
+      // O usuário deve fechar o modal manualmente após o pagamento.
     }
 
-    function updateAll() {
-      const data = collectFormData();
-      updatePreview(data);
-      saveToLocalStorage(data);
-    }
+    // MUDANÇA: Implementação da função downloadPDF() usando html2canvas e jspdf
+    function downloadPDF() {
+      const input = document.getElementById('resume-preview');
+      const name = document.getElementById('name').value.replace(/ /g, '_') || 'curriculo';
+      
+      // Oculta o botão de download final para que ele não apareça no PDF
+      const finalDownloadBtn = document.getElementById('final-download-btn');
+      finalDownloadBtn.style.display = 'none';
 
-    function collectFormData() {
-      return {
-        model: document.getElementById('model-select').value,
-        color: document.getElementById('color-hex').value,
-        fullName: document.getElementById('full-name').value,
-        desiredPosition: document.getElementById('desired-position').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        address: document.getElementById('address').value,
-        linkedin: document.getElementById('linkedin').value,
-        github: document.getElementById('github').value,
-        portfolio: document.getElementById('portfolio').value,
-        objective: document.getElementById('objective').value,
-        education: getDynamicFieldValues('education'),
-        experience: getDynamicFieldValues('experience'),
-        projects: getDynamicFieldValues('projects'),
-        certifications: getDynamicFieldValues('certifications'),
-        skills: document.getElementById('skills').value.split('\n').filter(s => s.trim() !== ''),
-        languages: document.getElementById('languages').value.split('\n').filter(s => s.trim() !== ''),
-      };
-    }
+      html2canvas(input, { scale: 2, useCORS: true }).then(canvas => {
+        const { jsPDF } = window.jspdf;
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgProps= pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        
+        let position = 0;
+        let heightLeft = pdfHeight;
+        
+        // Adiciona a primeira página
+        pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+        heightLeft -= pdf.internal.pageSize.getHeight();
 
-    function updatePreview(data) {
-        const preview = document.getElementById('resume-preview');
-        document.documentElement.style.setProperty('--accent-color', data.color);
-        preview.innerHTML = ''; // Limpa a pré-visualização antes de redesenhar
-
-        const contactItems = [data.email, data.phone, data.address];
-        const linkItems = [
-            data.linkedin ? `LinkedIn` : '',
-            data.github ? `GitHub` : '',
-            data.portfolio ? `Portfólio` : ''
-        ].filter(Boolean);
-        const contactInfo = [...contactItems, ...linkItems].filter(Boolean).join(' &nbsp;&bull;&nbsp; ');
-
-        const createSection = (title, items, isList = true) => {
-            if (!items || items.length === 0) return '';
-            let content;
-            if (isList) {
-                content = `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
-            } else {
-                content = `<p>${items.replace(/\n/g, '  ')}</p>`;
-            }
-            return `<h2>${title}</h2>${content}`;
-        };
-
-        if (data.model === 'creative') {
-            preview.className = 'creative';
-            preview.innerHTML = `
-                <div class="sidebar">
-                    <h1>${data.fullName || 'Seu Nome'}</h1>
-                    <div class="desired-position">${data.desiredPosition || 'Vaga Pretendida'}</div>
-                    <hr>
-                    <h2>Contato</h2>
-                    <p>${contactItems.join('  ')}</p>
-                    <h2>Links</h2>
-                    <p>${linkItems.join('  ')}</p>
-                    <h2>Habilidades</h2>
-                    <ul>${data.skills.map(s => `<li>${s}</li>`).join('')}</ul>
-                    <h2>Idiomas</h2>
-                    <ul>${data.languages.map(l => `<li>${l}</li>`).join('')}</ul>
-                </div>
-                <div class="main-column">
-                    ${createSection('Objetivo', data.objective, false)}
-                    ${createSection('Experiência Profissional', data.experience)}
-                    ${createSection('Projetos', data.projects)}
-                    ${createSection('Formação Acadêmica', data.education)}
-                    ${createSection('Certificações', data.certifications)}
-                </div>
-            `;
-        } else { 
-            preview.className = data.model;
-            let html = `<h1>${data.fullName || 'Seu Nome'}</h1>`;
-            if (data.desiredPosition) html += `<div class="desired-position">${data.desiredPosition}</div>`;
-            html += `<div class="contact-info">${contactInfo || 'suasinformacoes@contato.com'}</div>`;
-            
-            html += createSection('Objetivo', data.objective, false);
-            html += createSection('Experiência Profissional', data.experience);
-            html += createSection('Projetos', data.projects);
-            html += createSection('Formação Acadêmica', data.education);
-            html += createSection('Certificações', data.certifications);
-            html += createSection('Habilidades', data.skills);
-            html += createSection('Idiomas', data.languages);
-            
-            preview.innerHTML = html;
+        // Adiciona páginas subsequentes se o conteúdo for maior que uma página
+        while (heightLeft >= 0) {
+          position = heightLeft - pdfHeight;
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+          heightLeft -= pdf.internal.pageSize.getHeight();
         }
+
+        pdf.save(`${name}.pdf`);
+        
+        // Reexibe o botão de download final após o download
+        finalDownloadBtn.style.display = 'block';
+      }).catch(error => {
+        console.error("Erro ao gerar PDF:", error);
+        alert("Erro ao gerar o PDF. Verifique o console para mais detalhes.");
+        // Reexibe o botão em caso de erro
+        finalDownloadBtn.style.display = 'block';
+      });
     }
 
-    function addField(type) {
-      const container = document.getElementById(`${type}-fields`);
+    function updateResume() {
+      // Lógica de atualização do currículo (simplificada)
+      const name = document.getElementById('name').value;
+      const position = document.getElementById('desired-position').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const cityState = document.getElementById('city-state').value;
+      const linkedin = document.getElementById('linkedin').value;
+      const github = document.getElementById('github').value;
+      const portfolio = document.getElementById('portfolio').value;
+      const objective = document.getElementById('objective').value;
+      const skills = document.getElementById('skills').value;
+      const languages = document.getElementById('languages').value;
+      
+      const educationFields = Array.from(document.querySelectorAll('#education-fields textarea')).map(t => t.value).filter(v => v.trim() !== '');
+      const experienceFields = Array.from(document.querySelectorAll('#experience-fields textarea')).map(t => t.value).filter(v => v.trim() !== '');
+      const projectsFields = Array.from(document.querySelectorAll('#projects-fields textarea')).map(t => t.value).filter(v => v.trim() !== '');
+      const certificationsFields = Array.from(document.querySelectorAll('#certifications-fields textarea')).map(t => t.value).filter(v => v.trim() !== '');
+
+      const model = document.getElementById('model-select').value;
+      const accentColor = document.getElementById('color-hex').value;
+
+      // Aplica a cor de destaque
+      document.documentElement.style.setProperty('--accent-color', accentColor);
+      
+      let html = '';
+      
+      // Lógica de renderização (simplificada)
+      if (model === 'executive') {
+        // ... (lógica executive)
+        html = `
+          <h1>${name || translations[currentLang]['placeholder_name']}</h1>
+          <p class="desired-position">${position || translations[currentLang]['placeholder_desired_position']}</p>
+          <div class="contact-info">
+            ${email ? `<span>${email}</span> | ` : ''}
+            ${phone ? `<span>${phone}</span> | ` : ''}
+            ${cityState ? `<span>${cityState}</span> | ` : ''}
+            ${linkedin ? `<a href="${linkedin}" target="_blank">LinkedIn</a> | ` : ''}
+            ${github ? `<a href="${github}" target="_blank">GitHub</a> | ` : ''}
+            ${portfolio ? `<a href="${portfolio}" target="_blank">${translations[currentLang]['label_portfolio']}</a>` : ''}
+          </div>
+          
+          ${objective ? `<h2>${translations[currentLang]['section_objective']}</h2><p>${objective}</p>` : ''}
+
+          ${experienceFields.length > 0 ? `
+            <h2>${translations[currentLang]['section_experience']}</h2>
+            <ul>
+              ${experienceFields.map(exp => `<li>${exp.replace(/\n/g, '<br>')}</li>`).join('')}
+            </ul>
+          ` : ''}
+
+          ${educationFields.length > 0 ? `
+            <h2>${translations[currentLang]['section_education']}</h2>
+            <ul>
+              ${educationFields.map(edu => `<li>${edu}</li>`).join('')}
+            </ul>
+          ` : ''}
+
+          ${projectsFields.length > 0 ? `
+            <h2>${translations[currentLang]['section_projects']}</h2>
+            <ul>
+              ${projectsFields.map(proj => `<li>${proj}</li>`).join('')}
+            </ul>
+          ` : ''}
+
+          ${certificationsFields.length > 0 ? `
+            <h2>${translations[currentLang]['section_certifications']}</h2>
+            <ul>
+              ${certificationsFields.map(cert => `<li>${cert}</li>`).join('')}
+            </ul>
+          ` : ''}
+
+          ${skills ? `
+            <h2>${translations[currentLang]['section_skills']}</h2>
+            <p>${skills.replace(/\n/g, ' | ')}</p>
+          ` : ''}
+
+          ${languages ? `
+            <h2>${translations[currentLang]['section_languages']}</h2>
+            <p>${languages.replace(/\n/g, ' | ')}</p>
+          ` : ''}
+        `;
+      } else if (model === 'creative') {
+        // ... (lógica creative)
+        html = `
+          <div class="sidebar">
+            <h1>${name || translations[currentLang]['placeholder_name']}</h1>
+            <p class="desired-position">${position || translations[currentLang]['placeholder_desired_position']}</p>
+            
+            <h2>${translations[currentLang]['section_contact']}</h2>
+            <ul>
+              ${email ? `<li><i class="bi bi-envelope-fill"></i> ${email}</li>` : ''}
+              ${phone ? `<li><i class="bi bi-phone-fill"></i> ${phone}</li>` : ''}
+              ${cityState ? `<li><i class="bi bi-geo-alt-fill"></i> ${cityState}</li>` : ''}
+              ${linkedin ? `<li><i class="bi bi-linkedin"></i> <a href="${linkedin}" target="_blank">LinkedIn</a></li>` : ''}
+              ${github ? `<li><i class="bi bi-github"></i> <a href="${github}" target="_blank">GitHub</a></li>` : ''}
+              ${portfolio ? `<li><i class="bi bi-globe"></i> <a href="${portfolio}" target="_blank">${translations[currentLang]['label_portfolio']}</a></li>` : ''}
+            </ul>
+
+            ${skills ? `
+              <h2>${translations[currentLang]['section_skills']}</h2>
+              <ul>
+                ${skills.split('\n').map(s => `<li>${s.trim()}</li>`).join('')}
+              </ul>
+            ` : ''}
+
+            ${languages ? `
+              <h2>${translations[currentLang]['section_languages']}</h2>
+              <ul>
+                ${languages.split('\n').map(l => `<li>${l.trim()}</li>`).join('')}
+              </ul>
+            ` : ''}
+          </div>
+          <div class="main-column">
+            ${objective ? `<h2>${translations[currentLang]['section_objective']}</h2><p>${objective}</p>` : ''}
+
+            ${experienceFields.length > 0 ? `
+              <h2>${translations[currentLang]['section_experience']}</h2>
+              <ul>
+                ${experienceFields.map(exp => `<li>${exp.replace(/\n/g, '<br>')}</li>`).join('')}
+              </ul>
+            ` : ''}
+
+            ${educationFields.length > 0 ? `
+              <h2>${translations[currentLang]['section_education']}</h2>
+              <ul>
+                ${educationFields.map(edu => `<li>${edu}</li>`).join('')}
+              </ul>
+            ` : ''}
+
+            ${projectsFields.length > 0 ? `
+              <h2>${translations[currentLang]['section_projects']}</h2>
+              <ul>
+                ${projectsFields.map(proj => `<li>${proj}</li>`).join('')}
+              </ul>
+            ` : ''}
+
+            ${certificationsFields.length > 0 ? `
+              <h2>${translations[currentLang]['section_certifications']}</h2>
+              <ul>
+                ${certificationsFields.map(cert => `<li>${cert}</li>`).join('')}
+              </ul>
+            ` : ''}
+          </div>
+        `;
+      } else { // Minimalist (Default)
+        // ... (lógica minimalist)
+        html = `
+          <h1>${name || translations[currentLang]['placeholder_name']}</h1>
+          <p class="desired-position">${position || translations[currentLang]['placeholder_desired_position']}</p>
+          <div class="contact-info">
+            ${email ? `<span>${email}</span> | ` : ''}
+            ${phone ? `<span>${phone}</span> | ` : ''}
+            ${cityState ? `<span>${cityState}</span> | ` : ''}
+            ${linkedin ? `<a href="${linkedin}" target="_blank">LinkedIn</a> | ` : ''}
+            ${github ? `<a href="${github}" target="_blank">GitHub</a> | ` : ''}
+            ${portfolio ? `<a href="${portfolio}" target="_blank">${translations[currentLang]['label_portfolio']}</a>` : ''}
+          </div>
+          
+          ${objective ? `<h2>${translations[currentLang]['section_objective']}</h2><p>${objective}</p>` : ''}
+
+          ${experienceFields.length > 0 ? `
+            <h2>${translations[currentLang]['section_experience']}</h2>
+            <ul>
+              ${experienceFields.map(exp => `<li>${exp.replace(/\n/g, '<br>')}</li>`).join('')}
+            </ul>
+          ` : ''}
+
+          ${educationFields.length > 0 ? `
+            <h2>${translations[currentLang]['section_education']}</h2>
+            <ul>
+              ${educationFields.map(edu => `<li>${edu}</li>`).join('')}
+            </ul>
+          ` : ''}
+
+          ${projectsFields.length > 0 ? `
+            <h2>${translations[currentLang]['section_projects']}</h2>
+            <ul>
+              ${projectsFields.map(proj => `<li>${proj}</li>`).join('')}
+            </ul>
+          ` : ''}
+
+          ${certificationsFields.length > 0 ? `
+            <h2>${translations[currentLang]['section_certifications']}</h2>
+            <ul>
+              ${certificationsFields.map(cert => `<li>${cert}</li>`).join('')}
+            </ul>
+          ` : ''}
+
+          ${skills ? `
+            <h2>${translations[currentLang]['section_skills']}</h2>
+            <p>${skills.replace(/\n/g, ' | ')}</p>
+          ` : ''}
+
+          ${languages ? `
+            <h2>${translations[currentLang]['section_languages']}</h2>
+            <p>${languages.replace(/\n/g, ' | ')}</p>
+          ` : ''}
+        `;
+      }
+
+      document.getElementById('resume-preview').innerHTML = html;
+    }
+
+    window.resetForm = function() {
+      document.getElementById('resume-form').reset();
+      document.getElementById('education-fields').innerHTML = '';
+      document.getElementById('experience-fields').innerHTML = '';
+      document.getElementById('projects-fields').innerHTML = '';
+      document.getElementById('certifications-fields').innerHTML = '';
+      updateResume();
+    }
+
+    window.addField = function(type) {
+      const container = document.getElementById(type + '-fields');
       const field = document.createElement('div');
       field.className = 'dynamic-field';
-      field.innerHTML = `<input type="text" name="${type}" class="form-control" placeholder="Descreva aqui..."><button type="button" class="btn-remove" onclick="removeField(this)"><i class="bi bi-trash"></i></button>`;
+      
+      // Determinar o placeholder correto com base no idioma atual
+      let placeholderText = '';
+      if (type === 'education') {
+          placeholderText = currentLang === 'en' ? 'Ex: Degree in Systems - Institution (Year)' : 'Ex: Graduação em Sistemas - Instituição (Ano)';
+      } else if (type === 'experience') {
+          placeholderText = currentLang === 'en' ? 'Ex: Position - Company (Period) and Brief description' : 'Ex: Cargo - Empresa (Período) e Breve descrição';
+      } else {
+          placeholderText = currentLang === 'en' ? 'Item description' : 'Descrição do item';
+      }
+
+      field.innerHTML = `
+        <textarea class="form-control" rows="2" placeholder="${placeholderText}" oninput="updateResume()"></textarea>
+        <button type="button" class="btn-remove" onclick="this.parentNode.remove(); updateResume()"><i class="bi bi-x-circle-fill"></i></button>
+      `;
       container.appendChild(field);
-      field.querySelector('input').focus();
-      updateAll();
+      updateResume();
     }
-
-    function removeField(button) {
-      button.closest('.dynamic-field').remove();
-      updateAll();
-    }
-
-    function getDynamicFieldValues(type) {
-      return Array.from(document.querySelectorAll(`input[name="${type}"]`)).map(input => input.value).filter(value => value.trim() !== '');
-    }
-
-    function resetForm() {
-      if (confirm('Tem certeza que deseja limpar todos os dados?')) {
-        document.getElementById('resume-form').reset();
-        ['education-fields', 'experience-fields', 'projects-fields', 'certifications-fields'].forEach(id => {
-            document.getElementById(id).innerHTML = '';
-        });
-        localStorage.removeItem('resumeData');
-        addField('education');
-        updateAll();
-      }
-    }
-
-    function saveToLocalStorage(data) {
-      localStorage.setItem('resumeData', JSON.stringify(data));
-    }
-
-    function loadFromLocalStorage() {
-      const data = JSON.parse(localStorage.getItem('resumeData'));
-      if (!data) {
-        addField('education');
-        updateAll();
-        return;
-      }
-      
-      document.getElementById('model-select').value = data.model || 'executive';
-      document.getElementById('color-hex').value = data.color || '#2563eb';
-      document.getElementById('full-name').value = data.fullName || '';
-      document.getElementById('desired-position').value = data.desiredPosition || '';
-      document.getElementById('email').value = data.email || '';
-      document.getElementById('phone').value = data.phone || '';
-      document.getElementById('address').value = data.address || '';
-      document.getElementById('linkedin').value = data.linkedin || '';
-      document.getElementById('github').value = data.github || '';
-      document.getElementById('portfolio').value = data.portfolio || '';
-      document.getElementById('objective').value = data.objective || '';
-      document.getElementById('skills').value = (data.skills || []).join('\n');
-      document.getElementById('languages').value = (data.languages || []).join('\n');
-      
-      ['education', 'experience', 'projects', 'certifications'].forEach(type => {
-        const container = document.getElementById(`${type}-fields`);
-        container.innerHTML = '';
-        const items = data[type] || [];
-        if (items.length > 0) {
-          items.forEach(value => {
-            const field = document.createElement('div');
-            field.className = 'dynamic-field';
-            field.innerHTML = `<input type="text" name="${type}" class="form-control" value="${value}"><button type="button" class="btn-remove" onclick="removeField(this)"><i class="bi bi-trash"></i></button>`;
-            container.appendChild(field);
-          });
-        } else if (type === 'education' && items.length === 0) {
-            addField('education');
-        }
-      });
-      updateAll();
-    }
-
-    function handleAIAssistant(event) {
-      const selectedOption = event.target.value;
-      const objectiveTextarea = document.getElementById('objective');
-      const aiTexts = {
-        'jovem-aprendiz': 'Em busca da minha primeira oportunidade profissional como Jovem Aprendiz. Sou proativo, tenho grande facilidade de aprendizado e desejo contribuir para o ambiente de trabalho enquanto desenvolvo novas competências.',
-        'estagio': 'Estudante de [Sua Área de Estudo], busco uma oportunidade de estágio para aplicar meus conhecimentos teóricos em um ambiente prático, desenvolver novas habilidades e colaborar ativamente com os projetos da equipe.',
-        'vendedor': 'Profissional com foco em resultados e excelente comunicação, busco uma posição como Vendedor. Tenho como objetivo superar metas, garantir a satisfação do cliente e contribuir para o crescimento das vendas da empresa.',
-        'administrativo': 'Organizado e detalhista, busco uma vaga como Auxiliar Administrativo para aplicar minhas habilidades em rotinas de escritório, organização de documentos e suporte à equipe, visando a eficiência dos processos internos.',
-        'producao': 'Busco oportunidade como Auxiliar de Produção, com disposição para aprender e seguir os procedimentos de segurança e qualidade. Tenho como objetivo contribuir para a eficiência da linha de produção e o alcance das metas.',
-        'ti': 'Entusiasta de tecnologia, busco uma oportunidade na área de TI para aplicar minhas habilidades em [Mencione uma tecnologia, ex: desenvolvimento web, redes]. Desejo resolver problemas complexos e crescer junto com a empresa.'
-      };
-      if (aiTexts[selectedOption]) {
-        objectiveTextarea.value = aiTexts[selectedOption];
-        updateAll();
-      }
-    }
-
-    function generatePDF() {
-        const data = collectFormData();
-        const doc = new window.jspdf.jsPDF('p', 'mm', 'a4');
-        const downloadButton = document.getElementById('download-btn');
-        
-        downloadButton.innerHTML = '<i class="bi bi-hourglass-split"></i> Gerando PDF...';
-        downloadButton.disabled = true;
-
-        if (data.model === 'executive') {
-            drawExecutivePDF(doc, data);
-        } else if (data.model === 'creative') {
-            drawCreativePDF(doc, data);
-        } else if (data.model === 'minimalist') {
-            drawMinimalistPDF(doc, data);
-        } else {
-            drawExecutivePDF(doc, data);
-        }
-
-        const safeFileName = (data.fullName || 'curriculo').replace(/[^a-z0-9]/gi, '_').toLowerCase();
-        doc.save(`${safeFileName}_${data.model}.pdf`);
-        
-        if (typeof gtag === 'function') { gtag('event', 'download_pdf', { 'event_category': 'engagement', 'event_label': data.model }); }
-
-        downloadButton.innerHTML = '<i class="bi bi-download"></i> Baixar PDF de Alta Qualidade';
-        downloadButton.disabled = false;
-        
-        const feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
-        feedbackModal.show();
-    }
-
-    function hexToRgb(hex) {
-        let r = 0, g = 0, b = 0;
-        if (hex.length == 4) {
-            r = "0x" + hex[1] + hex[1];
-            g = "0x" + hex[2] + hex[2];
-            b = "0x" + hex[3] + hex[3];
-        } else if (hex.length == 7) {
-            r = "0x" + hex[1] + hex[2];
-            g = "0x" + hex[3] + hex[4];
-            b = "0x" + hex[5] + hex[6];
-        }
-        return [+r, +g, +b];
-    }
-
-    function drawExecutivePDF(doc, data) {
-        const MARGIN = 15;
-        const MAX_WIDTH = doc.internal.pageSize.getWidth() - MARGIN * 2;
-        let y = 20;
-        const themeColor = hexToRgb(data.color);
-
-        doc.setFont('Helvetica', 'bold');
-        doc.setFontSize(22);
-        doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
-        doc.text(data.fullName.toUpperCase() || 'SEU NOME', doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
-        y += 8;
-
-        if (data.desiredPosition) {
-            doc.setFont('Helvetica', 'normal');
-            doc.setFontSize(12);
-            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
-            doc.text(data.desiredPosition, doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
-            y += 8;
-        }
-
-        const contactInfo = [data.email, data.phone, data.address, data.linkedin, data.github, data.portfolio].filter(Boolean).join(' | ');
-        doc.setFontSize(9);
-        doc.setTextColor('#6b7280');
-        doc.text(contactInfo, doc.internal.pageSize.getWidth() / 2, y, { align: 'center' });
-        y += 8;
-        doc.setDrawColor('#e5e7eb');
-        doc.line(MARGIN, y, doc.internal.pageSize.getWidth() - MARGIN, y);
-        y += 10;
-
-        const drawSection = (title, content, isList = false) => {
-            if (!content || (Array.isArray(content) && content.length === 0)) return;
-            doc.setFont('Helvetica', 'bold');
-            doc.setFontSize(11);
-            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
-            doc.text(title.toUpperCase(), MARGIN, y);
-            y += 6;
-            doc.setFont('Helvetica', 'normal');
-            doc.setFontSize(10);
-            doc.setTextColor('#374151');
-            if (isList) {
-                content.forEach(item => {
-                    const lines = doc.splitTextToSize(`• ${item}`, MAX_WIDTH);
-                    if (y + lines.length * 5 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
-                    doc.text(lines, MARGIN, y);
-                    y += lines.length * 5 + 2;
-                });
-            } else {
-                const lines = doc.splitTextToSize(content, MAX_WIDTH);
-                if (y + lines.length * 5 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
-                doc.text(lines, MARGIN, y);
-                y += lines.length * 5 + 2;
-            }
-            y += 5;
-        };
-
-        drawSection('Objetivo', data.objective);
-        drawSection('Experiência Profissional', data.experience, true);
-        drawSection('Projetos', data.projects, true);
-        drawSection('Formação Acadêmica', data.education, true);
-        drawSection('Certificações', data.certifications, true);
-        drawSection('Habilidades', data.skills, true);
-        drawSection('Idiomas', data.languages, true);
-    }
-
-    function drawCreativePDF(doc, data) {
-        const SIDE_MARGIN = 15;
-        const TOP_MARGIN = 20;
-        const GUTTER = 10;
-        const SIDEBAR_WIDTH = 55;
-        const MAIN_WIDTH = doc.internal.pageSize.getWidth() - SIDEBAR_WIDTH - GUTTER - SIDE_MARGIN * 2;
-        let y = TOP_MARGIN;
-        let sidebarY = TOP_MARGIN;
-        const themeColor = hexToRgb(data.color);
-
-        doc.setFillColor(243, 244, 246);
-        doc.rect(0, 0, SIDEBAR_WIDTH + SIDE_MARGIN, doc.internal.pageSize.getHeight(), 'F');
-        
-        doc.setFont('Helvetica', 'bold');
-        doc.setFontSize(20);
-        doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
-        const nameLines = doc.splitTextToSize(data.fullName || 'Seu Nome', SIDEBAR_WIDTH);
-        doc.text(nameLines, SIDE_MARGIN, sidebarY);
-        sidebarY += nameLines.length * 8 + 2;
-
-        if (data.desiredPosition) {
-            doc.setFont('Helvetica', 'normal');
-            doc.setFontSize(11);
-            doc.setTextColor('#1f2937');
-            const positionLines = doc.splitTextToSize(data.desiredPosition, SIDEBAR_WIDTH);
-            doc.text(positionLines, SIDE_MARGIN, sidebarY);
-            sidebarY += positionLines.length * 5 + 5;
-        }
-
-        const drawSidebarSection = (title, content) => {
-            if (!content || (Array.isArray(content) && content.length === 0)) return;
-            sidebarY += 8;
-            doc.setFont('Helvetica', 'bold');
-            doc.setFontSize(10);
-            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
-            doc.text(title.toUpperCase(), SIDE_MARGIN, sidebarY);
-            sidebarY += 5;
-            doc.setFont('Helvetica', 'normal');
-            doc.setFontSize(9);
-            doc.setTextColor('#4b5563');
-            content.forEach(item => {
-                const lines = doc.splitTextToSize(item, SIDEBAR_WIDTH);
-                if (sidebarY + lines.length * 4 > doc.internal.pageSize.getHeight() - SIDE_MARGIN) { return; } // Evita overflow
-                doc.text(lines, SIDE_MARGIN, sidebarY);
-                sidebarY += lines.length * 4 + 2;
-            });
-        };
-        
-        drawSidebarSection('Contato', [data.email, data.phone, data.address].filter(Boolean));
-        drawSidebarSection('Links', [data.linkedin, data.github, data.portfolio].filter(Boolean));
-        drawSidebarSection('Habilidades', data.skills);
-        drawSidebarSection('Idiomas', data.languages);
-
-        const mainX = SIDEBAR_WIDTH + SIDE_MARGIN + GUTTER;
-        const drawMainSection = (title, content, isList = false) => {
-            if (!content || (Array.isArray(content) && content.length === 0)) return;
-            if (y > TOP_MARGIN) y += 5;
-            doc.setFont('Helvetica', 'bold');
-            doc.setFontSize(14);
-            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
-            doc.text(title, mainX, y);
-            y += 8;
-            doc.setFont('Helvetica', 'normal');
-            doc.setFontSize(10);
-            doc.setTextColor('#374151');
-            if (isList) {
-                content.forEach(item => {
-                    const lines = doc.splitTextToSize(`• ${item}`, MAIN_WIDTH);
-                    if (y + lines.length * 5 > doc.internal.pageSize.getHeight() - TOP_MARGIN) { doc.addPage(); y = TOP_MARGIN; doc.rect(0, 0, SIDEBAR_WIDTH + SIDE_MARGIN, doc.internal.pageSize.getHeight(), 'F'); }
-                    doc.text(lines, mainX, y);
-                    y += lines.length * 5 + 3;
-                });
-            } else {
-                const lines = doc.splitTextToSize(content, MAIN_WIDTH);
-                if (y + lines.length * 5 > doc.internal.pageSize.getHeight() - TOP_MARGIN) { doc.addPage(); y = TOP_MARGIN; doc.rect(0, 0, SIDEBAR_WIDTH + SIDE_MARGIN, doc.internal.pageSize.getHeight(), 'F'); }
-                doc.text(lines, mainX, y);
-                y += lines.length * 5 + 3;
-            }
-            y += 5;
-        };
-
-        drawMainSection('Objetivo', data.objective);
-        drawMainSection('Experiência Profissional', data.experience, true);
-        drawMainSection('Projetos', data.projects, true);
-        drawMainSection('Formação Acadêmica', data.education, true);
-        drawMainSection('Certificações', data.certifications, true);
-    }
-
-    function drawMinimalistPDF(doc, data) {
-        const MARGIN = 12;
-        const MAX_WIDTH = doc.internal.pageSize.getWidth() - MARGIN * 2;
-        let y = MARGIN + 5;
-        const themeColor = hexToRgb(data.color);
-
-        doc.setFont('Helvetica', 'bold');
-        doc.setFontSize(18);
-        doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
-        doc.text(data.fullName || 'SEU NOME', MARGIN, y);
-        y += 6;
-
-        if (data.desiredPosition) {
-            doc.setFont('Helvetica', 'normal');
-            doc.setFontSize(10);
-            doc.setTextColor('#1f2937');
-            doc.text(data.desiredPosition, MARGIN, y);
-            y += 6;
-        }
-
-        const contactInfo = [data.email, data.phone, data.address, data.linkedin, data.github, data.portfolio].filter(Boolean).join(' | ');
-        doc.setFontSize(8);
-        doc.setTextColor('#6b7280');
-        doc.text(contactInfo, MARGIN, y);
-        y += 8;
-
-        const drawSection = (title, content, isList = false) => {
-            if (!content || (Array.isArray(content) && content.length === 0)) return;
-            if (y + 15 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
-            doc.setFont('Helvetica', 'bold');
-            doc.setFontSize(9);
-            doc.setTextColor(themeColor[0], themeColor[1], themeColor[2]);
-            doc.text(title.toUpperCase(), MARGIN, y);
-            y += 3;
-            doc.setDrawColor(themeColor[0], themeColor[1], themeColor[2]);
-            doc.setLineWidth(0.2);
-            doc.line(MARGIN, y, doc.internal.pageSize.getWidth() - MARGIN, y);
-            y += 5;
-
-            doc.setFont('Helvetica', 'normal');
-            doc.setFontSize(9);
-            doc.setTextColor('#374151');
-            if (isList) {
-                content.forEach(item => {
-                    const lines = doc.splitTextToSize(`• ${item}`, MAX_WIDTH);
-                    if (y + lines.length * 4 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
-                    doc.text(lines, MARGIN, y);
-                    y += lines.length * 4 + 2;
-                });
-            } else {
-                const lines = doc.splitTextToSize(content, MAX_WIDTH);
-                if (y + lines.length * 4 > doc.internal.pageSize.getHeight() - MARGIN) { doc.addPage(); y = MARGIN; }
-                doc.text(lines, MARGIN, y);
-                y += lines.length * 4 + 2;
-            }
-            y += 4;
-        };
-
-        drawSection('Objetivo', data.objective);
-        drawSection('Experiência Profissional', data.experience, true);
-        drawSection('Projetos', data.projects, true);
-        drawSection('Formação Acadêmica', data.education, true);
-        drawSection('Certificações', data.certifications, true);
-        drawSection('Habilidades', data.skills, true);
-        drawSection('Idiomas', data.languages, true);
-    }
-</script>
+  </script>
 </body>
 </html>
-
